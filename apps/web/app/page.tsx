@@ -1,3 +1,4 @@
+import { AnimalFeastArt } from "@/components/animal-feast-art";
 import { Button, Eyebrow } from "@/components/ui";
 import { getSiteSettings } from "@/lib/strapi";
 
@@ -43,7 +44,9 @@ export default async function Home() {
               </Button>
             </div>
           </div>
-          <div />
+          <div className="mx-auto w-full max-w-md">
+            <AnimalFeastArt />
+          </div>
         </div>
       </section>
 
