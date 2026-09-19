@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const IDLE_TILT_DEG = 8;
+const SPIN_DEG_PER_SEC = 360 / 20; // one full turn every 20s
+const WOBBLE_DEG = 10;
 const HOVER_TILT_DEG = 22;
 
 export function TiltImage({
@@ -29,14 +30,14 @@ export function TiltImage({
     const loop = (now: number) => {
       const el = innerRef.current;
       if (el) {
-        if (hovering.current) {
-          el.style.transform = `translateZ(40px) scale(1.05) rotateX(${pointer.current.x}deg) rotateY(${pointer.current.y}deg)`;
-        } else {
-          const elapsed = (now - start) / 1000;
-          const x = Math.sin(elapsed * 0.6) * IDLE_TILT_DEG;
-          const y = Math.cos(elapsed * 0.4) * IDLE_TILT_DEG;
-          el.style.transform = `translateZ(0px) scale(1) rotateX(${x}deg) rotateY(${y}deg)`;
-        }
+        const elapsed = (now - start) / 1000;
+        const spinZ = (elapsed * SPIN_DEG_PER_SEC) % 360;
+        const wobbleX = Math.sin(elapsed * 0.6) * WOBBLE_DEG;
+        const wobbleY = Math.cos(elapsed * 0.4) * WOBBLE_DEG;
+        const rotX = wobbleX + (hovering.current ? pointer.current.x : 0);
+        const rotY = wobbleY + (hovering.current ? pointer.current.y : 0);
+        const lift = hovering.current ? "translateZ(40px) scale(1.05)" : "translateZ(0px) scale(1)";
+        el.style.transform = `${lift} rotateZ(${spinZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       }
       raf = requestAnimationFrame(loop);
     };
@@ -69,7 +70,7 @@ export function TiltImage({
     >
       <div
         ref={innerRef}
-        style={{ transformStyle: "preserve-3d", willChange: "transform", transition: "transform 120ms ease-out" }}
+        style={{ transformStyle: "preserve-3d", willChange: "transform", transition: "transform 120ms linear" }}
       >
         <Image
           src={src}
