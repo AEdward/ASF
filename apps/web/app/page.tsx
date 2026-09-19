@@ -1,5 +1,5 @@
-import { AnimalFeastArt } from "@/components/animal-feast-art";
 import { Button, Eyebrow } from "@/components/ui";
+import { TiltImage } from "@/components/tilt-image";
 import { getSiteSettings } from "@/lib/strapi";
 
 const businessAreas = [
@@ -44,8 +44,13 @@ export default async function Home() {
               </Button>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-md">
-            <AnimalFeastArt />
+          <div className="mx-auto w-full max-w-lg">
+            <TiltImage
+              src="/hero-feeding.png"
+              alt="A cow, camel, ox, goat, sheep and chicken feeding from a green trough with the ASF Agro Industry logo at its center"
+              width={1312}
+              height={1199}
+            />
           </div>
         </div>
       </section>
