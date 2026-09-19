@@ -3,17 +3,19 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const SPIN_DEG_PER_SEC = 360 / 20; // one full turn every 20s
-const WOBBLE_DEG = 10;
-const HOVER_TILT_DEG = 22;
+const SPIN_DEG_PER_SEC = 360 / 22; // one full turn every 22s
+const WOBBLE_DEG = 6;
+const HOVER_TILT_DEG = 16;
 
-export function TiltImage({
-  src,
+export function FlipRotateImage({
+  frontSrc,
+  backSrc,
   alt,
   width,
   height,
 }: {
-  src: string;
+  frontSrc: string;
+  backSrc: string;
   alt: string;
   width: number;
   height: number;
@@ -31,13 +33,11 @@ export function TiltImage({
       const el = innerRef.current;
       if (el) {
         const elapsed = (now - start) / 1000;
-        const spinZ = (elapsed * SPIN_DEG_PER_SEC) % 360;
-        const wobbleX = Math.sin(elapsed * 0.6) * WOBBLE_DEG;
-        const wobbleY = Math.cos(elapsed * 0.4) * WOBBLE_DEG;
+        const spinY = (elapsed * SPIN_DEG_PER_SEC) % 360;
+        const wobbleX = Math.sin(elapsed * 0.5) * WOBBLE_DEG;
         const rotX = wobbleX + (hovering.current ? pointer.current.x : 0);
-        const rotY = wobbleY + (hovering.current ? pointer.current.y : 0);
-        const lift = hovering.current ? "translateZ(40px) scale(1.05)" : "translateZ(0px) scale(1)";
-        el.style.transform = `${lift} rotateZ(${spinZ}deg) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        const rotY = spinY + (hovering.current ? pointer.current.y : 0);
+        el.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       }
       raf = requestAnimationFrame(loop);
     };
@@ -65,21 +65,26 @@ export function TiltImage({
       ref={wrapRef}
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
-      style={{ perspective: "900px" }}
-      className="cursor-grab touch-none select-none active:cursor-grabbing"
+      style={{ perspective: "1600px", aspectRatio: `${width} / ${height}` }}
+      className="relative w-full cursor-grab touch-none select-none active:cursor-grabbing"
     >
       <div
         ref={innerRef}
-        style={{ transformStyle: "preserve-3d", willChange: "transform", transition: "transform 120ms linear" }}
+        style={{ transformStyle: "preserve-3d", willChange: "transform", transition: "transform 100ms linear" }}
+        className="relative h-full w-full"
       >
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          priority
-          className="h-auto w-full [filter:drop-shadow(0_30px_28px_rgba(8,22,11,0.32))]"
-        />
+        <div
+          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 [filter:drop-shadow(0_30px_28px_rgba(8,22,11,0.32))]"
+        >
+          <Image src={frontSrc} alt={alt} fill priority className="object-contain" />
+        </div>
+        <div
+          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className="absolute inset-0 [filter:drop-shadow(0_30px_28px_rgba(8,22,11,0.32))]"
+        >
+          <Image src={backSrc} alt={`${alt} — rear view`} fill priority className="object-contain" />
+        </div>
       </div>
     </div>
   );

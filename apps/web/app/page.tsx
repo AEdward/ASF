@@ -1,5 +1,5 @@
 import { Button, Eyebrow } from "@/components/ui";
-import { TiltImage } from "@/components/tilt-image";
+import { FlipRotateImage } from "@/components/flip-rotate-image";
 import { getSiteSettings } from "@/lib/strapi";
 
 const businessAreas = [
@@ -45,8 +45,9 @@ export default async function Home() {
             </div>
           </div>
           <div className="mx-auto w-full max-w-lg">
-            <TiltImage
-              src="/hero-feeding.png"
+            <FlipRotateImage
+              frontSrc="/hero-feeding.png"
+              backSrc="/hero-feeding-back.png"
               alt="A cow, camel, ox, goat, sheep and chicken feeding from a green trough with the ASF Agro Industry logo at its center"
               width={1312}
               height={1199}
