@@ -44,14 +44,14 @@ export default async function Home() {
               </Button>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-lg">
+          <div className="relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-full shadow-2xl ring-8 ring-white/50">
             <Image
-              src="/hero-feeding.png"
-              alt="A cow, camel, ox, goat, sheep and chicken feeding from a plate styled after the ASF Agro Industry logo"
-              width={1312}
-              height={1199}
+              src="/hero-topdown.png"
+              alt="Top-down view of a cow, camel, ox, goat, sheep and chicken feeding from a plate styled after the ASF Agro Industry logo"
+              fill
               priority
-              className="h-auto w-full [filter:drop-shadow(0_30px_28px_rgba(8,22,11,0.28))]"
+              sizes="(min-width: 1024px) 40vw, 90vw"
+              className="animate-spin-slow object-cover"
             />
           </div>
         </div>
