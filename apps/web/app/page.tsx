@@ -1,4 +1,4 @@
-import { AnimalTurntableScene } from "@/components/animal-turntable-scene";
+import Image from "next/image";
 import { Button, Eyebrow } from "@/components/ui";
 import { getSiteSettings } from "@/lib/strapi";
 
@@ -45,7 +45,14 @@ export default async function Home() {
             </div>
           </div>
           <div className="mx-auto w-full max-w-lg">
-            <AnimalTurntableScene />
+            <Image
+              src="/hero-feeding.png"
+              alt="A cow, camel, ox, goat, sheep and chicken feeding from a plate styled after the ASF Agro Industry logo"
+              width={1312}
+              height={1199}
+              priority
+              className="h-auto w-full [filter:drop-shadow(0_30px_28px_rgba(8,22,11,0.28))]"
+            />
           </div>
         </div>
       </section>
