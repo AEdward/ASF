@@ -1,0 +1,65 @@
+{
+  "common": {
+    "siteDescription": "ASF Agro Industry — practical, scientific and reliable agro-processing solutions."
+  },
+  "header": {
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "developedBy": "Developed by"
+  },
+  "products": {
+    "metaTitle": "Products",
+    "metaDescription": "ASF Agro Industry products and services: current, growth and planned.",
+    "eyebrow": "Products & Services",
+    "heading": "Feed and agro-industry solutions.",
+    "subtitle": "Explore ASF's current business areas and planned portfolio.",
+    "stage": {
+      "Current": "CURRENT",
+      "Growth": "GROWTH",
+      "Planned": "PLANNED",
+      "Future": "FUTURE"
+    }
+  },
+  "blog": {
+    "metaTitle": "Blog",
+    "metaDescription": "News, farming insights and expansion updates from ASF Agro Industry.",
+    "eyebrow": "ASF Journal",
+    "heading": "Insights from our agricultural journey.",
+    "subtitle": "Company news, farming insights, feed education and expansion updates, managed from the Strapi dashboard.",
+    "category": {
+      "Feed & Nutrition": "Feed & Nutrition",
+      "Expansion": "Expansion",
+      "Agriculture": "Agriculture",
+      "Company News": "Company News"
+    }
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Contact the ASF Agro Industry team for partnerships and enquiries.",
+    "eyebrow": "Contact ASF",
+    "heading": "Let's build the agricultural future together.",
+    "subtitle": "For partnerships, feed supply, business development and other enquiries, contact the ASF team.",
+    "detailsEyebrow": "Company details",
+    "detailsHeading": "Reach our team.",
+    "labels": {
+      "headOffice": "Head Office",
+      "factory": "Operational Factory",
+      "expansion": "Expansion Site",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "form": {
+      "eyebrow": "Send an enquiry",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Email address",
+      "companyPlaceholder": "Company / organization",
+      "messagePlaceholder": "How can we work together?",
+      "submit": "Send enquiry →"
+    }
+  },
+  "about": {
+    "metaTitle": "About",
+    "metaDescription": "About ASF Agro Industry — our story, vision and principles."
+  }
+}

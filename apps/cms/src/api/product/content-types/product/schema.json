@@ -8,13 +8,29 @@
     "description": "ASF products and services"
   },
   "options": { "draftAndPublish": true },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": { "localized": true }
+  },
   "attributes": {
-    "name": { "type": "string", "required": true },
-    "slug": { "type": "uid", "targetField": "name", "required": true },
-    "stage": { "type": "enumeration", "enum": ["Current", "Growth", "Planned", "Future"] },
-    "description": { "type": "text" },
-    "details": { "type": "json" },
-    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "name": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "stage": {
+      "type": "enumeration",
+      "enum": ["Current", "Growth", "Planned", "Future"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "description": { "type": "text", "pluginOptions": { "i18n": { "localized": true } } },
+    "details": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
   }
 }

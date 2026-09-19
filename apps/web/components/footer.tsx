@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export function Footer({
   companyName,
@@ -9,6 +10,8 @@ export function Footer({
   tagline: string;
   footerLinks: { label: string; href: string }[];
 }) {
+  const t = useTranslations("footer");
+
   return (
     <footer className="bg-[#081c0d] py-10 text-sm text-green-100/70">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
@@ -28,7 +31,7 @@ export function Footer({
             © {new Date().getFullYear()} {companyName}
           </span>
           <span>
-            Developed by{" "}
+            {t("developedBy")}{" "}
             <a
               href="https://paraibatech.com"
               target="_blank"

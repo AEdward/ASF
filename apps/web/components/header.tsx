@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function Header({
   companyName,
@@ -18,6 +20,7 @@ export function Header({
   ctaHref: string;
 }) {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("header");
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
@@ -52,6 +55,7 @@ export function Header({
               {label}
             </Link>
           ))}
+          <LanguageSwitcher />
           <Link
             href={ctaHref}
             className="rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713]"
@@ -60,7 +64,7 @@ export function Header({
           </Link>
         </nav>
         <button
-          aria-label="Toggle menu"
+          aria-label={t("toggleMenu")}
           onClick={() => setOpen(!open)}
           className="rounded-lg border px-3 py-2 md:hidden"
         >

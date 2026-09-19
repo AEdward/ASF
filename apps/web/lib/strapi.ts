@@ -7,6 +7,7 @@ import {
   SiteSettings,
 } from "@/lib/content";
 import { PageSection } from "@/lib/sections";
+import type { Locale } from "@/i18n/routing";
 
 const API_URL = process.env.STRAPI_URL || "http://localhost:1337";
 
@@ -52,17 +53,17 @@ interface StrapiArticleEntry {
   coverImage?: { url?: string } | null;
 }
 
-export async function getSiteSettings(): Promise<SiteSettings> {
+export async function getSiteSettings(locale: Locale = "en"): Promise<SiteSettings> {
   const json = await strapiFetch<{ data: StrapiSiteSettingEntry | null }>(
-    "/api/site-setting?populate=*"
+    `/api/site-setting?populate=*&locale=${locale}`
   );
   if (!json?.data) return DEFAULT_SITE_SETTINGS;
   return { ...DEFAULT_SITE_SETTINGS, ...json.data };
 }
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts(locale: Locale = "en"): Promise<Product[]> {
   const json = await strapiFetch<{ data: StrapiProductEntry[] }>(
-    "/api/products?sort=id:asc&populate=image"
+    `/api/products?sort=id:asc&populate=image&locale=${locale}`
   );
   if (!json?.data?.length) return DEFAULT_PRODUCTS;
   return json.data.map((entry) => ({
@@ -183,9 +184,12 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
   }
 }
 
-export async function getPage(slug: string): Promise<PageSection[] | null> {
+export async function getPage(
+  slug: string,
+  locale: Locale = "en"
+): Promise<PageSection[] | null> {
   const json = await strapiFetch<{ data: StrapiPageEntry[] }>(
-    `/api/pages?filters[slug][$eq]=${slug}&${PAGE_POPULATE}`
+    `/api/pages?filters[slug][$eq]=${slug}&locale=${locale}&${PAGE_POPULATE}`
   );
   const entry = json?.data?.[0];
   if (!entry?.sections?.length) return null;
@@ -193,9 +197,9 @@ export async function getPage(slug: string): Promise<PageSection[] | null> {
   return sections.length ? sections : null;
 }
 
-export async function getArticles(): Promise<Article[]> {
+export async function getArticles(locale: Locale = "en"): Promise<Article[]> {
   const json = await strapiFetch<{ data: StrapiArticleEntry[] }>(
-    "/api/articles?sort=id:asc&populate=coverImage"
+    `/api/articles?sort=id:asc&populate=coverImage&locale=${locale}`
   );
   if (!json?.data?.length) return DEFAULT_ARTICLES;
   return json.data.map((entry) => ({

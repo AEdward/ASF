@@ -1,0 +1,65 @@
+{
+  "common": {
+    "siteDescription": "ASF አግሮ ኢንዱስትሪ — ተግባራዊ፣ ሳይንሳዊ እና አስተማማኝ የግብርና ማቀነባበሪያ መፍትሄዎች።"
+  },
+  "header": {
+    "toggleMenu": "ማውጫ ቀያይር"
+  },
+  "footer": {
+    "developedBy": "የተሰራው በ"
+  },
+  "products": {
+    "metaTitle": "ምርቶች",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ ምርቶች እና አገልግሎቶች፦ የአሁኑ፣ የእድገት እና የታቀዱ።",
+    "eyebrow": "ምርቶች እና አገልግሎቶች",
+    "heading": "የመኖ እና የግብርና ኢንዱስትሪ መፍትሄዎች።",
+    "subtitle": "የASF የአሁኑን የስራ ዘርፎች እና የታቀዱ ፕሮጀክቶች ይመልከቱ።",
+    "stage": {
+      "Current": "የአሁኑ",
+      "Growth": "እድገት",
+      "Planned": "የታቀደ",
+      "Future": "የወደፊት"
+    }
+  },
+  "blog": {
+    "metaTitle": "ብሎግ",
+    "metaDescription": "ዜናዎች፣ የግብርና እይታዎች እና የማስፋፊያ ዝማኔዎች ከASF አግሮ ኢንዱስትሪ።",
+    "eyebrow": "የASF መጽሔት",
+    "heading": "ከግብርና ጉዟችን የተገኙ እይታዎች።",
+    "subtitle": "የኩባንያ ዜናዎች፣ የግብርና እይታዎች፣ የመኖ ትምህርት እና የማስፋፊያ ዝማኔዎች፣ ከStrapi ዳሽቦርድ የሚተዳደሩ።",
+    "category": {
+      "Feed & Nutrition": "መኖ እና ስነ-ምግብ",
+      "Expansion": "መስፋፋት",
+      "Agriculture": "ግብርና",
+      "Company News": "የኩባንያ ዜና"
+    }
+  },
+  "contact": {
+    "metaTitle": "አግኙን",
+    "metaDescription": "ለትብብር እና ለጥያቄዎች የASF አግሮ ኢንዱስትሪ ቡድንን ያግኙ።",
+    "eyebrow": "ASFን ያግኙ",
+    "heading": "የግብርናውን የወደፊት ጊዜ በጋራ እንገንባ።",
+    "subtitle": "ለትብብር፣ የመኖ አቅርቦት፣ የስራ እድገት እና ለሌሎች ጥያቄዎች የASF ቡድንን ያግኙ።",
+    "detailsEyebrow": "የኩባንያ ዝርዝሮች",
+    "detailsHeading": "ቡድናችንን ያግኙ።",
+    "labels": {
+      "headOffice": "ዋና መስሪያ ቤት",
+      "factory": "የማምረቻ ፋብሪካ",
+      "expansion": "የማስፋፊያ ቦታ",
+      "phone": "ስልክ",
+      "email": "ኢሜይል"
+    },
+    "form": {
+      "eyebrow": "ጥያቄ ይላኩ",
+      "namePlaceholder": "ስምዎ",
+      "emailPlaceholder": "የኢሜይል አድራሻ",
+      "companyPlaceholder": "ኩባንያ / ድርጅት",
+      "messagePlaceholder": "እንዴት አብረን መስራት እንችላለን?",
+      "submit": "ጥያቄ ይላኩ →"
+    }
+  },
+  "about": {
+    "metaTitle": "ስለ እኛ",
+    "metaDescription": "ስለ ASF አግሮ ኢንዱስትሪ — ታሪካችን፣ ዕይታችን እና መርሆዎቻችን።"
+  }
+}

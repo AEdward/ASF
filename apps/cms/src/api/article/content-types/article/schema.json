@@ -8,16 +8,29 @@
     "description": "ASF blog articles"
   },
   "options": { "draftAndPublish": true },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": { "localized": true }
+  },
   "attributes": {
-    "title": { "type": "string", "required": true },
-    "slug": { "type": "uid", "targetField": "title", "required": true },
-    "excerpt": { "type": "text" },
-    "content": { "type": "richtext" },
+    "title": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "excerpt": { "type": "text", "pluginOptions": { "i18n": { "localized": true } } },
+    "content": { "type": "richtext", "pluginOptions": { "i18n": { "localized": true } } },
     "category": {
       "type": "enumeration",
-      "enum": ["Feed & Nutrition", "Expansion", "Agriculture", "Company News"]
+      "enum": ["Feed & Nutrition", "Expansion", "Agriculture", "Company News"],
+      "pluginOptions": { "i18n": { "localized": false } }
     },
-    "coverImage": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
   }
 }

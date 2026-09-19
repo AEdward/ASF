@@ -1,0 +1,65 @@
+{
+  "common": {
+    "siteDescription": "ASF Agro Industry — furmaata adeemsa qonnaa kan hojiirra oolu, saayinsawaa fi amanamaa ta'e."
+  },
+  "header": {
+    "toggleMenu": "Menu Jijjiiri"
+  },
+  "footer": {
+    "developedBy": "Kan Hojjetame:"
+  },
+  "products": {
+    "metaTitle": "Oomishaalee",
+    "metaDescription": "Oomishaalee fi tajaajiloota ASF Agro Industry: kan ammaa, guddinaa fi karoorame.",
+    "eyebrow": "Oomishaalee fi Tajaajiloota",
+    "heading": "Furmaata Nyaataa fi Warshaalee Qonnaa.",
+    "subtitle": "Gareewwan daldalaa ammaa fi karoora ASF ilaali.",
+    "stage": {
+      "Current": "AMMA",
+      "Growth": "GUDDINA",
+      "Planned": "KAROORAME",
+      "Future": "FUULDURA"
+    }
+  },
+  "blog": {
+    "metaTitle": "Barreeffama",
+    "metaDescription": "Oduu, hubannoo qonnaa fi haaromsa babal'ina ASF Agro Industry irraa.",
+    "eyebrow": "Gaazexaa ASF",
+    "heading": "Hubannoo Karaa Qonnaa Keenya.",
+    "subtitle": "Oduu dhaabbataa, hubannoo qonnaa, barnoota nyaataa fi haaromsa babal'ina, kan Strapi dashboard irraa to'atamu.",
+    "category": {
+      "Feed & Nutrition": "Nyaataa fi Nyaata Madaalawaa",
+      "Expansion": "Babal'ina",
+      "Agriculture": "Qonna",
+      "Company News": "Oduu Dhaabbataa"
+    }
+  },
+  "contact": {
+    "metaTitle": "Nu Qunnami",
+    "metaDescription": "Michoomaa fi gaaffiif garee ASF Agro Industry quunnamaa.",
+    "eyebrow": "ASF Qunnami",
+    "heading": "Fuulduraa qonnaa waliin haa ijaarru.",
+    "subtitle": "Michoomaa, dhiyeessii nyaataa, guddina daldalaa fi gaaffiiwwan biroof, garee ASF quunnamaa.",
+    "detailsEyebrow": "Odeeffannoo Dhaabbataa",
+    "detailsHeading": "Garee keenya qunnamaa.",
+    "labels": {
+      "headOffice": "Waajjira Muummee",
+      "factory": "Warshaa Hojiirra Jiru",
+      "expansion": "Bakka Babal'ina",
+      "phone": "Bilbila",
+      "email": "Imeelii"
+    },
+    "form": {
+      "eyebrow": "Gaaffii Ergaa",
+      "namePlaceholder": "Maqaa kee",
+      "emailPlaceholder": "Teessoo Imeelii",
+      "companyPlaceholder": "Dhaabbata / Kubbaaniyaa",
+      "messagePlaceholder": "Akkamitti waliin hojjenna?",
+      "submit": "Gaaffii Ergi →"
+    }
+  },
+  "about": {
+    "metaTitle": "Waa'ee Keenya",
+    "metaDescription": "Waa'ee ASF Agro Industry — seenaa keenya, mul'ata keenya fi seera keenya."
+  }
+}

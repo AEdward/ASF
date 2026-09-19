@@ -8,20 +8,26 @@
     "description": "Global ASF website content"
   },
   "options": { "draftAndPublish": false },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": { "localized": true }
+  },
   "attributes": {
-    "companyName": { "type": "string", "default": "ASF Agro Industry" },
-    "tagline": { "type": "string" },
-    "phonePrimary": { "type": "string" },
-    "phoneSecondary": { "type": "string" },
-    "emailPrimary": { "type": "email" },
-    "emailSecondary": { "type": "email" },
-    "headOffice": { "type": "text" },
-    "factoryAddress": { "type": "text" },
-    "expansionAddress": { "type": "text" },
-    "navLinks": { "type": "json" },
-    "headerCtaLabel": { "type": "string" },
-    "headerCtaHref": { "type": "string" },
-    "footerLinks": { "type": "json" }
+    "companyName": {
+      "type": "string",
+      "default": "ASF Agro Industry",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "tagline": { "type": "string", "pluginOptions": { "i18n": { "localized": true } } },
+    "phonePrimary": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "phoneSecondary": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "emailPrimary": { "type": "email", "pluginOptions": { "i18n": { "localized": false } } },
+    "emailSecondary": { "type": "email", "pluginOptions": { "i18n": { "localized": false } } },
+    "headOffice": { "type": "text", "pluginOptions": { "i18n": { "localized": true } } },
+    "factoryAddress": { "type": "text", "pluginOptions": { "i18n": { "localized": true } } },
+    "expansionAddress": { "type": "text", "pluginOptions": { "i18n": { "localized": true } } },
+    "navLinks": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } },
+    "headerCtaLabel": { "type": "string", "pluginOptions": { "i18n": { "localized": true } } },
+    "headerCtaHref": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "footerLinks": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } }
   }
 }

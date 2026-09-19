@@ -1,33 +1,39 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { getProducts } from "@/lib/strapi";
+import type { Locale } from "@/i18n/routing";
 
-export const metadata: Metadata = {
-  title: "Products",
-  description: "ASF Agro Industry products and services: current, growth and planned.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "products" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
-const stageLabel: Record<string, string> = {
-  Current: "CURRENT",
-  Growth: "GROWTH",
-  Planned: "PLANNED",
-  Future: "FUTURE",
-};
+export default async function Products({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale as Locale);
 
-export default async function Products() {
-  const products = await getProducts();
+  const t = await getTranslations("products");
+  const products = await getProducts(locale as Locale);
 
   return (
     <main>
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <Eyebrow>Products &amp; Services</Eyebrow>
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h1 className="max-w-4xl text-5xl font-black tracking-tight sm:text-6xl">
-            Feed and agro-industry solutions.
+            {t("heading")}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-slate-600">
-            Explore ASF&apos;s current business areas and planned portfolio.
-          </p>
+          <p className="mt-6 max-w-2xl text-lg text-slate-600">{t("subtitle")}</p>
         </div>
       </section>
 
@@ -36,7 +42,7 @@ export default async function Products() {
           {products.map((product, index) => (
             <article key={product.slug} className="rounded-3xl border p-7">
               <span className="text-xs font-black tracking-widest text-green-700">
-                {String(index + 1).padStart(2, "0")} · {stageLabel[product.stage]}
+                {String(index + 1).padStart(2, "0")} · {t(`stage.${product.stage}`)}
               </span>
               <h2 className="mt-3 text-3xl font-black">{product.name}</h2>
               <p className="mt-3 text-slate-500">{product.description}</p>
