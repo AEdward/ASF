@@ -45,7 +45,6 @@ const SITE_SETTINGS_SEED = {
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
     { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
   ],
   headerCtaLabel: "Talk to us →",
   headerCtaHref: "/contact",
