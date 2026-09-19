@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Button, Eyebrow } from "@/components/ui";
 import { getSiteSettings } from "@/lib/strapi";
 
@@ -44,22 +43,7 @@ export default async function Home() {
               </Button>
             </div>
           </div>
-          <div className="rounded-[2rem] bg-[#0c2914] p-3 shadow-2xl rotate-1">
-            <div className="relative min-h-[470px] overflow-hidden rounded-[1.6rem] bg-[linear-gradient(145deg,#8cde1e,#20781d_55%,#0b3518)] p-8 text-white flex flex-col justify-end">
-              <Image
-                src="/asf-logo.png"
-                alt="ASF logo"
-                width={240}
-                height={240}
-                className="absolute right-4 top-4 h-40 w-40 object-contain opacity-20"
-              />
-              <span className="mb-4 w-fit rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold">
-                {settings.heroPanelBadge}
-              </span>
-              <h2 className="max-w-lg text-3xl font-black">{settings.heroPanelTitle}</h2>
-              <p className="mt-4 max-w-lg text-green-50/80">{settings.heroPanelText}</p>
-            </div>
-          </div>
+          <div />
         </div>
       </section>
 
