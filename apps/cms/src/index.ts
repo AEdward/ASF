@@ -4,6 +4,7 @@ const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   "site-setting": ["find"],
   product: ["find", "findOne"],
   article: ["find", "findOne"],
+  page: ["find", "findOne"],
 };
 
 async function setPublicPermissions(strapi: Core.Strapi) {
@@ -30,26 +31,6 @@ async function setPublicPermissions(strapi: Core.Strapi) {
 const SITE_SETTINGS_SEED = {
   companyName: "ASF Agro Industry",
   tagline: "Animal Feed Processing P/S",
-  heroBadge: "Ethiopia · Vision 2030",
-  heroTitleLine1: "Growing agriculture.",
-  heroTitleLine2: "Empowering farmers.",
-  heroSubtitle:
-    "ASF develops practical, scientific and reliable agro-processing solutions, with animal feed production at the heart of our work.",
-  heroPanelBadge: "Ethiopia · Vision 2030",
-  heroPanelTitle: "Reliable solutions for a stronger livestock value chain.",
-  heroPanelText:
-    "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
-  mission:
-    "Based on need assessment, we innovate, develop and implement scientific & reliable agro-processing solutions to transform the lives of farmers particularly livestock farmers & agribusiness sector in Ethiopia and beyond.",
-  vision:
-    "Our vision is to become one of the most reliable companies in agro processing, agriculture and agribusiness in the Eastern Africa Subcontinent, in the year 2030.",
-  visionLabel: "Vision 2030",
-  currentCapacityLabel: "600 quintals/day",
-  currentCapacityValue: "Stated current Tulu Bolo feed production capacity.",
-  aboutIntro:
-    "Argaw, Solomon & Friends (ASF) is focused on practical solutions for farmers, livestock production and the wider agribusiness sector.",
-  aboutStory:
-    "ASF currently operates in animal feed production, dairy and poultry farms. Its stated upcoming portfolio includes cereal processing, an export-standard livestock slaughter house, and livestock medicine and equipment supply.",
   phonePrimary: "+251 905 468 080",
   phoneSecondary: "+251 911 540 903",
   emailPrimary: "argawabili@gmail.com",
@@ -59,11 +40,132 @@ const SITE_SETTINGS_SEED = {
     "Operational Factory: Tulu Bolo Town, South West Shoa Zone, Oromia Region. Warehouse: Welete, Sheger City.",
   expansionAddress:
     "Expansion site (in progress): Bulbula Integrated Agro Industry Park, 160km south of Addis Ababa, near Zeway City on the highway to Hawassa.",
-  productionStats: [
-    { value: "600", label: "Quintals/day current capacity" },
-    { value: "410k", label: "Quintals — Year 1 plan" },
-    { value: "610k", label: "Quintals — Year 2 plan" },
-    { value: "750k", label: "Quintals — Year 3 plan" },
+  navLinks: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
+  headerCtaLabel: "Talk to us →",
+  headerCtaHref: "/contact",
+  footerLinks: [
+    { label: "About", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
+};
+
+const HOME_PAGE_SEED = {
+  title: "Home",
+  slug: "home",
+  sections: [
+    {
+      __component: "sections.hero",
+      eyebrow: "Agro processing · Agriculture · Agribusiness",
+      headingLine1: "Growing agriculture.",
+      headingLine2: "Empowering farmers.",
+      subtitle:
+        "ASF develops practical, scientific and reliable agro-processing solutions, with animal feed production at the heart of our work.",
+      primaryButtonLabel: "Explore products →",
+      primaryButtonHref: "/products",
+      secondaryButtonLabel: "Discover ASF",
+      secondaryButtonHref: "/about",
+      imageStyle: "disc-spin",
+    },
+    {
+      __component: "sections.mission-glance",
+      missionHeading: "Our mission",
+      missionBody:
+        "Based on need assessment, we innovate, develop and implement scientific & reliable agro-processing solutions to transform the lives of farmers particularly livestock farmers & agribusiness sector in Ethiopia and beyond.",
+      glanceEyebrow: "At a glance",
+      glanceHeading: "A practical agro-industry partner built for growth.",
+      glanceBody:
+        "ASF operates in animal feed production, dairy and poultry farms, with an expanding portfolio planned across cereal processing, livestock slaughter, and livestock medicine & equipment supply.",
+      cards: [
+        {
+          label: "Vision 2030",
+          text:
+            "Our vision is to become one of the most reliable companies in agro processing, agriculture and agribusiness in the Eastern Africa Subcontinent, in the year 2030.",
+        },
+        {
+          label: "600 quintals/day",
+          text: "Stated current Tulu Bolo feed production capacity.",
+        },
+      ],
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Our business",
+      heading: "Focused today. Expanding tomorrow.",
+      items: [
+        {
+          icon: "🌾",
+          title: "Animal Feed Production",
+          text: "Dairy, fattening, poultry and other livestock feed form the core of ASF's production plan.",
+        },
+        {
+          icon: "🐄",
+          title: "Dairy & Poultry Farms",
+          text: "Farming activities complement feed production and strengthen the integrated livestock approach.",
+        },
+        {
+          icon: "⚙",
+          title: "Future Portfolio",
+          text: "Cereal processing, export-standard livestock slaughter, and livestock medicine & equipment supply are planned additions.",
+        },
+      ],
+    },
+    {
+      __component: "sections.stats-band",
+      eyebrow: "Scale",
+      heading: "Production designed to grow with demand.",
+      dark: true,
+      stats: [
+        { value: "600", label: "Quintals/day current capacity" },
+        { value: "410k", label: "Quintals — Year 1 plan" },
+        { value: "610k", label: "Quintals — Year 2 plan" },
+        { value: "750k", label: "Quintals — Year 3 plan" },
+      ],
+    },
+  ],
+};
+
+const ABOUT_PAGE_SEED = {
+  title: "About",
+  slug: "about",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "About ASF",
+      heading: "Agro-processing built around real agricultural needs.",
+      body: "Argaw, Solomon & Friends (ASF) is focused on practical solutions for farmers, livestock production and the wider agribusiness sector.",
+    },
+    {
+      __component: "sections.story-panel",
+      eyebrow: "Our story",
+      heading: "From animal feed toward an integrated agro-industry platform.",
+      bodyParagraph1:
+        "ASF currently operates in animal feed production, dairy and poultry farms. Its stated upcoming portfolio includes cereal processing, an export-standard livestock slaughter house, and livestock medicine and equipment supply.",
+      bodyParagraph2:
+        "Our vision is to become one of the most reliable companies in agro processing, agriculture and agribusiness in the Eastern Africa Subcontinent, in the year 2030.",
+      panelBadge: "Ethiopia · Vision 2030",
+      panelTitle: "Reliable solutions for a stronger livestock value chain.",
+      panelText:
+        "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "What guides us",
+      heading: "Four principles behind the ASF approach.",
+      items: [
+        { title: "Farmer-centered", text: "Solutions are grounded in assessed agricultural needs." },
+        { title: "Scientific", text: "Nutrition and production expertise support the operating model." },
+        { title: "Reliable", text: "The company aims to deliver dependable agro-processing solutions." },
+        { title: "Growth-minded", text: "Capacity and business portfolio are planned to expand over time." },
+      ],
+    },
   ],
 };
 
@@ -187,11 +289,20 @@ async function seedArticles(strapi: Core.Strapi) {
   }
 }
 
+async function seedPages(strapi: Core.Strapi) {
+  const existing = await strapi.documents("api::page.page").findFirst();
+  if (existing) return;
+  for (const page of [HOME_PAGE_SEED, ABOUT_PAGE_SEED]) {
+    await strapi.documents("api::page.page").create({ data: page as any, status: "published" });
+  }
+}
+
 export default {
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await setPublicPermissions(strapi);
     await seedSiteSettings(strapi);
     await seedProducts(strapi);
     await seedArticles(strapi);
+    await seedPages(strapi);
   },
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { getSiteSettings } from "@/lib/strapi";
 
 const SITE_URL = process.env.SITE_URL || "https://asf-agro.example.com";
 const DESCRIPTION =
@@ -21,15 +22,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="en">
       <body>
-        <Header />
+        <Header
+          companyName={settings.companyName}
+          tagline={settings.tagline}
+          navLinks={settings.navLinks}
+          ctaLabel={settings.headerCtaLabel}
+          ctaHref={settings.headerCtaHref}
+        />
         {children}
-        <Footer />
+        <Footer
+          companyName={settings.companyName}
+          tagline={settings.tagline}
+          footerLinks={settings.footerLinks}
+        />
       </body>
     </html>
   );

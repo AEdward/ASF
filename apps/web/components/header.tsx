@@ -4,15 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const links: [string, string][] = [
-  ["Home", "/"],
-  ["About", "/about"],
-  ["Products", "/products"],
-  ["Blog", "/blog"],
-  ["Contact", "/contact"],
-];
-
-export function Header() {
+export function Header({
+  companyName,
+  tagline,
+  navLinks,
+  ctaLabel,
+  ctaHref,
+}: {
+  companyName: string;
+  tagline: string;
+  navLinks: { label: string; href: string }[];
+  ctaLabel: string;
+  ctaHref: string;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,15 +25,15 @@ export function Header() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/asf-logo.png"
-            alt="ASF Agro Industry"
+            alt={companyName}
             width={58}
             height={58}
             className="h-14 w-14 object-contain"
           />
           <span className="font-bold tracking-tight">
-            ASF Agro Industry
+            {companyName}
             <span className="mt-0.5 block text-[10px] uppercase tracking-[.16em] text-green-700">
-              Animal Feed Processing P/S
+              {tagline}
             </span>
           </span>
         </Link>
@@ -38,7 +42,7 @@ export function Header() {
             open ? "absolute left-4 right-4 top-[76px] flex" : "hidden"
           } flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl md:static md:flex md:flex-row md:items-center md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
         >
-          {links.map(([label, href]) => (
+          {navLinks.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
@@ -49,10 +53,10 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={ctaHref}
             className="rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713]"
           >
-            Talk to us →
+            {ctaLabel}
           </Link>
         </nav>
         <button

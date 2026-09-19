@@ -12,20 +12,6 @@
   "attributes": {
     "companyName": { "type": "string", "default": "ASF Agro Industry" },
     "tagline": { "type": "string" },
-    "heroBadge": { "type": "string" },
-    "heroTitleLine1": { "type": "string" },
-    "heroTitleLine2": { "type": "string" },
-    "heroSubtitle": { "type": "text" },
-    "heroPanelBadge": { "type": "string" },
-    "heroPanelTitle": { "type": "string" },
-    "heroPanelText": { "type": "text" },
-    "mission": { "type": "text" },
-    "vision": { "type": "text" },
-    "visionLabel": { "type": "string" },
-    "currentCapacityLabel": { "type": "string" },
-    "currentCapacityValue": { "type": "text" },
-    "aboutIntro": { "type": "text" },
-    "aboutStory": { "type": "text" },
     "phonePrimary": { "type": "string" },
     "phoneSecondary": { "type": "string" },
     "emailPrimary": { "type": "email" },
@@ -33,6 +19,9 @@
     "headOffice": { "type": "text" },
     "factoryAddress": { "type": "text" },
     "expansionAddress": { "type": "text" },
-    "productionStats": { "type": "json" }
+    "navLinks": { "type": "json" },
+    "headerCtaLabel": { "type": "string" },
+    "headerCtaHref": { "type": "string" },
+    "footerLinks": { "type": "json" }
   }
 }

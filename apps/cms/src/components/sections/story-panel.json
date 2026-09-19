@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_story_panels",
+  "info": {
+    "displayName": "Story + Panel",
+    "icon": "picture"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "bodyParagraph1": { "type": "text" },
+    "bodyParagraph2": { "type": "text" },
+    "panelBadge": { "type": "string" },
+    "panelTitle": { "type": "string" },
+    "panelText": { "type": "text" }
+  }
+}

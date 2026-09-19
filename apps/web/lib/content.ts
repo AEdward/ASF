@@ -1,20 +1,6 @@
 export interface SiteSettings {
   companyName: string;
   tagline: string;
-  heroBadge: string;
-  heroTitleLine1: string;
-  heroTitleLine2: string;
-  heroSubtitle: string;
-  heroPanelBadge: string;
-  heroPanelTitle: string;
-  heroPanelText: string;
-  mission: string;
-  vision: string;
-  visionLabel: string;
-  currentCapacityLabel: string;
-  currentCapacityValue: string;
-  aboutIntro: string;
-  aboutStory: string;
   phonePrimary: string;
   phoneSecondary: string;
   emailPrimary: string;
@@ -22,7 +8,10 @@ export interface SiteSettings {
   headOffice: string;
   factoryAddress: string;
   expansionAddress: string;
-  productionStats: { value: string; label: string }[];
+  navLinks: { label: string; href: string }[];
+  headerCtaLabel: string;
+  headerCtaHref: string;
+  footerLinks: { label: string; href: string }[];
 }
 
 export interface Product {
@@ -50,26 +39,6 @@ export interface Article {
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   companyName: "ASF Agro Industry",
   tagline: "Animal Feed Processing P/S",
-  heroBadge: "Ethiopia · Vision 2030",
-  heroTitleLine1: "Growing agriculture.",
-  heroTitleLine2: "Empowering farmers.",
-  heroSubtitle:
-    "ASF develops practical, scientific and reliable agro-processing solutions, with animal feed production at the heart of our work.",
-  heroPanelBadge: "Ethiopia · Vision 2030",
-  heroPanelTitle: "Reliable solutions for a stronger livestock value chain.",
-  heroPanelText:
-    "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
-  mission:
-    "Based on need assessment, we innovate, develop and implement scientific & reliable agro-processing solutions to transform the lives of farmers particularly livestock farmers & agribusiness sector in Ethiopia and beyond.",
-  vision:
-    "Our vision is to become one of the most reliable companies in agro processing, agriculture and agribusiness in the Eastern Africa Subcontinent, in the year 2030.",
-  visionLabel: "Vision 2030",
-  currentCapacityLabel: "600 quintals/day",
-  currentCapacityValue: "Stated current Tulu Bolo feed production capacity.",
-  aboutIntro:
-    "Argaw, Solomon & Friends (ASF) is focused on practical solutions for farmers, livestock production and the wider agribusiness sector.",
-  aboutStory:
-    "ASF currently operates in animal feed production, dairy and poultry farms. Its stated upcoming portfolio includes cereal processing, an export-standard livestock slaughter house, and livestock medicine and equipment supply.",
   phonePrimary: "+251 905 468 080",
   phoneSecondary: "+251 911 540 903",
   emailPrimary: "argawabili@gmail.com",
@@ -79,11 +48,20 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     "Operational Factory: Tulu Bolo Town, South West Shoa Zone, Oromia Region. Warehouse: Welete, Sheger City.",
   expansionAddress:
     "Expansion site (in progress): Bulbula Integrated Agro Industry Park, 160km south of Addis Ababa, near Zeway City on the highway to Hawassa.",
-  productionStats: [
-    { value: "600", label: "Quintals/day current capacity" },
-    { value: "410k", label: "Quintals — Year 1 plan" },
-    { value: "610k", label: "Quintals — Year 2 plan" },
-    { value: "750k", label: "Quintals — Year 3 plan" },
+  navLinks: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
+  headerCtaLabel: "Talk to us →",
+  headerCtaHref: "/contact",
+  footerLinks: [
+    { label: "About", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
   ],
 };
 

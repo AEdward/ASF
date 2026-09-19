@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_feature_items",
+  "info": {
+    "displayName": "Feature Item",
+    "icon": "grid"
+  },
+  "attributes": {
+    "icon": { "type": "string" },
+    "title": { "type": "string", "required": true },
+    "text": { "type": "text" }
+  }
+}

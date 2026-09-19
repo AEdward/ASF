@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_info_cards",
+  "info": {
+    "displayName": "Info Card",
+    "icon": "layer"
+  },
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "text": { "type": "text" }
+  }
+}

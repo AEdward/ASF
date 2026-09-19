@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_mission_glances",
+  "info": {
+    "displayName": "Mission + At a Glance",
+    "icon": "quote"
+  },
+  "attributes": {
+    "missionHeading": { "type": "string" },
+    "missionBody": { "type": "text" },
+    "glanceEyebrow": { "type": "string" },
+    "glanceHeading": { "type": "string" },
+    "glanceBody": { "type": "text" },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.info-card"
+    }
+  }
+}

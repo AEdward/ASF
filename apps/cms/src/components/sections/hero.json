@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "star"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "headingLine1": { "type": "string", "required": true },
+    "headingLine2": { "type": "string" },
+    "subtitle": { "type": "text" },
+    "primaryButtonLabel": { "type": "string" },
+    "primaryButtonHref": { "type": "string" },
+    "secondaryButtonLabel": { "type": "string" },
+    "secondaryButtonHref": { "type": "string" },
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
+    "imageStyle": {
+      "type": "enumeration",
+      "enum": ["disc-spin", "plain", "none"],
+      "default": "disc-spin"
+    }
+  }
+}

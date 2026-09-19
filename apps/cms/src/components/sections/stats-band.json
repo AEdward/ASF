@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_stats_bands",
+  "info": {
+    "displayName": "Stats Band",
+    "icon": "chart-pie"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "dark": { "type": "boolean", "default": true },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.stat-item"
+    }
+  }
+}

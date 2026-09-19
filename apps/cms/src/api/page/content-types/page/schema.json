@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": "Page-builder pages made of orderable sections"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.hero",
+        "sections.mission-glance",
+        "sections.feature-grid",
+        "sections.stats-band",
+        "sections.intro",
+        "sections.story-panel"
+      ]
+    }
+  }
+}

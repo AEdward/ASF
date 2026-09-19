@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_feature_grids",
+  "info": {
+    "displayName": "Feature Grid",
+    "icon": "apps"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.feature-item"
+    }
+  }
+}
