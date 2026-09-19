@@ -55,13 +55,23 @@ export interface StoryPanelSection {
   panelText?: string;
 }
 
+export interface VideoSection {
+  __component: "sections.video";
+  eyebrow?: string;
+  heading?: string;
+  caption?: string;
+  videoUrl?: string;
+  posterUrl?: string;
+}
+
 export type PageSection =
   | HeroSection
   | MissionGlanceSection
   | FeatureGridSection
   | StatsBandSection
   | IntroSection
-  | StoryPanelSection;
+  | StoryPanelSection
+  | VideoSection;
 
 export const DEFAULT_HOME_SECTIONS: PageSection[] = [
   {
@@ -153,6 +163,12 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
     panelTitle: "Reliable solutions for a stronger livestock value chain.",
     panelText:
       "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
+  },
+  {
+    __component: "sections.video",
+    eyebrow: "See it in action",
+    heading: "Inside the Tulu Bolo factory.",
+    caption: "A short tour of our production line, from intake to finished feed.",
   },
   {
     __component: "sections.feature-grid",

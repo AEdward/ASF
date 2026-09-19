@@ -83,6 +83,8 @@ interface StrapiRawSection {
   cards?: { label: string; text?: string }[];
   items?: { icon?: string; title: string; text?: string }[];
   stats?: { value: string; label: string }[];
+  video?: { url?: string } | null;
+  poster?: { url?: string } | null;
   [key: string]: unknown;
 }
 
@@ -99,7 +101,8 @@ const PAGE_POPULATE =
   "&populate[sections][on][sections.feature-grid][populate]=items" +
   "&populate[sections][on][sections.stats-band][populate]=stats" +
   "&populate[sections][on][sections.intro][populate]=*" +
-  "&populate[sections][on][sections.story-panel][populate]=*";
+  "&populate[sections][on][sections.story-panel][populate]=*" +
+  "&populate[sections][on][sections.video][populate]=*";
 
 function mapSection(raw: StrapiRawSection): PageSection | null {
   switch (raw.__component) {
@@ -159,6 +162,15 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
         panelBadge: raw.panelBadge as string | undefined,
         panelTitle: raw.panelTitle as string | undefined,
         panelText: raw.panelText as string | undefined,
+      };
+    case "sections.video":
+      return {
+        __component: "sections.video",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        caption: raw.caption as string | undefined,
+        videoUrl: mediaUrl(raw.video),
+        posterUrl: mediaUrl(raw.poster),
       };
     default:
       return null;

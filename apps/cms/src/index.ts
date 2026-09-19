@@ -156,6 +156,12 @@ const ABOUT_PAGE_SEED = {
         "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
     },
     {
+      __component: "sections.video",
+      eyebrow: "See it in action",
+      heading: "Inside the Tulu Bolo factory.",
+      caption: "A short tour of our production line, from intake to finished feed.",
+    },
+    {
       __component: "sections.feature-grid",
       eyebrow: "What guides us",
       heading: "Four principles behind the ASF approach.",

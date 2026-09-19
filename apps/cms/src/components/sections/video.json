@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_videos",
+  "info": {
+    "displayName": "Video",
+    "icon": "play"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "caption": { "type": "text" },
+    "video": { "type": "media", "multiple": false, "allowedTypes": ["videos"] },
+    "poster": { "type": "media", "multiple": false, "allowedTypes": ["images"] }
+  }
+}
