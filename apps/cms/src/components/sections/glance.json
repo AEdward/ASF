@@ -1,12 +1,10 @@
 {
-  "collectionName": "components_sections_mission_glances",
+  "collectionName": "components_sections_glances",
   "info": {
-    "displayName": "Mission + At a Glance",
-    "icon": "quote"
+    "displayName": "At a Glance",
+    "icon": "grid"
   },
   "attributes": {
-    "missionHeading": { "type": "string" },
-    "missionBody": { "type": "text" },
     "glanceEyebrow": { "type": "string" },
     "glanceHeading": { "type": "string" },
     "glanceBody": { "type": "text" },

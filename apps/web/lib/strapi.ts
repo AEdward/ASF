@@ -97,7 +97,8 @@ interface StrapiPageEntry {
 
 const PAGE_POPULATE =
   "populate[sections][on][sections.hero][populate]=image" +
-  "&populate[sections][on][sections.mission-glance][populate]=cards" +
+  "&populate[sections][on][sections.glance][populate]=cards" +
+  "&populate[sections][on][sections.mission][populate]=*" +
   "&populate[sections][on][sections.feature-grid][populate]=items" +
   "&populate[sections][on][sections.stats-band][populate]=stats" +
   "&populate[sections][on][sections.intro][populate]=*" +
@@ -120,15 +121,20 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
         imageUrl: mediaUrl(raw.image),
         imageStyle: (raw.imageStyle as "disc-spin" | "plain" | "none") ?? "disc-spin",
       };
-    case "sections.mission-glance":
+    case "sections.glance":
       return {
-        __component: "sections.mission-glance",
-        missionHeading: raw.missionHeading as string | undefined,
-        missionBody: raw.missionBody as string | undefined,
+        __component: "sections.glance",
         glanceEyebrow: raw.glanceEyebrow as string | undefined,
         glanceHeading: raw.glanceHeading as string | undefined,
         glanceBody: raw.glanceBody as string | undefined,
         cards: (raw.cards ?? []).map((c) => ({ label: c.label, text: c.text })),
+      };
+    case "sections.mission":
+      return {
+        __component: "sections.mission",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        body: raw.body as string | undefined,
       };
     case "sections.feature-grid":
       return {

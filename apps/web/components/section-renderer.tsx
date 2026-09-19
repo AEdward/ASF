@@ -1,6 +1,7 @@
 import { PageSection } from "@/lib/sections";
 import Hero from "@/components/sections/hero";
-import MissionGlance from "@/components/sections/mission-glance";
+import Glance from "@/components/sections/glance";
+import Mission from "@/components/sections/mission";
 import FeatureGrid from "@/components/sections/feature-grid";
 import StatsBand from "@/components/sections/stats-band";
 import Intro from "@/components/sections/intro";
@@ -14,8 +15,10 @@ export function SectionRenderer({ sections }: { sections: PageSection[] }) {
         switch (section.__component) {
           case "sections.hero":
             return <Hero key={index} section={section} />;
-          case "sections.mission-glance":
-            return <MissionGlance key={index} section={section} />;
+          case "sections.glance":
+            return <Glance key={index} section={section} />;
+          case "sections.mission":
+            return <Mission key={index} section={section} />;
           case "sections.feature-grid":
             return <FeatureGrid key={index} section={section} />;
           case "sections.stats-band":

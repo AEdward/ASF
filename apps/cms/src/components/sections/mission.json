@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_missions",
+  "info": {
+    "displayName": "Mission",
+    "icon": "quote"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "body": { "type": "text" }
+  }
+}

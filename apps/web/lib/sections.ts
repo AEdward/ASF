@@ -12,14 +12,19 @@ export interface HeroSection {
   imageStyle: "disc-spin" | "plain" | "none";
 }
 
-export interface MissionGlanceSection {
-  __component: "sections.mission-glance";
-  missionHeading?: string;
-  missionBody?: string;
+export interface GlanceSection {
+  __component: "sections.glance";
   glanceEyebrow?: string;
   glanceHeading?: string;
   glanceBody?: string;
   cards: { label: string; text?: string }[];
+}
+
+export interface MissionSection {
+  __component: "sections.mission";
+  eyebrow?: string;
+  heading?: string;
+  body?: string;
 }
 
 export interface FeatureGridSection {
@@ -66,7 +71,8 @@ export interface VideoSection {
 
 export type PageSection =
   | HeroSection
-  | MissionGlanceSection
+  | GlanceSection
+  | MissionSection
   | FeatureGridSection
   | StatsBandSection
   | IntroSection
@@ -88,10 +94,13 @@ export const DEFAULT_HOME_SECTIONS: PageSection[] = [
     imageStyle: "disc-spin",
   },
   {
-    __component: "sections.mission-glance",
-    missionHeading: "Our mission",
-    missionBody:
-      "Based on need assessment, we innovate, develop and implement scientific & reliable agro-processing solutions to transform the lives of farmers particularly livestock farmers & agribusiness sector in Ethiopia and beyond.",
+    __component: "sections.video",
+    eyebrow: "See it in action",
+    heading: "Inside the Tulu Bolo factory.",
+    caption: "A short tour of our production line, from intake to finished feed.",
+  },
+  {
+    __component: "sections.glance",
     glanceEyebrow: "At a glance",
     glanceHeading: "A practical agro-industry partner built for growth.",
     glanceBody:
@@ -152,6 +161,12 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
     body: "Argaw, Solomon & Friends (ASF) is focused on practical solutions for farmers, livestock production and the wider agribusiness sector.",
   },
   {
+    __component: "sections.mission",
+    heading: "Our mission",
+    body:
+      "Based on need assessment, we innovate, develop and implement scientific & reliable agro-processing solutions to transform the lives of farmers particularly livestock farmers & agribusiness sector in Ethiopia and beyond.",
+  },
+  {
     __component: "sections.story-panel",
     eyebrow: "Our story",
     heading: "From animal feed toward an integrated agro-industry platform.",
@@ -163,12 +178,6 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
     panelTitle: "Reliable solutions for a stronger livestock value chain.",
     panelText:
       "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
-  },
-  {
-    __component: "sections.video",
-    eyebrow: "See it in action",
-    heading: "Inside the Tulu Bolo factory.",
-    caption: "A short tour of our production line, from intake to finished feed.",
   },
   {
     __component: "sections.feature-grid",

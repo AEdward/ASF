@@ -16,12 +16,13 @@
       "type": "dynamiczone",
       "components": [
         "sections.hero",
-        "sections.mission-glance",
+        "sections.video",
+        "sections.glance",
+        "sections.mission",
         "sections.feature-grid",
         "sections.stats-band",
         "sections.intro",
-        "sections.story-panel",
-        "sections.video"
+        "sections.story-panel"
       ]
     }
   }
