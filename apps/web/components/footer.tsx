@@ -23,8 +23,21 @@ export function Footer({
             </Link>
           ))}
         </div>
-        <div>
-          © {new Date().getFullYear()} {companyName}
+        <div className="flex flex-col items-start gap-1 lg:items-end">
+          <span>
+            © {new Date().getFullYear()} {companyName}
+          </span>
+          <span>
+            Developed by{" "}
+            <a
+              href="https://paraibatech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-100/90 underline hover:text-white"
+            >
+              Paraiba Technology PLC
+            </a>
+          </span>
         </div>
       </div>
     </footer>
