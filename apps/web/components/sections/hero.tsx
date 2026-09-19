@@ -4,7 +4,7 @@ import { HeroSection } from "@/lib/sections";
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
-    <section className="bg-[radial-gradient(circle_at_78%_20%,#e5f8d3,transparent_28%),linear-gradient(135deg,#f7fff3,#fff_58%,#fff9ed)] py-24">
+    <section className="bg-[radial-gradient(circle_at_78%_20%,#e5f8d3,transparent_28%),linear-gradient(135deg,#f7fff3,#fff_58%,#fff9ed)] py-10 sm:py-14">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-[1.08fr_.92fr] lg:px-8">
         <div>
           {section.eyebrow && <Eyebrow>{section.eyebrow}</Eyebrow>}
