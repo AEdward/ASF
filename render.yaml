@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: asf-agro-web
+    runtime: node
+    rootDir: apps/web
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    plan: starter
+    envVars:
+      - key: STRAPI_URL
+        sync: false
+      - key: SITE_URL
+        sync: false
