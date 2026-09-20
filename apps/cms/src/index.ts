@@ -1064,6 +1064,11 @@ async function seedPages(strapi: Core.Strapi) {
   }
 }
 
+// Exported for the one-off content-update script (scripts/apply-content-updates.js):
+// the bootstrap seed functions below only create content on first run, so updating
+// already-seeded environments needs direct access to this data.
+export { SITE_SETTINGS_SEED, SITE_SETTINGS_LOCALIZED, ABOUT_PAGE_SEED, ABOUT_PAGE_LOCALIZED, LOCALES };
+
 export default {
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await seedLocales(strapi);
