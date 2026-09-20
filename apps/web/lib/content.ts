@@ -39,10 +39,10 @@ export interface Article {
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   companyName: "ASF Agro Industry",
   tagline: "Animal Feed Processing P/S",
-  phonePrimary: "+251 905 468 080",
-  phoneSecondary: "+251 911 540 903",
-  emailPrimary: "argawabili@gmail.com",
-  emailSecondary: "merihunb@gmail.com",
+  phonePrimary: "0976177236",
+  phoneSecondary: "0911540903 / 0911200732",
+  emailPrimary: "merihun@asfagro.com",
+  emailSecondary: "argaw@asfagro.com",
   headOffice: "Akaki Kality Woreda 05, near Kality Maseltegna, Addis Ababa, Ethiopia",
   factoryAddress:
     "Operational Factory: Tulu Bolo Town, South West Shoa Zone, Oromia Region. Warehouse: Welete, Sheger City.",

@@ -6,6 +6,8 @@
     "toggleMenu": "Toggle menu"
   },
   "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
     "developedBy": "Developed by"
   },
   "products": {

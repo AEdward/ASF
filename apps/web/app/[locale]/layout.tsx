@@ -75,6 +75,11 @@ export default async function RootLayout({
             companyName={settings.companyName}
             tagline={settings.tagline}
             footerLinks={settings.footerLinks}
+            headOffice={settings.headOffice}
+            phonePrimary={settings.phonePrimary}
+            phoneSecondary={settings.phoneSecondary}
+            emailPrimary={settings.emailPrimary}
+            emailSecondary={settings.emailSecondary}
           />
         </NextIntlClientProvider>
       </body>
