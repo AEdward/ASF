@@ -13,8 +13,8 @@ export function Footer({
   const t = useTranslations("footer");
 
   return (
-    <footer className="bg-[#081c0d] py-10 text-sm text-green-100/70">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+    <footer className="bg-[#081c0d] text-sm text-green-100/70">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
           <strong className="text-white">{companyName}</strong>
           <span className="ml-2">· {tagline}</span>
@@ -26,7 +26,9 @@ export function Footer({
             </Link>
           ))}
         </div>
-        <div className="flex flex-col items-start gap-1 lg:items-end">
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-1 px-5 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <span>
             © {new Date().getFullYear()} {companyName}
           </span>
