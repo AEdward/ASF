@@ -33,6 +33,18 @@ export interface Article {
   coverImageUrl?: string;
 }
 
+export interface JobVacancy {
+  id: number;
+  title: string;
+  slug: string;
+  location?: string;
+  employmentType?: string;
+  summary?: string;
+  description?: string;
+  requirements: string[];
+  postedAt?: string;
+}
+
 // Fallback content mirrors the real ASF Agro Industry company profile, so the
 // site reads correctly even before Strapi has been seeded or if it is
 // temporarily unreachable.
@@ -61,6 +73,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     { label: "Products", href: "/products" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
+    { label: "Careers", href: "/careers" },
   ],
 };
 
@@ -155,3 +168,6 @@ export const DEFAULT_ARTICLES: Article[] = [
     category: "Agriculture",
   },
 ];
+
+// No open positions are seeded — real vacancies are added by ASF staff through the CMS.
+export const DEFAULT_JOB_VACANCIES: JobVacancy[] = [];

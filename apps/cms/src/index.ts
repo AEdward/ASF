@@ -5,6 +5,7 @@ const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   product: ["find", "findOne"],
   article: ["find", "findOne"],
   page: ["find", "findOne"],
+  "job-vacancy": ["find", "findOne"],
 };
 
 const LOCALES = [
@@ -70,6 +71,7 @@ const SITE_SETTINGS_SEED = {
     { label: "Products", href: "/products" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
+    { label: "Careers", href: "/careers" },
   ],
 };
 
@@ -96,6 +98,7 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
       { label: "ምርቶች", href: "/products" },
       { label: "ብሎግ", href: "/blog" },
       { label: "አግኙን", href: "/contact" },
+      { label: "የስራ ቅጥር", href: "/careers" },
     ],
   },
   om: {
@@ -118,6 +121,7 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
       { label: "Oomishaalee", href: "/products" },
       { label: "Barreeffama", href: "/blog" },
       { label: "Nu Qunnami", href: "/contact" },
+      { label: "Carraa Hojii", href: "/careers" },
     ],
   },
 };
@@ -368,6 +372,18 @@ const ABOUT_PAGE_SEED = {
       body: "Argaw, Solomon & Friends (ASF) is focused on practical solutions for farmers, livestock production and the wider agribusiness sector.",
     },
     {
+      __component: "sections.stats-band",
+      eyebrow: "Our impact",
+      heading: "Jobs and partnerships created around Tulu Bolo.",
+      dark: false,
+      stats: [
+        { value: "51", label: "Direct jobs created at the Tulu Bolo factory" },
+        { value: "465", label: "People engaged across the value chain" },
+        { value: "300", label: "Livestock farmers & businesses in our distribution network" },
+        { value: "271", label: "Hectares at the Bulbula expansion site" },
+      ],
+    },
+    {
       __component: "sections.mission",
       heading: "Our mission",
       body:
@@ -378,13 +394,76 @@ const ABOUT_PAGE_SEED = {
       eyebrow: "Our story",
       heading: "From animal feed toward an integrated agro-industry platform.",
       bodyParagraph1:
-        "ASF currently operates in animal feed production, dairy and poultry farms. Its stated upcoming portfolio includes cereal processing, an export-standard livestock slaughter house, and livestock medicine and equipment supply.",
+        "ASF currently operates in animal feed production, dairy and poultry farms. Its stated upcoming portfolio includes cereal processing, an export-standard livestock slaughter house, and livestock medicine and equipment supply. In February 2023, ASF signed an investment agreement with the Bulbula Integrated Agro Industry Park (Oromia Industry Parks Development Corporation) for a 271-hectare expansion site 160km south of Addis Ababa, alongside food oil, coffee & spices, meat, cereal and vegetable processing industries.",
       bodyParagraph2:
         "Our vision is to become one of the most reliable companies in agro processing, agriculture and agribusiness in the Eastern Africa Subcontinent, in the year 2030.",
       panelBadge: "Ethiopia · Vision 2030",
       panelTitle: "Reliable solutions for a stronger livestock value chain.",
       panelText:
         "From feed production to future integrated agro-processing, ASF is building for farmers, production and sustainable growth.",
+    },
+    {
+      __component: "sections.team-grid",
+      eyebrow: "Leadership",
+      heading: "The team running ASF's operations.",
+      members: [
+        {
+          name: "Argaw Alaro",
+          role: "General Manager",
+          qualification: "MA in Economics, BSc in Mathematics",
+          experience:
+            "More than 15 years in Ethiopian Shipping Lines as a navigator, as a business owner and in project management.",
+        },
+        {
+          name: "Merihun Belayneh",
+          role: "Management Team",
+          qualification: "MA in Psychology, BA in Marketing",
+          experience:
+            "More than 15 years as a senior customer officer at Ethiopian Airlines, travel expert at the UN, and as a counselor and business consultant.",
+        },
+        {
+          name: "Suraphel Mekonnen",
+          role: "Management Team",
+          qualification: "BA in Business, BSc in Architecture",
+          experience: "More than 20 years as an international business owner.",
+        },
+        {
+          name: "Meron Mekonnen",
+          role: "Management Team",
+          qualification: "BA in Business Administration, BA in Computer Information Systems",
+          experience: "More than 17 years managing businesses and as an international business owner.",
+        },
+        {
+          name: "Amanuel Baze",
+          role: "Management Team",
+          qualification: "BA in Management, BA in Theology",
+          experience: "More than 10 years in business and leadership, running businesses.",
+        },
+        {
+          name: "Dr. Tesfu Tadesse",
+          role: "Chief Nutritionist",
+          qualification: "PhD in Animal Nutrition",
+          experience: "More than 25 years in livestock farming, nutrition and consultancy.",
+        },
+        {
+          name: "Baidemariam Daniel",
+          role: "Production Head",
+          qualification: "BSc in Animal Science",
+          experience: "2 years in livestock production.",
+        },
+        {
+          name: "Dejene Dessie",
+          role: "Finance Head",
+          qualification: "MA in Finance and Accounting",
+          experience: "More than 10 years in finance and tax.",
+        },
+        {
+          name: "Tinsae Demssie",
+          role: "Technical Manager",
+          qualification: "BSc in Industrial Engineering",
+          experience: "More than 6 years in electromechanical works.",
+        },
+      ],
     },
     {
       __component: "sections.feature-grid",
@@ -395,6 +474,24 @@ const ABOUT_PAGE_SEED = {
         { title: "Scientific", text: "Nutrition and production expertise support the operating model." },
         { title: "Reliable", text: "The company aims to deliver dependable agro-processing solutions." },
         { title: "Growth-minded", text: "Capacity and business portfolio are planned to expand over time." },
+      ],
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "How we're organized",
+      heading: "Departments behind production and distribution.",
+      items: [
+        { title: "Finance & Administration", text: "Supports company operations, accounts and tax." },
+        {
+          title: "Marketing, Sales & Business Development",
+          text: "Drives distribution to unions, cooperatives, wholesalers and retailers.",
+        },
+        { title: "Production", text: "Runs day-to-day feed production at Tulu Bolo." },
+        {
+          title: "Technical & General Services",
+          text: "Maintains equipment and electromechanical operations.",
+        },
+        { title: "Procurement", text: "Sources raw materials and supplies for production." },
       ],
     },
   ],
@@ -412,6 +509,18 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
           "አርጋው፣ ሰለሞን እና ጓደኞቻቸው (ASF) ለአርሶ አደሮች፣ ለእንስሳት ምርት እና ለሰፊው አግሪቢዝነስ ዘርፍ ተግባራዊ መፍትሄዎች ላይ ያተኩራል።",
       },
       {
+        __component: "sections.stats-band",
+        eyebrow: "የኛ ተፅእኖ",
+        heading: "በቱሉ ቦሎ አካባቢ የተፈጠሩ የስራ እድሎችና ሽርክናዎች።",
+        dark: false,
+        stats: [
+          { value: "51", label: "በቱሉ ቦሎ ፋብሪካ የተፈጠሩ ቀጥተኛ የስራ እድሎች" },
+          { value: "465", label: "በእሴት ሰንሰለቱ ውስጥ የተሳተፉ ሰዎች" },
+          { value: "300", label: "በስርጭት መረባችን ውስጥ ያሉ የእንስሳት አርሶ አደሮች እና ንግዶች" },
+          { value: "271", label: "በቡልቡላ ማስፋፊያ ቦታ ላይ ያሉ ሄክታሮች" },
+        ],
+      },
+      {
         __component: "sections.mission",
         heading: "ተልእኳችን",
         body:
@@ -422,13 +531,75 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         eyebrow: "ታሪካችን",
         heading: "ከእንስሳት መኖ ወደ የተቀናጀ የአግሮ ኢንዱስትሪ መደብር።",
         bodyParagraph1:
-          "ASF በአሁኑ ጊዜ በእንስሳት መኖ ምርት፣ በወተትና በዶሮ እርባታ ቦታዎች ይሰራል። የተገለጸው መጪ የስራ ዘርፍ የእህል ማቀነባበር፣ ለውጭ ገበያ ደረጃ የእንስሳት እርድ ቤት እና የእንስሳት መድሃኒት እና መገልገያ አቅርቦትን ያካትታል።",
+          "ASF በአሁኑ ጊዜ በእንስሳት መኖ ምርት፣ በወተትና በዶሮ እርባታ ቦታዎች ይሰራል። የተገለጸው መጪ የስራ ዘርፍ የእህል ማቀነባበር፣ ለውጭ ገበያ ደረጃ የእንስሳት እርድ ቤት እና የእንስሳት መድሃኒት እና መገልገያ አቅርቦትን ያካትታል። በየካቲት 2023፣ ASF ከቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ (የኦሮሚያ ኢንዱስትሪ ፓርኮች ልማት ኮርፖሬሽን) ጋር ከአዲስ አበባ በስተደቡብ 160 ኪ.ሜ የሚገኝ በ271 ሄክታር ላይ ያለ የማስፋፊያ ቦታ ስምምነት ተፈራርሟል፣ ከዘይት ማቀነባበሪያ፣ ቡናና ቅመማ ቅመም፣ ስጋ፣ እህል እና አትክልት ማቀነባበሪያ ኢንዱስትሪዎች ጎን ለጎን።",
         bodyParagraph2:
           "ራዕያችን በምስራቅ አፍሪካ ክፍለ አህጉር በአግሮ ማቀነባበር፣ በግብርና እና በአግሪቢዝነስ ውስጥ ከሚታመኑ ኩባንያዎች አንዱ በ2030 መሆን ነው።",
         panelBadge: "ኢትዮጵያ · ራዕይ 2030",
         panelTitle: "ለጠንካራ የእንስሳት እሴት ሰንሰለት አስተማማኝ መፍትሄዎች።",
         panelText:
           "ከመኖ ምርት ወደ የወደፊት የተቀናጀ አግሮ ማቀነባበር፣ ASF ለአርሶ አደሮች፣ ለምርት እና ለዘላቂ እድገት ይገነባል።",
+      },
+      {
+        __component: "sections.team-grid",
+        eyebrow: "አመራር",
+        heading: "የASF ስራዎችን የሚመራው ቡድን።",
+        members: [
+          {
+            name: "Argaw Alaro",
+            role: "ስራ አስኪያጅ",
+            qualification: "በኢኮኖሚክስ ማስተርስ፣ በሂሳብ ትምህርት BSc",
+            experience: "በኢትዮጵያ የመርከብ መስመሮች ውስጥ እንደ መርከብ መርከበኛ፣ የንግድ ባለቤት እና በፕሮጀክት አስተዳደር ውስጥ ከ15 ዓመታት በላይ ልምድ።",
+          },
+          {
+            name: "Merihun Belayneh",
+            role: "የስራ አመራር ቡድን",
+            qualification: "በሳይኮሎጂ ማስተርስ፣ በማርኬቲንግ BA",
+            experience:
+              "በኢትዮጵያ አየር መንገድ ከፍተኛ የደንበኞች አገልግሎት ባለሙያ፣ በተመድ የጉዞ ኤክስፐርት፣ እና እንደ አማካሪ እና የንግድ አማካሪ ከ15 ዓመታት በላይ ልምድ።",
+          },
+          {
+            name: "Suraphel Mekonnen",
+            role: "የስራ አመራር ቡድን",
+            qualification: "በንግድ BA፣ በአርክቴክቸር BSc",
+            experience: "ከ20 ዓመታት በላይ በአለም አቀፍ የንግድ ባለቤትነት ልምድ።",
+          },
+          {
+            name: "Meron Mekonnen",
+            role: "የስራ አመራር ቡድን",
+            qualification: "በንግድ አስተዳደር BA፣ በኮምፒውተር ኢንፎርሜሽን ሲስተምስ BA",
+            experience: "ከ17 ዓመታት በላይ ንግዶችን በማስተዳደር እና እንደ አለም አቀፍ የንግድ ባለቤት ልምድ።",
+          },
+          {
+            name: "Amanuel Baze",
+            role: "የስራ አመራር ቡድን",
+            qualification: "በማኔጅመንት BA፣ በቲዎሎጂ BA",
+            experience: "ከ10 ዓመታት በላይ በንግድና በአመራር፣ ንግዶችን በማስኪያድ ልምድ።",
+          },
+          {
+            name: "Dr. Tesfu Tadesse",
+            role: "ዋና የስነ-ምግብ ተመራማሪ",
+            qualification: "በእንስሳት ስነ-ምግብ ፒኤችዲ",
+            experience: "ከ25 ዓመታት በላይ በእንስሳት እርባታ፣ ስነ-ምግብ እና ማማከር ልምድ።",
+          },
+          {
+            name: "Baidemariam Daniel",
+            role: "የምርት ክፍል ኃላፊ",
+            qualification: "በእንስሳት ሳይንስ BSc",
+            experience: "በእንስሳት ምርት 2 ዓመት ልምድ።",
+          },
+          {
+            name: "Dejene Dessie",
+            role: "የፋይናንስ ክፍል ኃላፊ",
+            qualification: "በፋይናንስ እና አካውንቲንግ ማስተርስ",
+            experience: "ከ10 ዓመታት በላይ በፋይናንስ እና ታክስ ልምድ።",
+          },
+          {
+            name: "Tinsae Demssie",
+            role: "ቴክኒካል ማናጀር",
+            qualification: "በኢንዱስትሪ ኢንጂነሪንግ BSc",
+            experience: "ከ6 ዓመታት በላይ በኤሌክትሮ መካኒካል ስራዎች ልምድ።",
+          },
+        ],
       },
       {
         __component: "sections.feature-grid",
@@ -439,6 +610,18 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
           { title: "ሳይንሳዊ", text: "የስነ-ምግብ እና የምርት እውቀት የስራ ሞዴሉን ይደግፋል።" },
           { title: "አስተማማኝ", text: "ኩባንያው አስተማማኝ የግብርና ማቀነባበሪያ መፍትሄዎችን ለማቅረብ ያለመዳል።" },
           { title: "እድገት ላይ ያተኮረ", text: "አቅም እና የስራ ዘርፍ በጊዜ ሂደት እንዲሰፉ ታቅዷል።" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "እንዴት እንደተዋቀርን",
+        heading: "ምርትና ስርጭትን የሚደግፉ ክፍሎች።",
+        items: [
+          { title: "ፋይናንስ እና አስተዳደር", text: "የኩባንያ ስራዎችን፣ ሂሳቦችን እና ታክስን ይደግፋል።" },
+          { title: "ማርኬቲንግ፣ ሽያጭ እና የንግድ እድገት", text: "ወደ ማህበራት፣ ህብረት ስራ ማህበራት፣ የጅምላ ነጋዴዎች እና ችርቻሮ ነጋዴዎች ስርጭትን ያንቀሳቅሳል።" },
+          { title: "ምርት", text: "በቱሉ ቦሎ የቀን ተቀን የመኖ ምርትን ያስኪያዳል።" },
+          { title: "ቴክኒካል እና አጠቃላይ አገልግሎቶች", text: "መገልገያዎችን እና የኤሌክትሮ መካኒካል ስራዎችን ይጠብቃል።" },
+          { title: "ግዢ", text: "ለምርት የሚያገለግሉ ጥሬ ዕቃዎችን እና አቅርቦቶችን ያቀርባል።" },
         ],
       },
     ],
@@ -454,6 +637,18 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
           "Argaw, Solomon fi Michoota (ASF) furmaata adeemsawaa qonnaan bultootaaf, oomisha beeladaaf, fi daldala qonnaa balaaf xiyyeeffata.",
       },
       {
+        __component: "sections.stats-band",
+        eyebrow: "Dhiibbaa Keenya",
+        heading: "Hojii fi tumsa naannoo Tulu Bolo uumame.",
+        dark: false,
+        stats: [
+          { value: "51", label: "Hojii kallattii Warshaa Tulu Bolo keessatti uumame" },
+          { value: "465", label: "Namoota sarara gatii keessatti hirmaatan" },
+          { value: "300", label: "Qonnaan bultoota beeladaa fi daldaltoota network raabsaa keenya keessa jiran" },
+          { value: "271", label: "Heektaara bakka Bulbula babal'ina irratti jiru" },
+        ],
+      },
+      {
         __component: "sections.mission",
         heading: "Ergama Keenya",
         body:
@@ -464,13 +659,75 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         eyebrow: "Seenaa Keenya",
         heading: "Nyaata Beeladaa irraa gara Waltajjii Warshaa Qonnaa Walitti Qindaa'eetti.",
         bodyParagraph1:
-          "ASF yeroo ammaa oomisha nyaata beeladaa, qonna aannanii fi lukkuu keessa hojjeta. Karoorri fuulduraa ibsame adeemsa midhaanii, mana qalma beeladaa sadarkaa alergii, fi dhiyeessii qoricha fi meeshaalee beeladaa dabalata.",
+          "ASF yeroo ammaa oomisha nyaata beeladaa, qonna aannanii fi lukkuu keessa hojjeta. Karoorri fuulduraa ibsame adeemsa midhaanii, mana qalma beeladaa sadarkaa alergii, fi dhiyeessii qoricha fi meeshaalee beeladaa dabalata. Guyyaa Guraandhala 2023, ASF Waltajjii Warshaa Qonnaa Walitti Qindaa'e Bulbula (Dhaabbata Guddina Warshaalee Oromiyaa) waliin walta'iinsa investimentii bakka babal'ina heektaara 271, kiloomeetira 160 kibba Finfinnee irraa, dameewwan oomisha zayitaa nyaataa, buna fi urgooftuu, foonii, midhaanii fi muduraa waliin mallatteesse.",
         bodyParagraph2:
           "Mul'ata keenya kutaa biyyoota Afrikaa Bahaa keessatti dhaabbata amanamaa warshaa qonnaa, qonnaa fi daldala qonnaa keessatti tokko ta'uu, bara 2030 ti.",
         panelBadge: "Itoophiyaa · Mul'ata 2030",
         panelTitle: "Furmaata amanamaa sarara gatii beeladaa cimaaf.",
         panelText:
           "Oomisha nyaataa irraa gara adeemsa warshaa qonnaa walitti qindaa'e fuulduraatti, ASF qonnaan bultootaaf, oomishaaf, fi guddina itti fufiinsa qabuuf ijaaraa jira.",
+      },
+      {
+        __component: "sections.team-grid",
+        eyebrow: "Hoggansa",
+        heading: "Garee hojii ASF geggeessu.",
+        members: [
+          {
+            name: "Argaw Alaro",
+            role: "Hoggaa Olaanaa",
+            qualification: "MA Ikoonomiksii, BSc Herregaa",
+            experience: "Waggaa 15 ol Ehiyoophiyaa Shipping Lines keessatti akka navigeetaraa, abbaa daldalaa fi bulchiinsa piroojeektii keessatti muuxannoo qaba.",
+          },
+          {
+            name: "Merihun Belayneh",
+            role: "Garee Hoggansaa",
+            qualification: "MA Saayikooloojii, BA Gabaasa",
+            experience:
+              "Waggaa 15 ol akka ogeessa tajaajila maamiltootaa olaanaa Ehiyoophiyaa Erport, ogeessa imalaa UN keessatti, akkasumas gorsaa fi gorsaa daldalaa ta'uun muuxannoo qaba.",
+          },
+          {
+            name: "Suraphel Mekonnen",
+            role: "Garee Hoggansaa",
+            qualification: "BA Daldalaa, BSc Arkiteektaraa",
+            experience: "Waggaa 20 ol abbaa daldalaa idil-addunyaa ta'uun muuxannoo qaba.",
+          },
+          {
+            name: "Meron Mekonnen",
+            role: "Garee Hoggansaa",
+            qualification: "BA Bulchiinsa Daldalaa, BA Sirna Odeeffannoo Kompiitaraa",
+            experience: "Waggaa 17 ol daldalawwan bulchuu fi abbaa daldalaa idil-addunyaa ta'uun muuxannoo qaba.",
+          },
+          {
+            name: "Amanuel Baze",
+            role: "Garee Hoggansaa",
+            qualification: "BA Bulchiinsa, BA Tiyooloojii",
+            experience: "Waggaa 10 ol daldalaa fi hoggansa, daldalawwan geggeessuu keessatti muuxannoo qaba.",
+          },
+          {
+            name: "Dr. Tesfu Tadesse",
+            role: "Ogeessa Nyaataa Olaanaa",
+            qualification: "PhD Nyaata Beeladaa",
+            experience: "Waggaa 25 ol qonna beeladaa, nyaataa fi gorsa keessatti muuxannoo qaba.",
+          },
+          {
+            name: "Baidemariam Daniel",
+            role: "Hoggaa Oomishaa",
+            qualification: "BSc Saayinsii Beeladaa",
+            experience: "Waggaa 2 oomisha beeladaa keessatti muuxannoo qaba.",
+          },
+          {
+            name: "Dejene Dessie",
+            role: "Hoggaa Faayinaansii",
+            qualification: "MA Faayinaansii fi Herregaa",
+            experience: "Waggaa 10 ol faayinaansii fi gibira keessatti muuxannoo qaba.",
+          },
+          {
+            name: "Tinsae Demssie",
+            role: "Hoji-gaggeessaa Teeknikaa",
+            qualification: "BSc Injinariingii Indastirii",
+            experience: "Waggaa 6 ol hojii elektiroo-meekaanikaa keessatti muuxannoo qaba.",
+          },
+        ],
       },
       {
         __component: "sections.feature-grid",
@@ -481,6 +738,18 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
           { title: "Saayinsawaa", text: "Ogummaan nyaataa fi oomishaa mala hojii deggeru." },
           { title: "Amanamaa", text: "Dhaabbatichi furmaata adeemsa qonnaa amanamaa dhiyeessuuf kaka'umsa qaba." },
           { title: "Guddina Yaaduu", text: "Dandeettii fi gareewwan daldalaa yeroo dheeraaf babal'achuuf karoorfamaniiru." },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Akkaataa Nu Ijaaramne",
+        heading: "Damee oomishaa fi raabsaa deeggaran.",
+        items: [
+          { title: "Faayinaansii fi Bulchiinsa", text: "Hojii dhaabbataa, herrega fi gibira deeggara." },
+          { title: "Gabaasa, Gurgurtaa fi Guddina Daldalaa", text: "Raabsaa gara waldaalee, kooperetiivota, gurgurtoota gurguddaa fi daldaltoota gaggeessa." },
+          { title: "Oomisha", text: "Oomisha nyaata beeladaa guyyuu Tulu Bolo keessatti gaggeessa." },
+          { title: "Teeknikaa fi Tajaajila Waliigalaa", text: "Meeshaalee fi hojii elektiroo-meekaanikaa eeggata." },
+          { title: "Bittaa", text: "Meeshaalee fi qabeenya oomishaaf barbaachisan dhiyeessa." },
         ],
       },
     ],

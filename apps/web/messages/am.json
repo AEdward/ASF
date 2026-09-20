@@ -36,6 +36,22 @@
       "Company News": "የኩባንያ ዜና"
     }
   },
+  "careers": {
+    "metaTitle": "የስራ ቅጥር",
+    "metaDescription": "በ ASF አግሮ ኢንዱስትሪ የስራ ክፍት ቦታዎች።",
+    "eyebrow": "የስራ ቅጥር",
+    "heading": "የASF የአግሮ ኢንዱስትሪ መደብርን ከእኛ ጋር ይገንቡ።",
+    "subtitle": "ክፍት የስራ ቦታዎች እንደተገኙ እዚህ ይለጠፋሉ፣ ከStrapi ዳሽቦርድ ይተዳደራሉ።",
+    "emptyTitle": "አሁን ክፍት የስራ ቦታ የለም",
+    "emptyBody": "እንደገና ይመልከቱ፣ ወይም ራስዎን ማስተዋወቅ ከፈለጉ በቀጥታ ያግኙን።",
+    "postedLabel": "የተለጠፈበት",
+    "viewDetails": "ዝርዝር ይመልከቱ →",
+    "backToCareers": "← ወደ የስራ ቅጥር ተመለስ",
+    "requirementsHeading": "መስፈርቶች",
+    "applyHeading": "እንዴት ማመልከት እንደሚቻል",
+    "applyBody": "የግል ማንነት ማስረጃዎችዎን (CV) እና አጭር የመግቢያ ደብዳቤ ወደ {email} ይላኩ፣ ይህን የስራ ስም በመጥቀስ።",
+    "applyButton": "በኢሜይል ያመልክቱ"
+  },
   "contact": {
     "metaTitle": "አግኙን",
     "metaDescription": "ለትብብር እና ለጥያቄዎች የASF አግሮ ኢንዱስትሪ ቡድንን ያግኙ።",

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_team_members",
+  "info": {
+    "displayName": "Team Member",
+    "icon": "user"
+  },
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "role": { "type": "string" },
+    "qualification": { "type": "string" },
+    "experience": { "type": "text" }
+  }
+}

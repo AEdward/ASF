@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_team_grids",
+  "info": {
+    "displayName": "Team Grid",
+    "icon": "user"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "members": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.team-member"
+    }
+  }
+}

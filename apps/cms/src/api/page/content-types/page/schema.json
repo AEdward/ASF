@@ -30,7 +30,8 @@
         "sections.feature-grid",
         "sections.stats-band",
         "sections.intro",
-        "sections.story-panel"
+        "sections.story-panel",
+        "sections.team-grid"
       ]
     }
   }

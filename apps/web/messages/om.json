@@ -36,6 +36,22 @@
       "Company News": "Oduu Dhaabbataa"
     }
   },
+  "careers": {
+    "metaTitle": "Carraa Hojii",
+    "metaDescription": "Carraa hojii yeroo ammaa ASF Agro Industry keessa jiru.",
+    "eyebrow": "Carraa Hojii",
+    "heading": "Waltajjii Warshaa Qonnaa ASF nu waliin ijaari.",
+    "subtitle": "Carraan hojii yeroo argaman asitti maxxanfamu, Strapi Dashboard irraa bulfamu.",
+    "emptyTitle": "Yeroo ammaa carraan hojii hin jiru",
+    "emptyBody": "Yeroo dhiyootti deebi'ii ilaali, ykn of-ibsuu barbaadde kallattiin nu qunnami.",
+    "postedLabel": "Maxxanfame",
+    "viewDetails": "Bal'inaan ilaali →",
+    "backToCareers": "← Gara Carraa Hojii deebi'i",
+    "requirementsHeading": "Barbaachisummaa",
+    "applyHeading": "Akkaataa Iyyachuu",
+    "applyBody": "CV kee fi xalayaa gabaabaa {email} tti ergi, mata-duree hojii kana eeruudhaan.",
+    "applyButton": "Imeeliin iyyadhu"
+  },
   "contact": {
     "metaTitle": "Nu Qunnami",
     "metaDescription": "Michoomaa fi gaaffiif garee ASF Agro Industry quunnamaa.",

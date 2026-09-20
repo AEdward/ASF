@@ -36,6 +36,22 @@
       "Company News": "Company News"
     }
   },
+  "careers": {
+    "metaTitle": "Careers",
+    "metaDescription": "Current job openings at ASF Agro Industry.",
+    "eyebrow": "Careers",
+    "heading": "Build ASF's agro-industry platform with us.",
+    "subtitle": "Openings are posted here as they become available, managed from the Strapi dashboard.",
+    "emptyTitle": "No open positions right now",
+    "emptyBody": "Check back soon, or reach out directly if you'd like to introduce yourself.",
+    "postedLabel": "Posted",
+    "viewDetails": "View details →",
+    "backToCareers": "← Back to Careers",
+    "requirementsHeading": "Requirements",
+    "applyHeading": "How to apply",
+    "applyBody": "Email your CV and a short cover letter to {email}, referencing this job title.",
+    "applyButton": "Apply by email"
+  },
   "contact": {
     "metaTitle": "Contact",
     "metaDescription": "Contact the ASF Agro Industry team for partnerships and enquiries.",

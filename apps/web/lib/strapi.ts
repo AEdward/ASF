@@ -1,8 +1,10 @@
 import {
   Article,
   DEFAULT_ARTICLES,
+  DEFAULT_JOB_VACANCIES,
   DEFAULT_PRODUCTS,
   DEFAULT_SITE_SETTINGS,
+  JobVacancy,
   Product,
   SiteSettings,
 } from "@/lib/content";
@@ -53,6 +55,32 @@ interface StrapiArticleEntry {
   coverImage?: { url?: string } | null;
 }
 
+interface StrapiJobVacancyEntry {
+  id: number;
+  title: string;
+  slug: string;
+  location?: string | null;
+  employmentType?: string | null;
+  summary?: string | null;
+  description?: string | null;
+  requirements?: string[] | null;
+  postedAt?: string | null;
+}
+
+function mapJobVacancy(entry: StrapiJobVacancyEntry): JobVacancy {
+  return {
+    id: entry.id,
+    title: entry.title,
+    slug: entry.slug,
+    location: entry.location ?? undefined,
+    employmentType: entry.employmentType ?? undefined,
+    summary: entry.summary ?? undefined,
+    description: entry.description ?? undefined,
+    requirements: entry.requirements ?? [],
+    postedAt: entry.postedAt ?? undefined,
+  };
+}
+
 export async function getSiteSettings(locale: Locale = "en"): Promise<SiteSettings> {
   const json = await strapiFetch<{ data: StrapiSiteSettingEntry | null }>(
     `/api/site-setting?populate=*&locale=${locale}`
@@ -86,6 +114,7 @@ interface StrapiRawSection {
   stats?: { value: string; label: string }[];
   video?: { url?: string } | null;
   poster?: { url?: string } | null;
+  members?: { name: string; role?: string; qualification?: string; experience?: string }[];
   [key: string]: unknown;
 }
 
@@ -104,7 +133,8 @@ const PAGE_POPULATE =
   "&populate[sections][on][sections.stats-band][populate]=stats" +
   "&populate[sections][on][sections.intro][populate]=*" +
   "&populate[sections][on][sections.story-panel][populate]=*" +
-  "&populate[sections][on][sections.video][populate]=*";
+  "&populate[sections][on][sections.video][populate]=*" +
+  "&populate[sections][on][sections.team-grid][populate]=members";
 
 function mapSection(raw: StrapiRawSection): PageSection | null {
   switch (raw.__component) {
@@ -179,6 +209,18 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
         videoUrl: mediaUrl(raw.video),
         posterUrl: mediaUrl(raw.poster),
       };
+    case "sections.team-grid":
+      return {
+        __component: "sections.team-grid",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        members: (raw.members ?? []).map((m) => ({
+          name: m.name,
+          role: m.role,
+          qualification: m.qualification,
+          experience: m.experience,
+        })),
+      };
     default:
       return null;
   }
@@ -210,4 +252,20 @@ export async function getArticles(locale: Locale = "en"): Promise<Article[]> {
     category: entry.category,
     coverImageUrl: mediaUrl(entry.coverImage),
   }));
+}
+
+export async function getJobVacancies(locale: Locale = "en"): Promise<JobVacancy[]> {
+  const json = await strapiFetch<{ data: StrapiJobVacancyEntry[] }>(
+    `/api/job-vacancies?filters[isOpen][$eq]=true&sort=postedAt:desc&locale=${locale}`
+  );
+  if (!json?.data) return DEFAULT_JOB_VACANCIES;
+  return json.data.map(mapJobVacancy);
+}
+
+export async function getJobVacancy(slug: string, locale: Locale = "en"): Promise<JobVacancy | null> {
+  const json = await strapiFetch<{ data: StrapiJobVacancyEntry[] }>(
+    `/api/job-vacancies?filters[slug][$eq]=${slug}&locale=${locale}`
+  );
+  const entry = json?.data?.[0];
+  return entry ? mapJobVacancy(entry) : null;
 }

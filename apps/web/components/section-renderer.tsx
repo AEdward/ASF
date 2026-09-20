@@ -7,6 +7,7 @@ import StatsBand from "@/components/sections/stats-band";
 import Intro from "@/components/sections/intro";
 import StoryPanel from "@/components/sections/story-panel";
 import Video from "@/components/sections/video";
+import TeamGrid from "@/components/sections/team-grid";
 
 export function SectionRenderer({ sections }: { sections: PageSection[] }) {
   return (
@@ -29,6 +30,8 @@ export function SectionRenderer({ sections }: { sections: PageSection[] }) {
             return <StoryPanel key={index} section={section} />;
           case "sections.video":
             return <Video key={index} section={section} />;
+          case "sections.team-grid":
+            return <TeamGrid key={index} section={section} />;
           default:
             return null;
         }
