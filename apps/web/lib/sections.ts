@@ -289,3 +289,137 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
     ],
   },
 ];
+
+export const DEFAULT_FACILITIES_SECTIONS: PageSection[] = [
+  {
+    __component: "sections.intro",
+    eyebrow: "Our Facilities",
+    heading: "Two sites, one growing production platform.",
+    body: "ASF operates from an operational factory in Tulu Bolo and is expanding into the Bulbula Integrated Agro Industry Park, adding capacity for the years ahead.",
+  },
+  {
+    __component: "sections.story-panel",
+    eyebrow: "Tulu Bolo Factory",
+    heading: "The operational home of ASF's animal feed production.",
+    bodyParagraph1:
+      "Located in Tulu Bolo Town, South West Shoa Zone of Oromia Region, the factory currently produces at a combined capacity of 600 quintals per day across dairy, fattening and poultry feed. A warehouse at Welete, Sheger City, supports storage and distribution.",
+    bodyParagraph2:
+      "Production is planned to grow from 55,000 quintals in the next 3 months to 750,000 quintals by year three, across dairy, fattening, poultry and other livestock feed.",
+    panelBadge: "Oromia, Ethiopia",
+    panelTitle: "600 quintals/day current capacity.",
+    panelText: "Growing toward a combined 750,000 quintals/year by year three of the production plan.",
+  },
+  {
+    __component: "sections.stats-band",
+    eyebrow: "Bulbula expansion",
+    heading: "A world-class agro industry park, 160km south of Addis Ababa.",
+    dark: true,
+    stats: [
+      { value: "271", label: "Hectares at the Bulbula site" },
+      { value: "2021", label: "Park inaugurated" },
+      { value: "2023", label: "ASF investment agreement signed" },
+      { value: "160km", label: "South of Addis Ababa, near Zeway City" },
+    ],
+  },
+  {
+    __component: "sections.story-panel",
+    eyebrow: "Expansion site",
+    heading: "Bulbula Integrated Agro Industry Park.",
+    bodyParagraph1:
+      "ASF signed an investment agreement with the Bulbula Integrated Agro Industry Park (Oromia Industry Parks Development Corporation) in February 2023, securing a 271-hectare site 160km south of Addis Ababa, near Zeway City on the highway to Hawassa.",
+    bodyParagraph2:
+      "The park is fully electrified with reliable water supply, a waste water treatment plant, staff accommodation buildings and green areas, and hosts food oil, coffee & spices, meat, cereal and vegetable processing industries alongside ASF's planned expansion.",
+    panelBadge: "271 hectares · Est. 2021",
+    panelTitle: "A world-class integrated agro industry park.",
+    panelText: "Purpose-built infrastructure supporting ASF's next phase of growth.",
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "Technical capability",
+    heading: "The team keeping production running.",
+    items: [
+      { title: "Technical & Electromechanical", text: "A dedicated technical team maintains equipment and electromechanical operations." },
+      { title: "Production Operators", text: "Operators run day-to-day processing at Tulu Bolo." },
+      { title: "Quality Control", text: "Quality controllers and lab technicians support production standards." },
+    ],
+  },
+];
+
+export const DEFAULT_QUALITY_SECTIONS: PageSection[] = [
+  {
+    __component: "sections.intro",
+    eyebrow: "Quality & Safety",
+    heading: "Scientific standards behind every batch.",
+    body: "ASF's production is guided by qualified nutritionists and quality control staff, applying scientific and reliable methods across the feed production process.",
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "How we maintain quality",
+    heading: "Roles dedicated to quality across production.",
+    items: [
+      {
+        title: "Chief Nutritionist",
+        text: "Dr. Tesfu Tadesse, PhD in Animal Nutrition, leads feed formulation with more than 25 years of experience.",
+      },
+      { title: "Quality Control & Lab", text: "Quality controllers and lab technicians support testing and production standards." },
+      { title: "Production Supervision", text: "A production supervisor and technical team oversee day-to-day operations." },
+    ],
+  },
+  {
+    __component: "sections.mission",
+    heading: "Our quality commitment",
+    body: "Every batch reflects ASF's scientific and reliable approach to agro-processing, assessed against real farmer and livestock needs rather than industry defaults.",
+  },
+  {
+    __component: "sections.intro",
+    eyebrow: "Certifications",
+    heading: "Building toward formal certification.",
+    body: "As ASF's quality systems mature, formal certifications will be published here.",
+  },
+];
+
+export const DEFAULT_SUSTAINABILITY_SECTIONS: PageSection[] = [
+  {
+    __component: "sections.intro",
+    eyebrow: "Sustainability",
+    heading: "Growth that supports farmers, workers and the environment.",
+    body: "ASF's expansion is built around job creation, environmental protection and support for Ethiopia's livestock farmers.",
+  },
+  {
+    __component: "sections.stats-band",
+    eyebrow: "Local employment",
+    heading: "Jobs created, with real gender representation.",
+    dark: false,
+    stats: [
+      { value: "51", label: "Direct jobs at Tulu Bolo (36 men, 15 women)" },
+      { value: "465", label: "People engaged across the value chain (305 men, 160 women)" },
+      { value: "300", label: "Livestock farmers & businesses reached through distribution" },
+    ],
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "Environmental responsibility",
+    heading: "Protecting the land ASF operates on.",
+    items: [
+      {
+        title: "Tree planting",
+        text: "ASF has carried out tree-planting activities at its factory sites as part of environmental protection efforts.",
+      },
+      {
+        title: "Waste water treatment",
+        text: "The Bulbula Integrated Agro Industry Park includes a dedicated waste water treatment plant.",
+      },
+      { title: "Green infrastructure", text: "Bulbula's park design includes green areas alongside its production facilities." },
+    ],
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "Supporting the value chain",
+    heading: "Reaching farmers through a wide distribution network.",
+    items: [
+      { title: "Farmers' unions & cooperatives", text: "Products reach organized farmer groups through direct distribution." },
+      { title: "Wholesalers & retailers", text: "A wholesale and retail network extends reach to individual and commercial farmers." },
+      { title: "Direct to farmers", text: "ASF also supplies farmers and households directly." },
+    ],
+  },
+];

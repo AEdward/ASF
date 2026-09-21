@@ -79,5 +79,26 @@
   "about": {
     "metaTitle": "About",
     "metaDescription": "About ASF Agro Industry — our story, vision and principles."
+  },
+  "facilities": {
+    "metaTitle": "Facilities",
+    "metaDescription": "ASF Agro Industry's factory and expansion sites."
+  },
+  "quality": {
+    "metaTitle": "Quality & Safety",
+    "metaDescription": "How ASF Agro Industry maintains quality and safety in production."
+  },
+  "sustainability": {
+    "metaTitle": "Sustainability",
+    "metaDescription": "ASF Agro Industry's approach to jobs, environment and farmer support."
+  },
+  "gallery": {
+    "metaTitle": "Gallery",
+    "metaDescription": "Photos from ASF Agro Industry's factory, team and expansion site.",
+    "eyebrow": "Gallery",
+    "heading": "A look inside ASF.",
+    "subtitle": "Photos from our factory, team and expansion project, managed from the Strapi dashboard.",
+    "emptyTitle": "No photos yet",
+    "emptyBody": "Photo albums will appear here once added through the CMS."
   }
 }

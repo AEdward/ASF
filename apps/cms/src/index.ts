@@ -1,4 +1,6 @@
 import type { Core } from "@strapi/strapi";
+import path from "path";
+import fs from "fs";
 
 const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   "site-setting": ["find"],
@@ -6,6 +8,7 @@ const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   article: ["find", "findOne"],
   page: ["find", "findOne"],
   "job-vacancy": ["find", "findOne"],
+  "gallery-album": ["find", "findOne"],
 };
 
 const LOCALES = [
@@ -69,6 +72,10 @@ const SITE_SETTINGS_SEED = {
   footerLinks: [
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
+    { label: "Facilities", href: "/facilities" },
+    { label: "Quality & Safety", href: "/quality" },
+    { label: "Sustainability", href: "/sustainability" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: "/careers" },
@@ -96,6 +103,10 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
     footerLinks: [
       { label: "ስለ እኛ", href: "/about" },
       { label: "ምርቶች", href: "/products" },
+      { label: "ተቋማት", href: "/facilities" },
+      { label: "ጥራት እና ደህንነት", href: "/quality" },
+      { label: "ዘላቂነት", href: "/sustainability" },
+      { label: "ማዕከለ ስዕላት", href: "/gallery" },
       { label: "ብሎግ", href: "/blog" },
       { label: "አግኙን", href: "/contact" },
       { label: "የስራ ቅጥር", href: "/careers" },
@@ -119,6 +130,10 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
     footerLinks: [
       { label: "Waa'ee Keenya", href: "/about" },
       { label: "Oomishaalee", href: "/products" },
+      { label: "Dhaabbilee", href: "/facilities" },
+      { label: "Qulqullina fi Nageenya", href: "/quality" },
+      { label: "Itti Fufiinsa", href: "/sustainability" },
+      { label: "Suuraalee", href: "/gallery" },
       { label: "Barreeffama", href: "/blog" },
       { label: "Nu Qunnami", href: "/contact" },
       { label: "Carraa Hojii", href: "/careers" },
@@ -756,6 +771,423 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
   },
 };
 
+const FACILITIES_PAGE_SEED = {
+  title: "Facilities",
+  slug: "facilities",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "Our Facilities",
+      heading: "Two sites, one growing production platform.",
+      body: "ASF operates from an operational factory in Tulu Bolo and is expanding into the Bulbula Integrated Agro Industry Park, adding capacity for the years ahead.",
+    },
+    {
+      __component: "sections.story-panel",
+      eyebrow: "Tulu Bolo Factory",
+      heading: "The operational home of ASF's animal feed production.",
+      bodyParagraph1:
+        "Located in Tulu Bolo Town, South West Shoa Zone of Oromia Region, the factory currently produces at a combined capacity of 600 quintals per day across dairy, fattening and poultry feed. A warehouse at Welete, Sheger City, supports storage and distribution.",
+      bodyParagraph2:
+        "Production is planned to grow from 55,000 quintals in the next 3 months to 750,000 quintals by year three, across dairy, fattening, poultry and other livestock feed.",
+      panelBadge: "Oromia, Ethiopia",
+      panelTitle: "600 quintals/day current capacity.",
+      panelText: "Growing toward a combined 750,000 quintals/year by year three of the production plan.",
+    },
+    {
+      __component: "sections.stats-band",
+      eyebrow: "Bulbula expansion",
+      heading: "A world-class agro industry park, 160km south of Addis Ababa.",
+      dark: true,
+      stats: [
+        { value: "271", label: "Hectares at the Bulbula site" },
+        { value: "2021", label: "Park inaugurated" },
+        { value: "2023", label: "ASF investment agreement signed" },
+        { value: "160km", label: "South of Addis Ababa, near Zeway City" },
+      ],
+    },
+    {
+      __component: "sections.story-panel",
+      eyebrow: "Expansion site",
+      heading: "Bulbula Integrated Agro Industry Park.",
+      bodyParagraph1:
+        "ASF signed an investment agreement with the Bulbula Integrated Agro Industry Park (Oromia Industry Parks Development Corporation) in February 2023, securing a 271-hectare site 160km south of Addis Ababa, near Zeway City on the highway to Hawassa.",
+      bodyParagraph2:
+        "The park is fully electrified with reliable water supply, a waste water treatment plant, staff accommodation buildings and green areas, and hosts food oil, coffee & spices, meat, cereal and vegetable processing industries alongside ASF's planned expansion.",
+      panelBadge: "271 hectares · Est. 2021",
+      panelTitle: "A world-class integrated agro industry park.",
+      panelText: "Purpose-built infrastructure supporting ASF's next phase of growth.",
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Technical capability",
+      heading: "The team keeping production running.",
+      items: [
+        { title: "Technical & Electromechanical", text: "A dedicated technical team maintains equipment and electromechanical operations." },
+        { title: "Production Operators", text: "Operators run day-to-day processing at Tulu Bolo." },
+        { title: "Quality Control", text: "Quality controllers and lab technicians support production standards." },
+      ],
+    },
+  ],
+};
+
+const FACILITIES_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: {
+    title: "ተቋማት",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "ተቋሞቻችን",
+        heading: "ሁለት ቦታዎች፣ አንድ እያደገ ያለ የምርት መድረክ።",
+        body: "ASF በቱሉ ቦሎ ካለው ኦፕሬሽናል ፋብሪካ ይሰራል እና ወደ ቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ በማስፋፋት ላይ ነው፣ ለወደፊት ዓመታት አቅምን በመጨመር ላይ።",
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "የቱሉ ቦሎ ፋብሪካ",
+        heading: "የASF የእንስሳት መኖ ምርት ኦፕሬሽናል መኖሪያ።",
+        bodyParagraph1:
+          "በቱሉ ቦሎ ከተማ፣ ደቡብ ምዕራብ ሸዋ ዞን፣ ኦሮሚያ ክልል የሚገኘው ፋብሪካ በአሁኑ ጊዜ በቀን 600 ኩንታል በወተት፣ ማድለብ እና የዶሮ መኖ ላይ ያመርታል። በወለቴ፣ ሸገር ከተማ የሚገኝ መጋዘን ማከማቻ እና ስርጭትን ይደግፋል።",
+        bodyParagraph2:
+          "ምርት ከሚቀጥሉት 3 ወራት 55,000 ኩንታል ወደ 750,000 ኩንታል በሦስተኛው ዓመት እንዲያድግ ታቅዷል፣ በወተት፣ ማድለብ፣ ዶሮ እና ሌሎች የእንስሳት መኖ ዘርፎች ውስጥ።",
+        panelBadge: "ኦሮሚያ፣ ኢትዮጵያ",
+        panelTitle: "በቀን 600 ኩንታል የአሁኑ አቅም።",
+        panelText: "በምርት እቅዱ ሦስተኛ ዓመት ወደ 750,000 ኩንታል/ዓመት አጠቃላይ ማደግ።",
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "የቡልቡላ ማስፋፊያ",
+        heading: "ከአዲስ አበባ 160 ኪ.ሜ ደቡብ የሚገኝ የዓለም ደረጃ የአግሮ ኢንዱስትሪ ፓርክ።",
+        dark: true,
+        stats: [
+          { value: "271", label: "በቡልቡላ ቦታ ላይ ያሉ ሄክታሮች" },
+          { value: "2021", label: "ፓርኩ የተመረቀበት" },
+          { value: "2023", label: "የASF ኢንቨስትመንት ስምምነት የተፈረመበት" },
+          { value: "160ኪ.ሜ", label: "ከአዲስ አበባ ደቡብ፣ ዘዋይ ከተማ አቅራቢያ" },
+        ],
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "የማስፋፊያ ቦታ",
+        heading: "ቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ።",
+        bodyParagraph1:
+          "ASF ከቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ (የኦሮሚያ ኢንዱስትሪ ፓርኮች ልማት ኮርፖሬሽን) ጋር በየካቲት 2023 የኢንቨስትመንት ስምምነት ተፈራርሟል፣ ከአዲስ አበባ በስተደቡብ 160 ኪ.ሜ፣ በዘዋይ ከተማ አቅራቢያ በሃዋሳ መንገድ ላይ የሚገኝ በ271 ሄክታር ቦታ አግኝቷል።",
+        bodyParagraph2:
+          "ፓርኩ ሙሉ በሙሉ የኤሌክትሪክ አገልግሎት ያለው፣ አስተማማኝ የውሃ አቅርቦት፣ የቆሻሻ ውሃ ማጣሪያ ተክል፣ የሰራተኞች መኖሪያ ህንፃዎች እና አረንጓዴ ቦታዎች ያሉት ሲሆን፣ ከASF የታቀደ ማስፋፊያ ጎን ለጎን የዘይት ማቀነባበሪያ፣ ቡናና ቅመማ ቅመም፣ ስጋ፣ እህል እና አትክልት ማቀነባበሪያ ኢንዱስትሪዎችን ያስተናግዳል።",
+        panelBadge: "271 ሄክታር · ከ2021 ጀምሮ",
+        panelTitle: "የዓለም ደረጃ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ።",
+        panelText: "ለASF ቀጣይ የእድገት ደረጃ የተዘጋጀ መሠረተ ልማት።",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "ቴክኒካል አቅም",
+        heading: "ምርትን ቀጣይነት ያለው የሚያደርገው ቡድን።",
+        items: [
+          { title: "ቴክኒካል እና ኤሌክትሮ መካኒካል", text: "የተወሰነ ቴክኒካል ቡድን መገልገያዎችን እና የኤሌክትሮ መካኒካል ስራዎችን ይጠብቃል።" },
+          { title: "የምርት ኦፕሬተሮች", text: "ኦፕሬተሮች በቱሉ ቦሎ የቀን ተቀን ማቀነባበርን ያስኪያዳሉ።" },
+          { title: "የጥራት ቁጥጥር", text: "የጥራት ተቆጣጣሪዎች እና የላብራቶሪ ቴክኒሻኖች የምርት ደረጃዎችን ይደግፋሉ።" },
+        ],
+      },
+    ],
+  },
+  om: {
+    title: "Dhaabbilee",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "Dhaabbilee Keenya",
+        heading: "Bakka lama, waltajjii oomishaa tokko kan guddataa jiru.",
+        body: "ASF warshaa hojiirra jiru Tulu Bolo keessaa hojjeta, Paarkii Warshaa Qonnaa Walitti Qindaa'e Bulbulaatti babal'achaa jira, dandeettii waggoota dhufaniif dabaluun.",
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "Warshaa Tulu Bolo",
+        heading: "Mana hojii oomisha nyaata beeladaa ASF.",
+        bodyParagraph1:
+          "Magaalaa Tulu Bolo, Godina Shawaa Kibba Lixaa, Naannoo Oromiyaa keessatti argamu, warshaan kun yeroo ammaa guyyaatti kuintaalii 600 nyaata aannanii, coccoraa fi lukkuu walitti qindaa'ee oomisha.  Buufanni kuusaa Waleetee, Magaalaa Sheegar, kuusaa fi raabsaa deeggara.",
+        bodyParagraph2:
+          "Oomishni ji'oota 3 dhufan keessatti kuintaalii 55,000 irraa gara kuintaalii 750,000 waggaa sadaffaatti akka guddatu karoorfameera, damee nyaata aannanii, coccoraa, lukkuu fi kan biraa keessatti.",
+        panelBadge: "Oromiyaa, Itoophiyaa",
+        panelTitle: "Kuintaalii 600/guyyaa dandeettii ammaa.",
+        panelText: "Waggaa sadaffaa karoora oomishaa keessatti gara kuintaalii 750,000/waggaa guddachaa.",
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "Babal'ina Bulbula",
+        heading: "Paarkii warshaa qonnaa sadarkaa addunyaa, kiiloomeetira 160 kibba Finfinnee.",
+        dark: true,
+        stats: [
+          { value: "271", label: "Heektaara bakka Bulbula" },
+          { value: "2021", label: "Paarkichi kan eegale" },
+          { value: "2023", label: "Walta'iinsi investimentii ASF mallatteeffame" },
+          { value: "km 160", label: "Kibba Finfinnee, naannoo Magaalaa Zeeway" },
+        ],
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "Bakka Babal'inaa",
+        heading: "Paarkii Warshaa Qonnaa Walitti Qindaa'e Bulbula.",
+        bodyParagraph1:
+          "ASF Waltajjii Warshaa Qonnaa Walitti Qindaa'e Bulbula (Dhaabbata Guddina Warshaalee Oromiyaa) waliin Guraandhala 2023 walta'iinsa investimentii mallatteesse, bakka heektaara 271 kiiloomeetira 160 kibba Finfinnee, naannoo Magaalaa Zeeway karaa gara Hawaasaa argate.",
+        bodyParagraph2:
+          "Paarkichi guutummaatti ibsaa qabu, dhiyeessii bishaanii amanamaa, dhaabbata qulqulleessituu bishaan xurii, buufata jireenyaa hojjettootaa fi naannoo magariisaa qaba, akkasumas dameewwan oomisha zayitaa nyaataa, buna fi urgooftuu, foonii, midhaanii fi muduraa babal'ina ASF waliin qabata.",
+        panelBadge: "Heektaara 271 · Bara 2021 irraa",
+        panelTitle: "Paarkii warshaa qonnaa walitti qindaa'e sadarkaa addunyaa.",
+        panelText: "Bu'uura ijaarsaa marsaa guddina itti aanu ASF deeggaru.",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Dandeettii Teeknikaa",
+        heading: "Garee oomisha itti fufiinsaan geggeessu.",
+        items: [
+          { title: "Teeknikaa fi Elektiroo-Meekaanikaa", text: "Gareen teeknikaa addaa meeshaalee fi hojii elektiroo-meekaanikaa eegu." },
+          { title: "Hojjettoota Oomishaa", text: "Hojjettoonni Tulu Bolo keessatti adeemsa guyyuu geggeessu." },
+          { title: "Toohannaa Qulqullina", text: "Toohattoonni qulqullinaa fi ogeeyyiin laaboraatorii sadarkaa oomishaa deeggaru." },
+        ],
+      },
+    ],
+  },
+};
+
+const QUALITY_PAGE_SEED = {
+  title: "Quality & Safety",
+  slug: "quality",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "Quality & Safety",
+      heading: "Scientific standards behind every batch.",
+      body: "ASF's production is guided by qualified nutritionists and quality control staff, applying scientific and reliable methods across the feed production process.",
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "How we maintain quality",
+      heading: "Roles dedicated to quality across production.",
+      items: [
+        {
+          title: "Chief Nutritionist",
+          text: "Dr. Tesfu Tadesse, PhD in Animal Nutrition, leads feed formulation with more than 25 years of experience.",
+        },
+        { title: "Quality Control & Lab", text: "Quality controllers and lab technicians support testing and production standards." },
+        { title: "Production Supervision", text: "A production supervisor and technical team oversee day-to-day operations." },
+      ],
+    },
+    {
+      __component: "sections.mission",
+      heading: "Our quality commitment",
+      body: "Every batch reflects ASF's scientific and reliable approach to agro-processing, assessed against real farmer and livestock needs rather than industry defaults.",
+    },
+    {
+      __component: "sections.intro",
+      eyebrow: "Certifications",
+      heading: "Building toward formal certification.",
+      body: "As ASF's quality systems mature, formal certifications will be published here.",
+    },
+  ],
+};
+
+const QUALITY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: {
+    title: "ጥራት እና ደህንነት",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "ጥራት እና ደህንነት",
+        heading: "ከእያንዳንዱ ምርት ጀርባ ያለ ሳይንሳዊ ደረጃ።",
+        body: "የASF ምርት ብቁ በሆኑ የስነ-ምግብ ባለሙያዎች እና የጥራት ቁጥጥር ሰራተኞች ይመራል፣ በመኖ ምርት ሂደት ውስጥ ሳይንሳዊ እና አስተማማኝ ዘዴዎችን በመተግበር።",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "ጥራትን እንዴት እንደምንጠብቅ",
+        heading: "በምርት ውስጥ ለጥራት የተሰጡ ሚናዎች።",
+        items: [
+          { title: "ዋና የስነ-ምግብ ተመራማሪ", text: "ዶ/ር ተስፉ ታደሰ፣ በእንስሳት ስነ-ምግብ ፒኤችዲ፣ ከ25 ዓመታት በላይ ልምድ ያለው የመኖ ቀመር ስራን ይመራሉ።" },
+          { title: "የጥራት ቁጥጥር እና ላብራቶሪ", text: "የጥራት ተቆጣጣሪዎች እና የላብራቶሪ ቴክኒሻኖች ምርመራን እና የምርት ደረጃዎችን ይደግፋሉ።" },
+          { title: "የምርት ቁጥጥር", text: "የምርት ተቆጣጣሪ እና ቴክኒካል ቡድን የቀን ተቀን ስራዎችን ይቆጣጠራሉ።" },
+        ],
+      },
+      {
+        __component: "sections.mission",
+        heading: "የጥራት ቁርጠኝነታችን",
+        body: "እያንዳንዱ ምርት የASF ሳይንሳዊ እና አስተማማኝ የግብርና ማቀነባበሪያ አካሄድን ያንጸባርቃል፣ ከኢንዱስትሪ ነባሪ ደረጃዎች ይልቅ በእውነተኛ የአርሶ አደር እና የእንስሳት ፍላጎቶች ላይ ተመዝኖ።",
+      },
+      {
+        __component: "sections.intro",
+        eyebrow: "ሰርተፊኬቶች",
+        heading: "መደበኛ ሰርተፊኬት ወደ ማግኘት እየገሰገስን ነው።",
+        body: "የASF የጥራት ስርዓቶች እየበሰሉ ሲሄዱ፣ መደበኛ ሰርተፊኬቶች እዚህ ይታተማሉ።",
+      },
+    ],
+  },
+  om: {
+    title: "Qulqullina fi Nageenya",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "Qulqullina fi Nageenya",
+        heading: "Sadarkaa saayinsawaa duuba oomisha hunda jiru.",
+        body: "Oomishni ASF ogeeyyii nyaataa fi hojjettoota toohannaa qulqullinaa ogummaa qabaniin qajeelfamaa, adeemsa oomisha nyaataa keessatti mala saayinsawaa fi amanamaa fayyadamuun.",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Akkaataa qulqullina itti eegnu",
+        heading: "Gahee qulqullinaaf kennaman oomisha keessatti.",
+        items: [
+          { title: "Ogeessa Nyaataa Olaanaa", text: "Dr. Tesfu Tadesse, PhD Nyaata Beeladaa, waggaa 25 ol muuxannoo formulaa nyaataa geggeessu." },
+          { title: "Toohannaa Qulqullinaa fi Laaboraatorii", text: "Toohattoonni qulqullinaa fi ogeeyyiin laaboraatorii qorannoo fi sadarkaa oomishaa deeggaru." },
+          { title: "To'annaa Oomishaa", text: "To'ataan oomishaa fi gareen teeknikaa hojii guyyuu to'atu." },
+        ],
+      },
+      {
+        __component: "sections.mission",
+        heading: "Kakuu Qulqullina Keenya",
+        body: "Oomishni hundi mala adeemsa qonnaa saayinsawaa fi amanamaa ASF kan agarsiisu, fedhii qonnaan bultootaa fi beeladaa dhugaa irratti madaalame malee sadarkaa indastirii dhaabaa irratti hin hundoofne.",
+      },
+      {
+        __component: "sections.intro",
+        eyebrow: "Ragaawwan",
+        heading: "Ragaa dhugaa gara argachuu deemaa jira.",
+        body: "Sirni qulqullina ASF guddachaa yommuu deemu, ragaawwan dhugaa asitti maxxanfamu.",
+      },
+    ],
+  },
+};
+
+const SUSTAINABILITY_PAGE_SEED = {
+  title: "Sustainability",
+  slug: "sustainability",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "Sustainability",
+      heading: "Growth that supports farmers, workers and the environment.",
+      body: "ASF's expansion is built around job creation, environmental protection and support for Ethiopia's livestock farmers.",
+    },
+    {
+      __component: "sections.stats-band",
+      eyebrow: "Local employment",
+      heading: "Jobs created, with real gender representation.",
+      dark: false,
+      stats: [
+        { value: "51", label: "Direct jobs at Tulu Bolo (36 men, 15 women)" },
+        { value: "465", label: "People engaged across the value chain (305 men, 160 women)" },
+        { value: "300", label: "Livestock farmers & businesses reached through distribution" },
+      ],
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Environmental responsibility",
+      heading: "Protecting the land ASF operates on.",
+      items: [
+        {
+          title: "Tree planting",
+          text: "ASF has carried out tree-planting activities at its factory sites as part of environmental protection efforts.",
+        },
+        {
+          title: "Waste water treatment",
+          text: "The Bulbula Integrated Agro Industry Park includes a dedicated waste water treatment plant.",
+        },
+        { title: "Green infrastructure", text: "Bulbula's park design includes green areas alongside its production facilities." },
+      ],
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Supporting the value chain",
+      heading: "Reaching farmers through a wide distribution network.",
+      items: [
+        { title: "Farmers' unions & cooperatives", text: "Products reach organized farmer groups through direct distribution." },
+        { title: "Wholesalers & retailers", text: "A wholesale and retail network extends reach to individual and commercial farmers." },
+        { title: "Direct to farmers", text: "ASF also supplies farmers and households directly." },
+      ],
+    },
+  ],
+};
+
+const SUSTAINABILITY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: {
+    title: "ዘላቂነት",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "ዘላቂነት",
+        heading: "አርሶ አደሮችን፣ ሰራተኞችን እና አካባቢን የሚደግፍ እድገት።",
+        body: "የASF ማስፋፊያ በስራ እድል ፈጠራ፣ በአካባቢ ጥበቃ እና ለኢትዮጵያ የእንስሳት አርሶ አደሮች ድጋፍ ላይ የተመሰረተ ነው።",
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "የአካባቢ ስራ ስምሪት",
+        heading: "የተፈጠሩ የስራ እድሎች፣ በእውነተኛ የፆታ ውክልና።",
+        dark: false,
+        stats: [
+          { value: "51", label: "በቱሉ ቦሎ ቀጥተኛ የስራ እድሎች (36 ወንዶች፣ 15 ሴቶች)" },
+          { value: "465", label: "በእሴት ሰንሰለቱ የተሳተፉ ሰዎች (305 ወንዶች፣ 160 ሴቶች)" },
+          { value: "300", label: "በስርጭት የተደረሱ የእንስሳት አርሶ አደሮች እና ንግዶች" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "የአካባቢ ኃላፊነት",
+        heading: "ASF የሚሰራበትን መሬት መጠበቅ።",
+        items: [
+          { title: "የዛፍ ተከላ", text: "ASF በአካባቢ ጥበቃ ጥረቶች አካል በፋብሪካ ቦታዎቹ የዛፍ ተከላ ስራዎችን አካሂዷል።" },
+          { title: "የቆሻሻ ውሃ ማጣሪያ", text: "ቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ የተለየ የቆሻሻ ውሃ ማጣሪያ ተክል ያካትታል።" },
+          { title: "አረንጓዴ መሠረተ ልማት", text: "የቡልቡላ ፓርክ ንድፍ ከምርት ተቋማቱ ጎን ለጎን አረንጓዴ ቦታዎችን ያካትታል።" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "የእሴት ሰንሰለቱን መደገፍ",
+        heading: "በሰፊ የስርጭት መረብ አርሶ አደሮችን መድረስ።",
+        items: [
+          { title: "የአርሶ አደር ማህበራት እና ህብረት ስራ ማህበራት", text: "ምርቶች በቀጥታ ስርጭት የተደራጁ የአርሶ አደር ቡድኖችን ይደርሳሉ።" },
+          { title: "የጅምላ እና ችርቻሮ ነጋዴዎች", text: "የጅምላ እና ችርቻሮ መረብ ለግል እና ለንግድ አርሶ አደሮች ተደራሽነትን ያሰፋል።" },
+          { title: "በቀጥታ ለአርሶ አደሮች", text: "ASF እንዲሁም በቀጥታ ለአርሶ አደሮች እና ለቤተሰቦች ያቀርባል።" },
+        ],
+      },
+    ],
+  },
+  om: {
+    title: "Itti Fufiinsa",
+    sections: [
+      {
+        __component: "sections.intro",
+        eyebrow: "Itti Fufiinsa",
+        heading: "Guddina qonnaan bultoota, hojjettootaa fi naannoo deeggaru.",
+        body: "Babal'inni ASF hojii uumuu, eegumsa naannoo fi deeggarsa qonnaan bultoota beeladaa Itoophiyaa irratti ijaarame.",
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "Hojii Naannoo",
+        heading: "Hojiiwwan uumaman, bakka bu'iinsa saala dhugaa waliin.",
+        dark: false,
+        stats: [
+          { value: "51", label: "Hojii kallattii Tulu Bolo (dhiira 36, dubartoota 15)" },
+          { value: "465", label: "Namoota sarara gatii keessatti hirmaatan (dhiira 305, dubartoota 160)" },
+          { value: "300", label: "Qonnaan bultoota beeladaa fi daldaltoota raabsaadhaan ga'aman" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Itti Gaafatamummaa Naannoo",
+        heading: "Lafa ASF irratti hojjetu eeguu.",
+        items: [
+          { title: "Mukaa Dhaabuu", text: "ASF hojii mukaa dhaabuu bakkoota warshaa isaa keessatti akka gahee eegumsa naannoo taasiseera." },
+          { title: "Qulqulleessituu Bishaan Xurii", text: "Paarkiin Warshaa Qonnaa Walitti Qindaa'e Bulbula dhaabbata qulqulleessituu bishaan xurii addaa qaba." },
+          { title: "Bu'uura Magariisaa", text: "Naqannoon Paarkii Bulbula bakkoota magariisaa dhaabbilee oomishaa waliin qaba." },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Sarara Gatii Deeggaruu",
+        heading: "Qonnaan bultoota network raabsaa bal'aan ga'uu.",
+        items: [
+          { title: "Waldaalee fi Kooperetiivota Qonnaan Bultootaa", text: "Oomishni raabsaa kallattiin garee qonnaan bultoota ijaaraman ga'a." },
+          { title: "Daldaltoota Gurguddaa fi Gurgurtaa", text: "Networkiin daldalaa gurguddaa fi gurgurtaa qonnaan bultoota dhuunfaa fi daldalaa ga'uu balbaleessa." },
+          { title: "Kallattiin Qonnaan Bultootaaf", text: "ASF kallattiinis qonnaan bultootaa fi maatiiwwaniif dhiyeessa." },
+        ],
+      },
+    ],
+  },
+};
+
 const PRODUCTS_SEED: {
   name: string;
   slug: string;
@@ -1046,6 +1478,9 @@ async function seedPages(strapi: Core.Strapi) {
   const pages = [
     { seed: HOME_PAGE_SEED, localized: HOME_PAGE_LOCALIZED },
     { seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED },
+    { seed: FACILITIES_PAGE_SEED, localized: FACILITIES_PAGE_LOCALIZED },
+    { seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
+    { seed: SUSTAINABILITY_PAGE_SEED, localized: SUSTAINABILITY_PAGE_LOCALIZED },
   ];
 
   for (const { seed, localized } of pages) {
@@ -1064,10 +1499,126 @@ async function seedPages(strapi: Core.Strapi) {
   }
 }
 
+interface GalleryAlbumSeed {
+  folder: string;
+  slug: string;
+  category: "Factory" | "Production" | "Farming" | "Products" | "Team" | "Events" | "Projects";
+  title: string;
+  description: string;
+}
+
+const GALLERY_ALBUMS_SEED: GalleryAlbumSeed[] = [
+  {
+    folder: "factory",
+    slug: "factory-site",
+    category: "Factory",
+    title: "Factory Site",
+    description: "Photos from ASF's Tulu Bolo animal feed factory.",
+  },
+  {
+    folder: "team",
+    slug: "management-team",
+    category: "Team",
+    title: "Management Team",
+    description: "ASF's management team.",
+  },
+  {
+    folder: "bulbula-park",
+    slug: "bulbula-integrated-agro-industry-park",
+    category: "Projects",
+    title: "Bulbula Integrated Agro Industry Park",
+    description: "ASF's expansion site at the Bulbula Integrated Agro Industry Park.",
+  },
+];
+
+const GALLERY_ALBUMS_LOCALIZED: Record<string, { title: string; description: string }[]> = {
+  am: [
+    { title: "የፋብሪካ ቦታ", description: "ከASF የቱሉ ቦሎ የእንስሳት መኖ ፋብሪካ የተወሰዱ ፎቶዎች።" },
+    { title: "የስራ አመራር ቡድን", description: "የASF የስራ አመራር ቡድን።" },
+    { title: "ቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ", description: "የASF የማስፋፊያ ቦታ በቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ።" },
+  ],
+  om: [
+    { title: "Bakka Warshaa", description: "Suuraalee Warshaa Nyaata Beeladaa Tulu Bolo ASF irraa." },
+    { title: "Garee Hoggansaa", description: "Garee Hoggansaa ASF." },
+    { title: "Paarkii Warshaa Qonnaa Walitti Qindaa'e Bulbula", description: "Bakka babal'ina ASF Paarkii Warshaa Qonnaa Walitti Qindaa'e Bulbula keessatti." },
+  ],
+};
+
+async function seedGalleryAlbums(strapi: Core.Strapi) {
+  const existing = await strapi.documents("api::gallery-album.gallery-album").findFirst();
+  if (existing) return;
+
+  const assetsRoot = path.join(strapi.dirs.app.root, "seed-assets", "gallery");
+  if (!fs.existsSync(assetsRoot)) return;
+
+  for (let i = 0; i < GALLERY_ALBUMS_SEED.length; i++) {
+    const album = GALLERY_ALBUMS_SEED[i];
+    const albumDir = path.join(assetsRoot, album.folder);
+    if (!fs.existsSync(albumDir)) continue;
+
+    const filenames = fs.readdirSync(albumDir).filter((f) => /\.(jpg|jpeg|png)$/i.test(f));
+    const uploaded = await Promise.all(
+      filenames.map((filename) => {
+        const filepath = path.join(albumDir, filename);
+        return strapi.plugin("upload").service("upload").upload({
+          data: {},
+          files: {
+            filepath,
+            originalFilename: filename,
+            mimetype: filename.toLowerCase().endsWith(".png") ? "image/png" : "image/jpeg",
+            size: fs.statSync(filepath).size,
+          },
+        });
+      })
+    );
+    const imageIds = uploaded.flat().map((file: any) => file.id);
+
+    const created = await strapi.documents("api::gallery-album.gallery-album").create({
+      data: {
+        title: album.title,
+        slug: album.slug,
+        category: album.category,
+        description: album.description,
+        images: imageIds,
+      } as any,
+      status: "published",
+    });
+
+    for (const locale of LOCALES) {
+      const localized = GALLERY_ALBUMS_LOCALIZED[locale.code]?.[i];
+      if (!localized) continue;
+      await strapi.documents("api::gallery-album.gallery-album").update({
+        documentId: created.documentId,
+        locale: locale.code,
+        data: {
+          title: localized.title,
+          slug: album.slug,
+          category: album.category,
+          description: localized.description,
+          images: imageIds,
+        } as any,
+        status: "published",
+      });
+    }
+  }
+}
+
 // Exported for the one-off content-update script (scripts/apply-content-updates.js):
 // the bootstrap seed functions below only create content on first run, so updating
 // already-seeded environments needs direct access to this data.
-export { SITE_SETTINGS_SEED, SITE_SETTINGS_LOCALIZED, ABOUT_PAGE_SEED, ABOUT_PAGE_LOCALIZED, LOCALES };
+export {
+  SITE_SETTINGS_SEED,
+  SITE_SETTINGS_LOCALIZED,
+  ABOUT_PAGE_SEED,
+  ABOUT_PAGE_LOCALIZED,
+  FACILITIES_PAGE_SEED,
+  FACILITIES_PAGE_LOCALIZED,
+  QUALITY_PAGE_SEED,
+  QUALITY_PAGE_LOCALIZED,
+  SUSTAINABILITY_PAGE_SEED,
+  SUSTAINABILITY_PAGE_LOCALIZED,
+  LOCALES,
+};
 
 export default {
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
@@ -1077,5 +1628,6 @@ export default {
     await seedProducts(strapi);
     await seedArticles(strapi);
     await seedPages(strapi);
+    await seedGalleryAlbums(strapi);
   },
 };

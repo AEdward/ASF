@@ -79,5 +79,26 @@
   "about": {
     "metaTitle": "Waa'ee Keenya",
     "metaDescription": "Waa'ee ASF Agro Industry — seenaa keenya, mul'ata keenya fi seera keenya."
+  },
+  "facilities": {
+    "metaTitle": "Dhaabbilee",
+    "metaDescription": "Warshaa fi bakkoota babal'ina ASF Agro Industry."
+  },
+  "quality": {
+    "metaTitle": "Qulqullina fi Nageenya",
+    "metaDescription": "Akkaataa ASF Agro Industry qulqullina fi nageenya oomisha keessatti eegu."
+  },
+  "sustainability": {
+    "metaTitle": "Itti Fufiinsa",
+    "metaDescription": "Mala ASF Agro Industry hojii, naannoo fi deeggarsa qonnaan bultootaaf qabu."
+  },
+  "gallery": {
+    "metaTitle": "Suuraalee",
+    "metaDescription": "Suuraalee warshaa, garee fi bakka babal'ina ASF Agro Industry irraa.",
+    "eyebrow": "Suuraalee",
+    "heading": "Keessa ASF ilaali.",
+    "subtitle": "Suuraalee warshaa, garee fi piroojeektii babal'ina keenya irraa, Strapi Dashboard irraa bulfamu.",
+    "emptyTitle": "Amma suuraan hin jiru",
+    "emptyBody": "Albamiin suuraa CMS irratti dabalamuun booda asitti mul'ata."
   }
 }

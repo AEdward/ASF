@@ -1,9 +1,11 @@
 import {
   Article,
   DEFAULT_ARTICLES,
+  DEFAULT_GALLERY_ALBUMS,
   DEFAULT_JOB_VACANCIES,
   DEFAULT_PRODUCTS,
   DEFAULT_SITE_SETTINGS,
+  GalleryAlbum,
   JobVacancy,
   Product,
   SiteSettings,
@@ -78,6 +80,26 @@ function mapJobVacancy(entry: StrapiJobVacancyEntry): JobVacancy {
     description: entry.description ?? undefined,
     requirements: entry.requirements ?? [],
     postedAt: entry.postedAt ?? undefined,
+  };
+}
+
+interface StrapiGalleryAlbumEntry {
+  id: number;
+  title: string;
+  slug: string;
+  category?: string | null;
+  description?: string | null;
+  images?: { url?: string }[] | null;
+}
+
+function mapGalleryAlbum(entry: StrapiGalleryAlbumEntry): GalleryAlbum {
+  return {
+    id: entry.id,
+    title: entry.title,
+    slug: entry.slug,
+    category: entry.category ?? undefined,
+    description: entry.description ?? undefined,
+    imageUrls: (entry.images ?? []).map((image) => mediaUrl(image)).filter((url): url is string => !!url),
   };
 }
 
@@ -268,4 +290,12 @@ export async function getJobVacancy(slug: string, locale: Locale = "en"): Promis
   );
   const entry = json?.data?.[0];
   return entry ? mapJobVacancy(entry) : null;
+}
+
+export async function getGalleryAlbums(locale: Locale = "en"): Promise<GalleryAlbum[]> {
+  const json = await strapiFetch<{ data: StrapiGalleryAlbumEntry[] }>(
+    `/api/gallery-albums?sort=id:asc&populate=images&locale=${locale}`
+  );
+  if (!json?.data) return DEFAULT_GALLERY_ALBUMS;
+  return json.data.map(mapGalleryAlbum);
 }

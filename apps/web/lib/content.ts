@@ -33,6 +33,15 @@ export interface Article {
   coverImageUrl?: string;
 }
 
+export interface GalleryAlbum {
+  id: number;
+  title: string;
+  slug: string;
+  category?: string;
+  description?: string;
+  imageUrls: string[];
+}
+
 export interface JobVacancy {
   id: number;
   title: string;
@@ -71,6 +80,10 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   footerLinks: [
     { label: "About", href: "/about" },
     { label: "Products", href: "/products" },
+    { label: "Facilities", href: "/facilities" },
+    { label: "Quality & Safety", href: "/quality" },
+    { label: "Sustainability", href: "/sustainability" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: "/careers" },
@@ -171,3 +184,6 @@ export const DEFAULT_ARTICLES: Article[] = [
 
 // No open positions are seeded — real vacancies are added by ASF staff through the CMS.
 export const DEFAULT_JOB_VACANCIES: JobVacancy[] = [];
+
+// Falls back empty only if Strapi is unreachable — the real albums are seeded into the CMS.
+export const DEFAULT_GALLERY_ALBUMS: GalleryAlbum[] = [];

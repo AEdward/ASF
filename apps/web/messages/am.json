@@ -79,5 +79,26 @@
   "about": {
     "metaTitle": "ስለ እኛ",
     "metaDescription": "ስለ ASF አግሮ ኢንዱስትሪ — ታሪካችን፣ ዕይታችን እና መርሆዎቻችን።"
+  },
+  "facilities": {
+    "metaTitle": "ተቋማት",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ ፋብሪካ እና የማስፋፊያ ቦታዎች።"
+  },
+  "quality": {
+    "metaTitle": "ጥራት እና ደህንነት",
+    "metaDescription": "ASF አግሮ ኢንዱስትሪ በምርት ውስጥ ጥራትን እና ደህንነትን እንዴት እንደሚጠብቅ።"
+  },
+  "sustainability": {
+    "metaTitle": "ዘላቂነት",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ ለስራ እድል፣ ለአካባቢ እና ለአርሶ አደር ድጋፍ ያለው አካሄድ።"
+  },
+  "gallery": {
+    "metaTitle": "ማዕከለ ስዕላት",
+    "metaDescription": "ከASF አግሮ ኢንዱስትሪ ፋብሪካ፣ ቡድን እና የማስፋፊያ ቦታ የተወሰዱ ፎቶዎች።",
+    "eyebrow": "ማዕከለ ስዕላት",
+    "heading": "የASF ውስጣዊ እይታ።",
+    "subtitle": "ከፋብሪካችን፣ ቡድናችን እና የማስፋፊያ ፕሮጀክታችን የተወሰዱ ፎቶዎች፣ ከStrapi ዳሽቦርድ ይተዳደራሉ።",
+    "emptyTitle": "እስካሁን ምንም ፎቶ የለም",
+    "emptyBody": "የፎቶ አልበሞች በCMS በኩል ከተጨመሩ በኋላ እዚህ ይታያሉ።"
   }
 }
