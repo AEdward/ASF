@@ -39,7 +39,7 @@
     "metaDescription": "Oduu, hubannoo qonnaa fi haaromsa babal'ina ASF Agro Industry irraa.",
     "eyebrow": "Gaazexaa ASF",
     "heading": "Hubannoo Karaa Qonnaa Keenya.",
-    "subtitle": "Oduu dhaabbataa, hubannoo qonnaa, barnoota nyaataa fi haaromsa babal'ina, kan Strapi dashboard irraa to'atamu.",
+    "subtitle": "Oduu dhaabbataa, hubannoo qonnaa, barnoota nyaataa fi haaromsa babal'ina.",
     "category": {
       "Feed & Nutrition": "Nyaataa fi Nyaata Madaalawaa",
       "Expansion": "Babal'ina",
@@ -52,7 +52,7 @@
     "metaDescription": "Carraa hojii yeroo ammaa ASF Agro Industry keessa jiru.",
     "eyebrow": "Carraa Hojii",
     "heading": "Waltajjii Warshaa Qonnaa ASF nu waliin ijaari.",
-    "subtitle": "Carraan hojii yeroo argaman asitti maxxanfamu, Strapi Dashboard irraa bulfamu.",
+    "subtitle": "Carraan hojii yeroo argaman asitti maxxanfamu.",
     "emptyTitle": "Yeroo ammaa carraan hojii hin jiru",
     "emptyBody": "Yeroo dhiyootti deebi'ii ilaali, ykn of-ibsuu barbaadde kallattiin nu qunnami.",
     "postedLabel": "Maxxanfame",
@@ -68,7 +68,7 @@
     "metaDescription": "Dhaabbilee ASF Agro Industry waliin hojjetu.",
     "eyebrow": "Michoota",
     "heading": "Sarara gatii keessatti waliin hojjechuu.",
-    "subtitle": "Dhaabbilee michoota keenya, Strapi Dashboard irraa bulfamu.",
+    "subtitle": "Dhaabbilee michoota keenya.",
     "emptyTitle": "Michootni dhiyootti dhufu",
     "emptyBody": "Fuulli kun akkuma dabalamaniin dhaabbilee michoota keenya ni tarreessa.",
     "visitWebsite": "Marsariitii daawwadhu"
@@ -122,7 +122,7 @@
     "metaDescription": "Suuraalee warshaa, garee fi bakka babal'ina ASF Agro Industry irraa.",
     "eyebrow": "Suuraalee",
     "heading": "Keessa ASF ilaali.",
-    "subtitle": "Suuraalee warshaa, garee fi piroojeektii babal'ina keenya irraa, Strapi Dashboard irraa bulfamu.",
+    "subtitle": "Suuraalee warshaa, garee fi piroojeektii babal'ina keenya irraa.",
     "emptyTitle": "Amma suuraan hin jiru",
     "emptyBody": "Albamiin suuraa CMS irratti dabalamuun booda asitti mul'ata."
   }

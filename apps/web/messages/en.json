@@ -39,7 +39,7 @@
     "metaDescription": "News, farming insights and expansion updates from ASF Agro Industry.",
     "eyebrow": "ASF Journal",
     "heading": "Insights from our agricultural journey.",
-    "subtitle": "Company news, farming insights, feed education and expansion updates, managed from the Strapi dashboard.",
+    "subtitle": "Company news, farming insights, feed education and expansion updates.",
     "category": {
       "Feed & Nutrition": "Feed & Nutrition",
       "Expansion": "Expansion",
@@ -52,7 +52,7 @@
     "metaDescription": "Current job openings at ASF Agro Industry.",
     "eyebrow": "Careers",
     "heading": "Build ASF's agro-industry platform with us.",
-    "subtitle": "Openings are posted here as they become available, managed from the Strapi dashboard.",
+    "subtitle": "Openings are posted here as they become available.",
     "emptyTitle": "No open positions right now",
     "emptyBody": "Check back soon, or reach out directly if you'd like to introduce yourself.",
     "postedLabel": "Posted",
@@ -68,7 +68,7 @@
     "metaDescription": "Organizations ASF Agro Industry works with.",
     "eyebrow": "Partners",
     "heading": "Working together across the value chain.",
-    "subtitle": "Our partner organizations, managed from the Strapi dashboard.",
+    "subtitle": "Our partner organizations.",
     "emptyTitle": "Partners coming soon",
     "emptyBody": "This page will list our partner organizations as they're added.",
     "visitWebsite": "Visit website"
@@ -122,7 +122,7 @@
     "metaDescription": "Photos from ASF Agro Industry's factory, team and expansion site.",
     "eyebrow": "Gallery",
     "heading": "A look inside ASF.",
-    "subtitle": "Photos from our factory, team and expansion project, managed from the Strapi dashboard.",
+    "subtitle": "Photos from our factory, team and expansion project.",
     "emptyTitle": "No photos yet",
     "emptyBody": "Photo albums will appear here once added through the CMS."
   }
