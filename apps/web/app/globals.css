@@ -53,24 +53,6 @@ body {
   animation: marquee 30s linear infinite;
 }
 
-.spin-3d-stage {
-  perspective: 1600px;
-}
-
-@keyframes logo-spin-3d {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-.animate-logo-spin {
-  animation: logo-spin-3d 160s linear infinite;
-  transform-style: preserve-3d;
-}
-
 @keyframes logo-bounce {
   0%,
   100% {
