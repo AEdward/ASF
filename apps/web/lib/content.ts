@@ -177,21 +177,24 @@ export const DEFAULT_ARTICLES: Article[] = [
     id: 1,
     title: "Why quality feed matters across the livestock value chain",
     slug: "why-quality-feed-matters",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "ASF's quality controllers and lab technicians support production standards at every stage, from raw material sourcing to the finished feed reaching Ethiopia's livestock farmers.",
     category: "Feed & Nutrition",
   },
   {
     id: 2,
     title: "ASF's next chapter at Bulbula Integrated Agro Industry Park",
     slug: "next-chapter-at-bulbula",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "In February 2023, ASF signed an investment agreement for a 271-hectare site at the Bulbula Integrated Agro Industry Park, 160km south of Addis Ababa, laying the groundwork for the company's next phase of growth.",
     category: "Expansion",
   },
   {
     id: 3,
     title: "Connecting farmers, markets and agro-processing",
     slug: "connecting-farmers-markets-agro-processing",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "ASF's animal feed reaches livestock farmers and businesses through a distribution network of farmers' unions, cooperatives, wholesalers, retailers and direct sales.",
     category: "Agriculture",
   },
 ];

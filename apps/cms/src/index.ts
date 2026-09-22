@@ -1449,19 +1449,22 @@ const ARTICLES_SEED: {
   {
     title: "Why quality feed matters across the livestock value chain",
     slug: "why-quality-feed-matters",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "ASF's quality controllers and lab technicians support production standards at every stage, from raw material sourcing to the finished feed reaching Ethiopia's livestock farmers.",
     category: "Feed & Nutrition",
   },
   {
     title: "ASF's next chapter at Bulbula Integrated Agro Industry Park",
     slug: "next-chapter-at-bulbula",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "In February 2023, ASF signed an investment agreement for a 271-hectare site at the Bulbula Integrated Agro Industry Park, 160km south of Addis Ababa, laying the groundwork for the company's next phase of growth.",
     category: "Expansion",
   },
   {
     title: "Connecting farmers, markets and agro-processing",
     slug: "connecting-farmers-markets-agro-processing",
-    excerpt: "Replace these starter cards with live posts from Strapi CMS.",
+    excerpt:
+      "ASF's animal feed reaches livestock farmers and businesses through a distribution network of farmers' unions, cooperatives, wholesalers, retailers and direct sales.",
     category: "Agriculture",
   },
 ];
@@ -1471,29 +1474,35 @@ const ARTICLES_LOCALIZED: Record<string, { title: string; excerpt: string }[]> =
   am: [
     {
       title: "ጥራት ያለው መኖ በእንስሳት እሴት ሰንሰለት ውስጥ ለምን አስፈላጊ ነው",
-      excerpt: "እነዚህን የመነሻ ካርዶች ከStrapi CMS በቀጥታ ልጥፎች ይተኩ።",
+      excerpt:
+        "የASF የጥራት ተቆጣጣሪዎችና የላብራቶሪ ቴክኒሻኖች ከጥሬ ዕቃ አሰባሰብ እስከ የተጠናቀቀው መኖ ለኢትዮጵያ የእንስሳት አርሶ አደሮች እስኪደርስ ድረስ በሁሉም የምርት ደረጃ ላይ ደረጆችን ይደግፋሉ።",
     },
     {
       title: "የASF ቀጣይ ምዕራፍ በቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ",
-      excerpt: "እነዚህን የመነሻ ካርዶች ከStrapi CMS በቀጥታ ልጥፎች ይተኩ።",
+      excerpt:
+        "በየካቲት 2023 ASF ከቡልቡላ የተቀናጀ አግሮ ኢንዱስትሪ ፓርክ ጋር በ271 ሄክታር ቦታ ላይ የኢንቨስትመንት ስምምነት ፈርሟል፣ ከአዲስ አበባ 160 ኪ.ሜ ደቡብ የሚገኝ፣ ለኩባንያው ቀጣይ የእድገት ምዕራፍ መሠረት በመጣል።",
     },
     {
       title: "አርሶ አደሮችን፣ ገበያዎችን እና አግሮ ማቀነባበርን ማገናኘት",
-      excerpt: "እነዚህን የመነሻ ካርዶች ከStrapi CMS በቀጥታ ልጥፎች ይተኩ።",
+      excerpt:
+        "የASF የእንስሳት መኖ ወደ እንስሳት አርሶ አደሮችና ድርጅቶች የሚደርሰው በአርሶ አደር ማህበራት፣ ኅብረት ስራ ማህበራት፣ አከፋፋዮች እና ችርቻሮ ሻጮች የስርጭት መረብ እንዲሁም በቀጥታ ሽያጭ በኩል ነው።",
     },
   ],
   om: [
     {
       title: "Nyaatni Qulqullina Qabu Sarara Gatii Beeladaa Keessatti Maaliif Barbaachisaa Ta'e",
-      excerpt: "Kaardiiwwan jalqabaa kana barreeffamoota jiraa Strapi CMS irraa bakka buusi.",
+      excerpt:
+        "Toʼannoonni qulqullinaa fi ogeeyyiin laaboraatorii ASF meeshaa jalqabaa walitti qabuu irraa hanga nyaata xumurame qonnaan bultoota Itoophiyaa gaʼutti, sadarkaa hunda irratti sadarkaa oomishaa deeggaru.",
     },
     {
       title: "Boqonnaa Itti Aanu ASF Paarkii Warshaalee Qonnaa Walitti Qindaa'e Bulbulaa keessatti",
-      excerpt: "Kaardiiwwan jalqabaa kana barreeffamoota jiraa Strapi CMS irraa bakka buusi.",
+      excerpt:
+        "Guraandhala 2023, ASF Paarkii Warshaalee Qonnaa Walitti Qindaaʼe Bulbulaa waliin walii galtee investimentii lafa heektaara 271 irratti mallatteesse, kiiloomeetira 160 kibba Finfinnee, kanaanis boqonnaa guddina itti aanuuf hundeeffama kaaʼe.",
     },
     {
       title: "Qonnaan Bultoota, Gabaa fi Adeemsa Qonnaa Walitti Fidu",
-      excerpt: "Kaardiiwwan jalqabaa kana barreeffamoota jiraa Strapi CMS irraa bakka buusi.",
+      excerpt:
+        "Nyaanni beelladaa ASF gara qonnaan bultootaa fi daldaltoota beelladaa kan gaʼu, sarara raabsaa waldaalee qonnaan bultootaa, kooperatiiva, daldaltoota gurguddaa fi gurgurtaa akkasumas gurgurtaa kallattii keessaan.",
     },
   ],
 };
@@ -1701,6 +1710,8 @@ export {
   SUSTAINABILITY_PAGE_LOCALIZED,
   CROP_RESIDUE_PAGE_SEED,
   CROP_RESIDUE_PAGE_LOCALIZED,
+  ARTICLES_SEED,
+  ARTICLES_LOCALIZED,
   LOCALES,
 };
 

@@ -11,10 +11,11 @@
 // used to start the app (DATABASE_*, etc):
 //   node scripts/apply-content-updates.js
 //
-// Safe to re-run: it only overwrites the "footerLinks" field on Site Setting and
-// the "sections" field on pages already listed below, and only creates a page
-// when no page with that slug exists yet — it never touches anything you've
-// edited by hand elsewhere (phone numbers, emails, other page content, etc).
+// Safe to re-run: it only overwrites the "footerLinks"/"navLinks" fields on Site
+// Setting, the "sections" field on pages listed below, and the "excerpt" field on
+// articles listed below, and only creates a page when no page with that slug
+// exists yet — it never touches anything you've edited by hand elsewhere (phone
+// numbers, emails, other page content, article titles/content, etc).
 // The Gallery Album photos are NOT handled here — they're seeded automatically
 // by the normal bootstrap on first boot, since that collection starts empty.
 
@@ -33,6 +34,8 @@ const {
   SUSTAINABILITY_PAGE_LOCALIZED,
   CROP_RESIDUE_PAGE_SEED,
   CROP_RESIDUE_PAGE_LOCALIZED,
+  ARTICLES_SEED,
+  ARTICLES_LOCALIZED,
   LOCALES,
 } = require("../dist/src/index.js");
 
@@ -117,6 +120,29 @@ async function main() {
       });
     }
     console.log(`Created "${slug}" page (en/am/om).`);
+  }
+
+  for (let i = 0; i < ARTICLES_SEED.length; i++) {
+    const { slug, excerpt } = ARTICLES_SEED[i];
+    const article = await strapi.documents("api::article.article").findFirst({ filters: { slug } });
+    if (!article) {
+      console.log(`No "${slug}" article found — skipped.`);
+      continue;
+    }
+    await strapi.documents("api::article.article").update({
+      documentId: article.documentId,
+      data: { excerpt },
+      status: "published",
+    });
+    for (const locale of LOCALES) {
+      await strapi.documents("api::article.article").update({
+        documentId: article.documentId,
+        locale: locale.code,
+        data: { excerpt: ARTICLES_LOCALIZED[locale.code][i].excerpt },
+        status: "published",
+      });
+    }
+    console.log(`Updated "${slug}" article excerpt (en/am/om).`);
   }
 
   process.exit(0);
