@@ -54,16 +54,19 @@ async function main() {
   if (siteSetting) {
     await strapi.documents("api::site-setting.site-setting").update({
       documentId: siteSetting.documentId,
-      data: { footerLinks: SITE_SETTINGS_SEED.footerLinks },
+      data: { footerLinks: SITE_SETTINGS_SEED.footerLinks, navLinks: SITE_SETTINGS_SEED.navLinks },
     });
     for (const locale of LOCALES) {
       await strapi.documents("api::site-setting.site-setting").update({
         documentId: siteSetting.documentId,
         locale: locale.code,
-        data: { footerLinks: SITE_SETTINGS_LOCALIZED[locale.code].footerLinks },
+        data: {
+          footerLinks: SITE_SETTINGS_LOCALIZED[locale.code].footerLinks,
+          navLinks: SITE_SETTINGS_LOCALIZED[locale.code].navLinks,
+        },
       });
     }
-    console.log("Updated Site Setting footerLinks (en/am/om).");
+    console.log("Updated Site Setting footerLinks + navLinks (en/am/om).");
   } else {
     console.log("No Site Setting document found — skipped.");
   }

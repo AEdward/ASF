@@ -8,7 +8,7 @@ export interface SiteSettings {
   headOffice: string;
   factoryAddress: string;
   expansionAddress: string;
-  navLinks: { label: string; href: string }[];
+  navLinks: { label: string; href: string; children?: { label: string; href: string }[] }[];
   headerCtaLabel: string;
   headerCtaHref: string;
   footerLinks: { label: string; href: string }[];
@@ -71,20 +71,23 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     "Expansion site (in progress): Bulbula Integrated Agro Industry Park, 160km south of Addis Ababa, near Zeway City on the highway to Hawassa.",
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    {
+      label: "About",
+      href: "/about",
+      children: [
+        { label: "Facilities", href: "/facilities" },
+        { label: "Quality & Safety", href: "/quality" },
+        { label: "Sustainability", href: "/sustainability" },
+      ],
+    },
     { label: "Products", href: "/products" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Blog", href: "/blog" },
   ],
   headerCtaLabel: "Talk to us →",
   headerCtaHref: "/contact",
   footerLinks: [
     { label: "About", href: "/about" },
-    { label: "Products", href: "/products" },
-    { label: "Facilities", href: "/facilities" },
-    { label: "Quality & Safety", href: "/quality" },
-    { label: "Sustainability", href: "/sustainability" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: "/careers" },
   ],
