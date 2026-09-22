@@ -53,34 +53,29 @@ body {
   animation: marquee 30s linear infinite;
 }
 
-.spin-3d-stage {
-  perspective: 1400px;
-}
-
-@keyframes spin-3d-y {
+@keyframes logo-spin-flat {
   from {
-    transform: rotateY(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotateY(360deg);
+    transform: rotate(360deg);
   }
 }
 
-@keyframes spin-3d-x {
-  from {
-    transform: rotateX(0deg);
+.animate-logo-spin {
+  animation: logo-spin-flat 120s linear infinite;
+}
+
+@keyframes logo-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotateX(360deg);
+  50% {
+    transform: translateY(-14px);
   }
 }
 
-.animate-spin-3d-y {
-  animation: spin-3d-y 26s linear infinite;
-  transform-style: preserve-3d;
-}
-
-.animate-spin-3d-x {
-  animation: spin-3d-x 17s linear infinite;
-  transform-style: preserve-3d;
+.animate-logo-bounce {
+  animation: logo-bounce 3.5s ease-in-out infinite;
 }
