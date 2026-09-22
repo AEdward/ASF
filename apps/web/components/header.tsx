@@ -56,7 +56,7 @@ export function Header({
               <Link
                 href={href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800"
+                className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
               >
                 {label}
                 {children && children.length > 0 && (
@@ -70,13 +70,13 @@ export function Header({
                 )}
               </Link>
               {children && children.length > 0 && (
-                <div className="ml-4 flex flex-col gap-1 md:invisible md:absolute md:left-0 md:top-full md:ml-0 md:w-56 md:flex-col md:rounded-xl md:border md:border-slate-200 md:bg-white md:p-2 md:opacity-0 md:shadow-xl md:transition md:group-hover:visible md:group-hover:opacity-100">
+                <div className="ml-4 flex flex-col gap-1 md:invisible md:absolute md:left-0 md:top-full md:ml-0 md:w-56 md:flex-col md:rounded-xl md:border md:border-slate-200 md:bg-white md:p-2 md:opacity-0 md:shadow-xl md:transition md:group-hover:visible md:group-hover:opacity-100 md:group-focus-within:visible md:group-focus-within:opacity-100">
                   {children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
                       onClick={() => setOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-green-50 hover:text-green-800"
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
                     >
                       {child.label}
                     </Link>
@@ -88,7 +88,7 @@ export function Header({
           <LanguageSwitcher />
           <Link
             href={ctaHref}
-            className="rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713]"
+            className="rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
           >
             {ctaLabel}
           </Link>
@@ -96,7 +96,7 @@ export function Header({
         <button
           aria-label={t("toggleMenu")}
           onClick={() => setOpen(!open)}
-          className="rounded-lg border px-3 py-2 md:hidden"
+          className="rounded-lg border px-3 py-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
         >
           ☰
         </button>

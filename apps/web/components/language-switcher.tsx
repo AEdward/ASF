@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-100"
+        className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
       >
         {LOCALE_LABELS[locale]}
         <svg
@@ -66,7 +66,7 @@ export function LanguageSwitcher() {
                   setOpen(false);
                   router.replace(pathname, { locale: code });
                 }}
-                className={`block w-full px-3 py-2 text-left ${
+                className={`block w-full px-3 py-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
                   code === locale
                     ? "bg-green-100 text-green-800"
                     : "text-slate-600 hover:bg-slate-100"
