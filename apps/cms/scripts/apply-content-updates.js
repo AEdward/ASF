@@ -42,6 +42,7 @@ const {
 const PAGES_TO_UPDATE = [
   { slug: "about", seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED },
   { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
+  { slug: "crop-residue-feed", seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
 ];
 
 // Pages that should be created if they don't exist yet.
