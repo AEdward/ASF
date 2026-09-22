@@ -3,10 +3,12 @@ import {
   DEFAULT_ARTICLES,
   DEFAULT_GALLERY_ALBUMS,
   DEFAULT_JOB_VACANCIES,
+  DEFAULT_PARTNERS,
   DEFAULT_PRODUCTS,
   DEFAULT_SITE_SETTINGS,
   GalleryAlbum,
   JobVacancy,
+  Partner,
   Product,
   SiteSettings,
 } from "@/lib/content";
@@ -100,6 +102,26 @@ function mapGalleryAlbum(entry: StrapiGalleryAlbumEntry): GalleryAlbum {
     category: entry.category ?? undefined,
     description: entry.description ?? undefined,
     imageUrls: (entry.images ?? []).map((image) => mediaUrl(image)).filter((url): url is string => !!url),
+  };
+}
+
+interface StrapiPartnerEntry {
+  id: number;
+  name: string;
+  logo?: { url?: string } | null;
+  description?: string | null;
+  websiteUrl?: string | null;
+  category?: string | null;
+}
+
+function mapPartner(entry: StrapiPartnerEntry): Partner {
+  return {
+    id: entry.id,
+    name: entry.name,
+    logoUrl: mediaUrl(entry.logo),
+    description: entry.description ?? undefined,
+    websiteUrl: entry.websiteUrl ?? undefined,
+    category: entry.category ?? undefined,
   };
 }
 
@@ -276,6 +298,21 @@ export async function getArticles(locale: Locale = "en"): Promise<Article[]> {
   }));
 }
 
+export async function getLatestArticles(locale: Locale = "en", limit = 3): Promise<Article[]> {
+  const json = await strapiFetch<{ data: StrapiArticleEntry[] }>(
+    `/api/articles?sort=publishedAt:desc&pagination[limit]=${limit}&populate=coverImage&locale=${locale}`
+  );
+  if (!json?.data?.length) return DEFAULT_ARTICLES.slice(0, limit);
+  return json.data.map((entry) => ({
+    id: entry.id,
+    title: entry.title,
+    slug: entry.slug,
+    excerpt: entry.excerpt,
+    category: entry.category,
+    coverImageUrl: mediaUrl(entry.coverImage),
+  }));
+}
+
 export async function getJobVacancies(locale: Locale = "en"): Promise<JobVacancy[]> {
   const json = await strapiFetch<{ data: StrapiJobVacancyEntry[] }>(
     `/api/job-vacancies?filters[isOpen][$eq]=true&sort=postedAt:desc&locale=${locale}`
@@ -298,4 +335,12 @@ export async function getGalleryAlbums(locale: Locale = "en"): Promise<GalleryAl
   );
   if (!json?.data) return DEFAULT_GALLERY_ALBUMS;
   return json.data.map(mapGalleryAlbum);
+}
+
+export async function getPartners(locale: Locale = "en"): Promise<Partner[]> {
+  const json = await strapiFetch<{ data: StrapiPartnerEntry[] }>(
+    `/api/partners?sort=id:asc&populate=logo&locale=${locale}`
+  );
+  if (!json?.data) return DEFAULT_PARTNERS;
+  return json.data.map(mapPartner);
 }

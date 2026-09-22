@@ -42,6 +42,15 @@ export interface GalleryAlbum {
   imageUrls: string[];
 }
 
+export interface Partner {
+  id: number;
+  name: string;
+  logoUrl?: string;
+  description?: string;
+  websiteUrl?: string;
+  category?: string;
+}
+
 export interface JobVacancy {
   id: number;
   title: string;
@@ -81,8 +90,9 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
       ],
     },
     { label: "Products", href: "/products" },
+    { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Blog", href: "/blog" },
+    { label: "News & Blog", href: "/blog" },
   ],
   headerCtaLabel: "Talk to us →",
   headerCtaHref: "/contact",
@@ -190,3 +200,6 @@ export const DEFAULT_JOB_VACANCIES: JobVacancy[] = [];
 
 // Falls back empty only if Strapi is unreachable — the real albums are seeded into the CMS.
 export const DEFAULT_GALLERY_ALBUMS: GalleryAlbum[] = [];
+
+// No partners are seeded — real ones are added by ASF staff through the CMS.
+export const DEFAULT_PARTNERS: Partner[] = [];

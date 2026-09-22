@@ -5,6 +5,17 @@
   "header": {
     "toggleMenu": "Toggle menu"
   },
+  "home": {
+    "latestNews": {
+      "eyebrow": "News & Blog",
+      "heading": "Latest from ASF.",
+      "viewAll": "View all news →"
+    },
+    "partnersMarquee": {
+      "eyebrow": "Our Partners",
+      "heading": "Trusted by organizations across the value chain."
+    }
+  },
   "footer": {
     "quickLinks": "Quick Links",
     "contact": "Contact",
@@ -24,7 +35,7 @@
     }
   },
   "blog": {
-    "metaTitle": "Blog",
+    "metaTitle": "News & Blog",
     "metaDescription": "News, farming insights and expansion updates from ASF Agro Industry.",
     "eyebrow": "ASF Journal",
     "heading": "Insights from our agricultural journey.",
@@ -51,6 +62,16 @@
     "applyHeading": "How to apply",
     "applyBody": "Email your CV and a short cover letter to {email}, referencing this job title.",
     "applyButton": "Apply by email"
+  },
+  "partners": {
+    "metaTitle": "Partners",
+    "metaDescription": "Organizations ASF Agro Industry works with.",
+    "eyebrow": "Partners",
+    "heading": "Working together across the value chain.",
+    "subtitle": "Our partner organizations, managed from the Strapi dashboard.",
+    "emptyTitle": "Partners coming soon",
+    "emptyBody": "This page will list our partner organizations as they're added.",
+    "visitWebsite": "Visit website"
   },
   "contact": {
     "metaTitle": "Contact",

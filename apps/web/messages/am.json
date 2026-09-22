@@ -5,6 +5,17 @@
   "header": {
     "toggleMenu": "ማውጫ ቀያይር"
   },
+  "home": {
+    "latestNews": {
+      "eyebrow": "ዜና እና ብሎግ",
+      "heading": "የቅርብ ጊዜ ከASF።",
+      "viewAll": "ሁሉንም ዜናዎች ይመልከቱ →"
+    },
+    "partnersMarquee": {
+      "eyebrow": "አጋሮቻችን",
+      "heading": "በእሴት ሰንሰለቱ ውስጥ ባሉ ድርጅቶች የታመነ።"
+    }
+  },
   "footer": {
     "quickLinks": "ፈጣን አገናኞች",
     "contact": "አድራሻ",
@@ -24,7 +35,7 @@
     }
   },
   "blog": {
-    "metaTitle": "ብሎግ",
+    "metaTitle": "ዜና እና ብሎግ",
     "metaDescription": "ዜናዎች፣ የግብርና እይታዎች እና የማስፋፊያ ዝማኔዎች ከASF አግሮ ኢንዱስትሪ።",
     "eyebrow": "የASF መጽሔት",
     "heading": "ከግብርና ጉዟችን የተገኙ እይታዎች።",
@@ -51,6 +62,16 @@
     "applyHeading": "እንዴት ማመልከት እንደሚቻል",
     "applyBody": "የግል ማንነት ማስረጃዎችዎን (CV) እና አጭር የመግቢያ ደብዳቤ ወደ {email} ይላኩ፣ ይህን የስራ ስም በመጥቀስ።",
     "applyButton": "በኢሜይል ያመልክቱ"
+  },
+  "partners": {
+    "metaTitle": "አጋሮች",
+    "metaDescription": "ASF አግሮ ኢንዱስትሪ አብሮ የሚሰራቸው ድርጅቶች።",
+    "eyebrow": "አጋሮች",
+    "heading": "በእሴት ሰንሰለቱ ውስጥ አብረን መስራት።",
+    "subtitle": "የአጋር ድርጅቶቻችን፣ ከStrapi ዳሽቦርድ ይተዳደራሉ።",
+    "emptyTitle": "አጋሮች በቅርቡ ይመጣሉ",
+    "emptyBody": "ይህ ገጽ እንደተጨመሩ የአጋር ድርጅቶቻችንን ይዘረዝራል።",
+    "visitWebsite": "ድህረ ገጽ ይጎብኙ"
   },
   "contact": {
     "metaTitle": "አግኙን",

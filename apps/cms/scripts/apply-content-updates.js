@@ -35,8 +35,12 @@ const {
 } = require("../dist/src/index.js");
 
 // Pages whose sections should be force-updated to match the current seed
-// (i.e. pages that existed before this script was introduced).
-const PAGES_TO_UPDATE = [{ slug: "about", seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED }];
+// (i.e. pages that existed before this script was introduced, or whose
+// content has since changed here).
+const PAGES_TO_UPDATE = [
+  { slug: "about", seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED },
+  { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
+];
 
 // Pages that should be created if they don't exist yet.
 const PAGES_TO_CREATE = [

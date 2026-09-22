@@ -9,6 +9,7 @@ const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   page: ["find", "findOne"],
   "job-vacancy": ["find", "findOne"],
   "gallery-album": ["find", "findOne"],
+  partner: ["find", "findOne"],
 };
 
 const LOCALES = [
@@ -73,8 +74,9 @@ const SITE_SETTINGS_SEED = {
       ],
     },
     { label: "Products", href: "/products" },
+    { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Blog", href: "/blog" },
+    { label: "News & Blog", href: "/blog" },
   ],
   headerCtaLabel: "Talk to us →",
   headerCtaHref: "/contact",
@@ -108,8 +110,9 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       { label: "ምርቶች", href: "/products" },
+      { label: "አጋሮች", href: "/partners" },
       { label: "ማዕከለ ስዕላት", href: "/gallery" },
-      { label: "ብሎግ", href: "/blog" },
+      { label: "ዜና እና ብሎግ", href: "/blog" },
     ],
     headerCtaLabel: "ከእኛ ጋር ይነጋገሩ →",
     footerLinks: [
@@ -138,8 +141,9 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       { label: "Oomishaalee", href: "/products" },
+      { label: "Michoota", href: "/partners" },
       { label: "Suuraalee", href: "/gallery" },
-      { label: "Barreeffama", href: "/blog" },
+      { label: "Oduu fi Barreeffama", href: "/blog" },
     ],
     headerCtaLabel: "Nu haasofsiisi →",
     footerLinks: [
@@ -458,18 +462,6 @@ const ABOUT_PAGE_SEED = {
           experience: "More than 17 years managing businesses and as an international business owner.",
         },
         {
-          name: "Amanuel Baze",
-          role: "Management Team",
-          qualification: "BA in Management, BA in Theology",
-          experience: "More than 10 years in business and leadership, running businesses.",
-        },
-        {
-          name: "Dr. Tesfu Tadesse",
-          role: "Chief Nutritionist",
-          qualification: "PhD in Animal Nutrition",
-          experience: "More than 25 years in livestock farming, nutrition and consultancy.",
-        },
-        {
           name: "Baidemariam Daniel",
           role: "Production Head",
           qualification: "BSc in Animal Science",
@@ -594,18 +586,6 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
             experience: "ከ17 ዓመታት በላይ ንግዶችን በማስተዳደር እና እንደ አለም አቀፍ የንግድ ባለቤት ልምድ።",
           },
           {
-            name: "Amanuel Baze",
-            role: "የስራ አመራር ቡድን",
-            qualification: "በማኔጅመንት BA፣ በቲዎሎጂ BA",
-            experience: "ከ10 ዓመታት በላይ በንግድና በአመራር፣ ንግዶችን በማስኪያድ ልምድ።",
-          },
-          {
-            name: "Dr. Tesfu Tadesse",
-            role: "ዋና የስነ-ምግብ ተመራማሪ",
-            qualification: "በእንስሳት ስነ-ምግብ ፒኤችዲ",
-            experience: "ከ25 ዓመታት በላይ በእንስሳት እርባታ፣ ስነ-ምግብ እና ማማከር ልምድ።",
-          },
-          {
             name: "Baidemariam Daniel",
             role: "የምርት ክፍል ኃላፊ",
             qualification: "በእንስሳት ሳይንስ BSc",
@@ -720,18 +700,6 @@ const ABOUT_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
             role: "Garee Hoggansaa",
             qualification: "BA Bulchiinsa Daldalaa, BA Sirna Odeeffannoo Kompiitaraa",
             experience: "Waggaa 17 ol daldalawwan bulchuu fi abbaa daldalaa idil-addunyaa ta'uun muuxannoo qaba.",
-          },
-          {
-            name: "Amanuel Baze",
-            role: "Garee Hoggansaa",
-            qualification: "BA Bulchiinsa, BA Tiyooloojii",
-            experience: "Waggaa 10 ol daldalaa fi hoggansa, daldalawwan geggeessuu keessatti muuxannoo qaba.",
-          },
-          {
-            name: "Dr. Tesfu Tadesse",
-            role: "Ogeessa Nyaataa Olaanaa",
-            qualification: "PhD Nyaata Beeladaa",
-            experience: "Waggaa 25 ol qonna beeladaa, nyaataa fi gorsa keessatti muuxannoo qaba.",
           },
           {
             name: "Baidemariam Daniel",
@@ -971,10 +939,6 @@ const QUALITY_PAGE_SEED = {
       eyebrow: "How we maintain quality",
       heading: "Roles dedicated to quality across production.",
       items: [
-        {
-          title: "Chief Nutritionist",
-          text: "Dr. Tesfu Tadesse, PhD in Animal Nutrition, leads feed formulation with more than 25 years of experience.",
-        },
         { title: "Quality Control & Lab", text: "Quality controllers and lab technicians support testing and production standards." },
         { title: "Production Supervision", text: "A production supervisor and technical team oversee day-to-day operations." },
       ],
@@ -1008,7 +972,6 @@ const QUALITY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         eyebrow: "ጥራትን እንዴት እንደምንጠብቅ",
         heading: "በምርት ውስጥ ለጥራት የተሰጡ ሚናዎች።",
         items: [
-          { title: "ዋና የስነ-ምግብ ተመራማሪ", text: "ዶ/ር ተስፉ ታደሰ፣ በእንስሳት ስነ-ምግብ ፒኤችዲ፣ ከ25 ዓመታት በላይ ልምድ ያለው የመኖ ቀመር ስራን ይመራሉ።" },
           { title: "የጥራት ቁጥጥር እና ላብራቶሪ", text: "የጥራት ተቆጣጣሪዎች እና የላብራቶሪ ቴክኒሻኖች ምርመራን እና የምርት ደረጃዎችን ይደግፋሉ።" },
           { title: "የምርት ቁጥጥር", text: "የምርት ተቆጣጣሪ እና ቴክኒካል ቡድን የቀን ተቀን ስራዎችን ይቆጣጠራሉ።" },
         ],
@@ -1040,7 +1003,6 @@ const QUALITY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         eyebrow: "Akkaataa qulqullina itti eegnu",
         heading: "Gahee qulqullinaaf kennaman oomisha keessatti.",
         items: [
-          { title: "Ogeessa Nyaataa Olaanaa", text: "Dr. Tesfu Tadesse, PhD Nyaata Beeladaa, waggaa 25 ol muuxannoo formulaa nyaataa geggeessu." },
           { title: "Toohannaa Qulqullinaa fi Laaboraatorii", text: "Toohattoonni qulqullinaa fi ogeeyyiin laaboraatorii qorannoo fi sadarkaa oomishaa deeggaru." },
           { title: "To'annaa Oomishaa", text: "To'ataan oomishaa fi gareen teeknikaa hojii guyyuu to'atu." },
         ],

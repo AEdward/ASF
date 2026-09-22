@@ -231,18 +231,6 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
         experience: "More than 17 years managing businesses and as an international business owner.",
       },
       {
-        name: "Amanuel Baze",
-        role: "Management Team",
-        qualification: "BA in Management, BA in Theology",
-        experience: "More than 10 years in business and leadership, running businesses.",
-      },
-      {
-        name: "Dr. Tesfu Tadesse",
-        role: "Chief Nutritionist",
-        qualification: "PhD in Animal Nutrition",
-        experience: "More than 25 years in livestock farming, nutrition and consultancy.",
-      },
-      {
         name: "Baidemariam Daniel",
         role: "Production Head",
         qualification: "BSc in Animal Science",
@@ -357,10 +345,6 @@ export const DEFAULT_QUALITY_SECTIONS: PageSection[] = [
     eyebrow: "How we maintain quality",
     heading: "Roles dedicated to quality across production.",
     items: [
-      {
-        title: "Chief Nutritionist",
-        text: "Dr. Tesfu Tadesse, PhD in Animal Nutrition, leads feed formulation with more than 25 years of experience.",
-      },
       { title: "Quality Control & Lab", text: "Quality controllers and lab technicians support testing and production standards." },
       { title: "Production Supervision", text: "A production supervisor and technical team oversee day-to-day operations." },
     ],

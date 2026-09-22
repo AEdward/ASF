@@ -5,6 +5,17 @@
   "header": {
     "toggleMenu": "Menu Jijjiiri"
   },
+  "home": {
+    "latestNews": {
+      "eyebrow": "Oduu fi Barreeffama",
+      "heading": "Haaraa ASF irraa.",
+      "viewAll": "Oduu hunda ilaali →"
+    },
+    "partnersMarquee": {
+      "eyebrow": "Michoota Keenya",
+      "heading": "Dhaabbilee sarara gatii keessa jiraniin amanamu."
+    }
+  },
   "footer": {
     "quickLinks": "Liinkiiwwan Ariifachiisaa",
     "contact": "Qunnamtii",
@@ -24,7 +35,7 @@
     }
   },
   "blog": {
-    "metaTitle": "Barreeffama",
+    "metaTitle": "Oduu fi Barreeffama",
     "metaDescription": "Oduu, hubannoo qonnaa fi haaromsa babal'ina ASF Agro Industry irraa.",
     "eyebrow": "Gaazexaa ASF",
     "heading": "Hubannoo Karaa Qonnaa Keenya.",
@@ -51,6 +62,16 @@
     "applyHeading": "Akkaataa Iyyachuu",
     "applyBody": "CV kee fi xalayaa gabaabaa {email} tti ergi, mata-duree hojii kana eeruudhaan.",
     "applyButton": "Imeeliin iyyadhu"
+  },
+  "partners": {
+    "metaTitle": "Michoota",
+    "metaDescription": "Dhaabbilee ASF Agro Industry waliin hojjetu.",
+    "eyebrow": "Michoota",
+    "heading": "Sarara gatii keessatti waliin hojjechuu.",
+    "subtitle": "Dhaabbilee michoota keenya, Strapi Dashboard irraa bulfamu.",
+    "emptyTitle": "Michootni dhiyootti dhufu",
+    "emptyBody": "Fuulli kun akkuma dabalamaniin dhaabbilee michoota keenya ni tarreessa.",
+    "visitWebsite": "Marsariitii daawwadhu"
   },
   "contact": {
     "metaTitle": "Nu Qunnami",
