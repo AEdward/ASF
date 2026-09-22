@@ -1174,7 +1174,7 @@ const CROP_RESIDUE_PAGE_SEED = {
       subtitle: "Turning crop residues into high-quality animal feed.",
       primaryButtonLabel: "Partner with us →",
       primaryButtonHref: "/contact",
-      imageStyle: "none",
+      imageStyle: "logo-3d",
     },
     {
       __component: "sections.feature-grid",
@@ -1210,7 +1210,7 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         subtitle: "የሰብል ቀሪትን ወደ ከፍተኛ ጥራት ያለው የእንስሳት መኖ እንቀይራለን።",
         primaryButtonLabel: "ከእኛ ጋር ተባበሩ →",
         primaryButtonHref: "/contact",
-        imageStyle: "none",
+        imageStyle: "logo-3d",
       },
       {
         __component: "sections.feature-grid",
@@ -1244,7 +1244,7 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         subtitle: "Hambaa midhaanii gara nyaata beelladaa qulqullina olaanaa qabuutti jijjiiruu.",
         primaryButtonLabel: "Nu waliin michoomaa →",
         primaryButtonHref: "/contact",
-        imageStyle: "none",
+        imageStyle: "logo-3d",
       },
       {
         __component: "sections.feature-grid",

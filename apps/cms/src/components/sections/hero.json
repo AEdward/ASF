@@ -16,7 +16,7 @@
     "image": { "type": "media", "multiple": false, "allowedTypes": ["images"] },
     "imageStyle": {
       "type": "enumeration",
-      "enum": ["disc-spin", "plain", "none"],
+      "enum": ["disc-spin", "plain", "none", "logo-3d"],
       "default": "disc-spin"
     }
   }

@@ -9,7 +9,7 @@ export interface HeroSection {
   secondaryButtonLabel?: string;
   secondaryButtonHref?: string;
   imageUrl?: string;
-  imageStyle: "disc-spin" | "plain" | "none";
+  imageStyle: "disc-spin" | "plain" | "none" | "logo-3d";
 }
 
 export interface GlanceSection {
@@ -357,7 +357,8 @@ export const DEFAULT_CROP_RESIDUE_SECTIONS: PageSection[] = [
     subtitle: "Turning crop residues into high-quality animal feed.",
     primaryButtonLabel: "Partner with us →",
     primaryButtonHref: "/contact",
-    imageStyle: "none",
+    imageUrl: "/crop-residue-logo.jpg",
+    imageStyle: "logo-3d",
   },
   {
     __component: "sections.feature-grid",
