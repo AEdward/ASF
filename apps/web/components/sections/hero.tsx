@@ -33,15 +33,17 @@ export default function Hero({ section }: { section: HeroSection }) {
         </div>
         {section.imageStyle === "logo-3d" && (
           <div className="spin-3d-stage relative mx-auto aspect-square w-full max-w-md">
-            <div className="animate-spin-3d relative h-full w-full overflow-hidden rounded-3xl bg-white shadow-2xl">
-              <Image
-                src={section.imageUrl || "/crop-residue-logo.jpg"}
-                alt="ASF Crop Residue Feed — Biofermentation Technology, in collaboration with ILRI and WRI"
-                fill
-                priority
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-contain p-4"
-              />
+            <div className="animate-spin-3d-y relative h-full w-full">
+              <div className="animate-spin-3d-x relative h-full w-full overflow-hidden rounded-3xl bg-white shadow-2xl">
+                <Image
+                  src={section.imageUrl || "/crop-residue-logo.jpg"}
+                  alt="ASF Crop Residue Feed — Biofermentation Technology, in collaboration with ILRI and WRI"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-contain p-4"
+                />
+              </div>
             </div>
           </div>
         )}

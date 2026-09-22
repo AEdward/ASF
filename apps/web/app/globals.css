@@ -57,7 +57,7 @@ body {
   perspective: 1400px;
 }
 
-@keyframes spin-3d {
+@keyframes spin-3d-y {
   from {
     transform: rotateY(0deg);
   }
@@ -66,7 +66,21 @@ body {
   }
 }
 
-.animate-spin-3d {
-  animation: spin-3d 8s linear infinite;
+@keyframes spin-3d-x {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+.animate-spin-3d-y {
+  animation: spin-3d-y 26s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.animate-spin-3d-x {
+  animation: spin-3d-x 17s linear infinite;
   transform-style: preserve-3d;
 }
