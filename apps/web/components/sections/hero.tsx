@@ -32,7 +32,7 @@ export default function Hero({ section }: { section: HeroSection }) {
           </div>
         </div>
         {section.imageStyle === "logo-3d" && (
-          <div className="relative mx-auto aspect-square w-full max-w-md">
+          <div className="spin-3d-stage relative mx-auto aspect-square w-full max-w-md">
             <div className="animate-logo-bounce relative h-full w-full">
               <div className="animate-logo-spin relative h-full w-full overflow-hidden rounded-3xl bg-white shadow-2xl">
                 <Image
