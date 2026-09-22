@@ -31,6 +31,8 @@ const {
   QUALITY_PAGE_LOCALIZED,
   SUSTAINABILITY_PAGE_SEED,
   SUSTAINABILITY_PAGE_LOCALIZED,
+  CROP_RESIDUE_PAGE_SEED,
+  CROP_RESIDUE_PAGE_LOCALIZED,
   LOCALES,
 } = require("../dist/src/index.js");
 
@@ -47,6 +49,7 @@ const PAGES_TO_CREATE = [
   { slug: "facilities", seed: FACILITIES_PAGE_SEED, localized: FACILITIES_PAGE_LOCALIZED },
   { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
   { slug: "sustainability", seed: SUSTAINABILITY_PAGE_SEED, localized: SUSTAINABILITY_PAGE_LOCALIZED },
+  { slug: "crop-residue-feed", seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
 ];
 
 async function main() {

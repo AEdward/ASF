@@ -348,6 +348,38 @@ export const DEFAULT_ABOUT_SECTIONS: PageSection[] = [
   },
 ];
 
+export const DEFAULT_CROP_RESIDUE_SECTIONS: PageSection[] = [
+  {
+    __component: "sections.hero",
+    eyebrow: "Biofermentation Technology",
+    headingLine1: "Crop Residue Feed.",
+    headingLine2: "Turning residues into feed.",
+    subtitle: "Turning crop residues into high-quality animal feed.",
+    primaryButtonLabel: "Partner with us →",
+    primaryButtonHref: "/contact",
+    imageStyle: "none",
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "Our approach",
+    heading: "Three outcomes driving this project.",
+    items: [
+      { icon: "🌿", title: "Sustainable Feed" },
+      { icon: "🐄", title: "Healthy Animals" },
+      { icon: "🌍", title: "Better Future" },
+    ],
+  },
+  {
+    __component: "sections.columns-block",
+    eyebrow: "In collaboration with",
+    heading: "Delivered together with leading research institutions.",
+    columns: [
+      { heading: "ILRI", text: "International Livestock Research Institute" },
+      { heading: "WRI", text: "World Resources Institute" },
+    ],
+  },
+];
+
 export const DEFAULT_FACILITIES_SECTIONS: PageSection[] = [
   {
     __component: "sections.intro",

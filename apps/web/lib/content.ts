@@ -90,6 +90,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
       ],
     },
     { label: "Products", href: "/products" },
+    { label: "Crop Residue Feed", href: "/crop-residue-feed" },
     { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
     { label: "News & Blog", href: "/blog" },

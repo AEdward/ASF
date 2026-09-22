@@ -74,6 +74,7 @@ const SITE_SETTINGS_SEED = {
       ],
     },
     { label: "Products", href: "/products" },
+    { label: "Crop Residue Feed", href: "/crop-residue-feed" },
     { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
     { label: "News & Blog", href: "/blog" },
@@ -110,6 +111,7 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       { label: "ምርቶች", href: "/products" },
+      { label: "የሰብል ቀሪት መኖ", href: "/crop-residue-feed" },
       { label: "አጋሮች", href: "/partners" },
       { label: "ማዕከለ ስዕላት", href: "/gallery" },
       { label: "ዜና እና ብሎግ", href: "/blog" },
@@ -141,6 +143,7 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       { label: "Oomishaalee", href: "/products" },
+      { label: "Nyaata Hambaa Midhaanii", href: "/crop-residue-feed" },
       { label: "Michoota", href: "/partners" },
       { label: "Suuraalee", href: "/gallery" },
       { label: "Oduu fi Barreeffama", href: "/blog" },
@@ -1159,6 +1162,113 @@ const SUSTAINABILITY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
   },
 };
 
+const CROP_RESIDUE_PAGE_SEED = {
+  title: "Crop Residue Feed",
+  slug: "crop-residue-feed",
+  sections: [
+    {
+      __component: "sections.hero",
+      eyebrow: "Biofermentation Technology",
+      headingLine1: "Crop Residue Feed.",
+      headingLine2: "Turning residues into feed.",
+      subtitle: "Turning crop residues into high-quality animal feed.",
+      primaryButtonLabel: "Partner with us →",
+      primaryButtonHref: "/contact",
+      imageStyle: "none",
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Our approach",
+      heading: "Three outcomes driving this project.",
+      items: [
+        { icon: "🌿", title: "Sustainable Feed" },
+        { icon: "🐄", title: "Healthy Animals" },
+        { icon: "🌍", title: "Better Future" },
+      ],
+    },
+    {
+      __component: "sections.columns-block",
+      eyebrow: "In collaboration with",
+      heading: "Delivered together with leading research institutions.",
+      columns: [
+        { heading: "ILRI", text: "International Livestock Research Institute" },
+        { heading: "WRI", text: "World Resources Institute" },
+      ],
+    },
+  ],
+};
+
+const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: {
+    title: "የሰብል ቀሪት መኖ",
+    sections: [
+      {
+        __component: "sections.hero",
+        eyebrow: "ባዮ-ፈርመንቴሽን ቴክኖሎጂ",
+        headingLine1: "የሰብል ቀሪት መኖ።",
+        headingLine2: "ቀሪትን ወደ መኖ እንቀይራለን።",
+        subtitle: "የሰብል ቀሪትን ወደ ከፍተኛ ጥራት ያለው የእንስሳት መኖ እንቀይራለን።",
+        primaryButtonLabel: "ከእኛ ጋር ተባበሩ →",
+        primaryButtonHref: "/contact",
+        imageStyle: "none",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "አካሄዳችን",
+        heading: "ይህን ፕሮጀክት የሚያንቀሳቅሱ ሦስት ውጤቶች።",
+        items: [
+          { icon: "🌿", title: "ዘላቂ መኖ" },
+          { icon: "🐄", title: "ጤናማ እንስሳት" },
+          { icon: "🌍", title: "የተሻለ ነገ" },
+        ],
+      },
+      {
+        __component: "sections.columns-block",
+        eyebrow: "በጋራ ስራ",
+        heading: "ከግንባር ቀደም የምርምር ተቋማት ጋር የሚከናወን።",
+        columns: [
+          { heading: "ILRI", text: "አለምአቀፍ የእንስሳት ምርምር ተቋም" },
+          { heading: "WRI", text: "የዓለም ሀብቶች ተቋም" },
+        ],
+      },
+    ],
+  },
+  om: {
+    title: "Nyaata Hambaa Midhaanii",
+    sections: [
+      {
+        __component: "sections.hero",
+        eyebrow: "Teeknooloojii Baayoo-Foormenteeshinii",
+        headingLine1: "Nyaata Hambaa Midhaanii.",
+        headingLine2: "Hambaa gara nyaataatti jijjiiruu.",
+        subtitle: "Hambaa midhaanii gara nyaata beelladaa qulqullina olaanaa qabuutti jijjiiruu.",
+        primaryButtonLabel: "Nu waliin michoomaa →",
+        primaryButtonHref: "/contact",
+        imageStyle: "none",
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Mala Keenya",
+        heading: "Bu'aa sadii pirojeektii kana kan geggeessu.",
+        items: [
+          { icon: "🌿", title: "Nyaata Itti Fufiinsa Qabu" },
+          { icon: "🐄", title: "Beelladoota Fayyaa Qaban" },
+          { icon: "🌍", title: "Fuulduraa Gaarii" },
+        ],
+      },
+      {
+        __component: "sections.columns-block",
+        eyebrow: "Michoomaan",
+        heading: "Dhaabbilee qorannoo addunyaa waliin raawwatamu.",
+        columns: [
+          { heading: "ILRI", text: "Dhaabbata Qorannoo Beelladaa Addunyaa" },
+          { heading: "WRI", text: "Dhaabbata Qabeenya Addunyaa" },
+        ],
+      },
+    ],
+  },
+};
+
 const PRODUCTS_SEED: {
   name: string;
   slug: string;
@@ -1452,6 +1562,7 @@ async function seedPages(strapi: Core.Strapi) {
     { seed: FACILITIES_PAGE_SEED, localized: FACILITIES_PAGE_LOCALIZED },
     { seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
     { seed: SUSTAINABILITY_PAGE_SEED, localized: SUSTAINABILITY_PAGE_LOCALIZED },
+    { seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
   ];
 
   for (const { seed, localized } of pages) {
@@ -1588,6 +1699,8 @@ export {
   QUALITY_PAGE_LOCALIZED,
   SUSTAINABILITY_PAGE_SEED,
   SUSTAINABILITY_PAGE_LOCALIZED,
+  CROP_RESIDUE_PAGE_SEED,
+  CROP_RESIDUE_PAGE_LOCALIZED,
   LOCALES,
 };
 
