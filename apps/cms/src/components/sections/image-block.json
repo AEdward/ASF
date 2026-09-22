@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_image_blocks",
+  "info": {
+    "displayName": "Image",
+    "icon": "picture"
+  },
+  "attributes": {
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"], "required": true },
+    "caption": { "type": "string" },
+    "href": { "type": "string" },
+    "fullBleed": { "type": "boolean", "default": false }
+  }
+}

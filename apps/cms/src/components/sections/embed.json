@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_embeds",
+  "info": {
+    "displayName": "Embed",
+    "icon": "code"
+  },
+  "attributes": {
+    "url": { "type": "string", "required": true },
+    "caption": { "type": "string" }
+  }
+}

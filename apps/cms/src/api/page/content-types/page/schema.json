@@ -31,7 +31,16 @@
         "sections.stats-band",
         "sections.intro",
         "sections.story-panel",
-        "sections.team-grid"
+        "sections.team-grid",
+        "sections.rich-text",
+        "sections.pullquote",
+        "sections.image-block",
+        "sections.gallery-block",
+        "sections.slider-block",
+        "sections.columns-block",
+        "sections.buttons-block",
+        "sections.spacer",
+        "sections.embed"
       ]
     }
   }

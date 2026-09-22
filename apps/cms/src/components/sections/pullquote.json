@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_sections_pullquotes",
+  "info": {
+    "displayName": "Pullquote",
+    "icon": "quote"
+  },
+  "attributes": {
+    "quote": { "type": "text", "required": true },
+    "author": { "type": "string" },
+    "role": { "type": "string" }
+  }
+}

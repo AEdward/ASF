@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_rich_texts",
+  "info": {
+    "displayName": "Rich Text",
+    "icon": "align-left"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "content": { "type": "blocks" },
+    "width": {
+      "type": "enumeration",
+      "enum": ["narrow", "wide"],
+      "default": "narrow"
+    }
+  }
+}

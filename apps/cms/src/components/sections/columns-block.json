@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_columns_blocks",
+  "info": {
+    "displayName": "Columns",
+    "icon": "layout"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "columns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.column-item"
+    }
+  }
+}

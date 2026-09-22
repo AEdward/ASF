@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_button_items",
+  "info": {
+    "displayName": "Button Item",
+    "icon": "cursor"
+  },
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "href": { "type": "string", "required": true },
+    "style": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary"],
+      "default": "primary"
+    }
+  }
+}

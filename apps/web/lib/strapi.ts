@@ -159,6 +159,20 @@ interface StrapiRawSection {
   video?: { url?: string } | null;
   poster?: { url?: string } | null;
   members?: { name: string; role?: string; qualification?: string; experience?: string }[];
+  content?: unknown;
+  quote?: string;
+  author?: string;
+  role?: string;
+  href?: string;
+  fullBleed?: boolean;
+  images?: { url?: string }[] | null;
+  slides?: { image?: { url?: string } | null; caption?: string }[];
+  columns?: { image?: { url?: string } | null; heading?: string; text?: string }[];
+  buttons?: { label: string; href: string; style?: string }[];
+  align?: string;
+  size?: string;
+  url?: string;
+  width?: string;
   [key: string]: unknown;
 }
 
@@ -178,7 +192,16 @@ const PAGE_POPULATE =
   "&populate[sections][on][sections.intro][populate]=*" +
   "&populate[sections][on][sections.story-panel][populate]=*" +
   "&populate[sections][on][sections.video][populate]=*" +
-  "&populate[sections][on][sections.team-grid][populate]=members";
+  "&populate[sections][on][sections.team-grid][populate]=members" +
+  "&populate[sections][on][sections.rich-text][populate]=*" +
+  "&populate[sections][on][sections.pullquote][populate]=*" +
+  "&populate[sections][on][sections.image-block][populate]=image" +
+  "&populate[sections][on][sections.gallery-block][populate]=images" +
+  "&populate[sections][on][sections.slider-block][populate][slides][populate]=image" +
+  "&populate[sections][on][sections.columns-block][populate][columns][populate]=image" +
+  "&populate[sections][on][sections.buttons-block][populate]=buttons" +
+  "&populate[sections][on][sections.spacer][populate]=*" +
+  "&populate[sections][on][sections.embed][populate]=*";
 
 function mapSection(raw: StrapiRawSection): PageSection | null {
   switch (raw.__component) {
@@ -269,6 +292,75 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
           qualification: m.qualification,
           experience: m.experience,
         })),
+      };
+    case "sections.rich-text":
+      return {
+        __component: "sections.rich-text",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        content: (raw.content as unknown[]) ?? [],
+        width: (raw.width as "narrow" | "wide") ?? "narrow",
+      };
+    case "sections.pullquote":
+      return {
+        __component: "sections.pullquote",
+        quote: raw.quote as string,
+        author: raw.author as string | undefined,
+        role: raw.role as string | undefined,
+      };
+    case "sections.image-block":
+      return {
+        __component: "sections.image-block",
+        imageUrl: mediaUrl(raw.image),
+        caption: raw.caption as string | undefined,
+        href: raw.href as string | undefined,
+        fullBleed: (raw.fullBleed as boolean) ?? false,
+      };
+    case "sections.gallery-block":
+      return {
+        __component: "sections.gallery-block",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        imageUrls: (raw.images ?? []).map((image) => mediaUrl(image)).filter((url): url is string => !!url),
+      };
+    case "sections.slider-block":
+      return {
+        __component: "sections.slider-block",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        slides: (raw.slides ?? []).map((s) => ({ imageUrl: mediaUrl(s.image), caption: s.caption })),
+      };
+    case "sections.columns-block":
+      return {
+        __component: "sections.columns-block",
+        eyebrow: raw.eyebrow as string | undefined,
+        heading: raw.heading as string | undefined,
+        columns: (raw.columns ?? []).map((c) => ({
+          imageUrl: mediaUrl(c.image),
+          heading: c.heading,
+          text: c.text,
+        })),
+      };
+    case "sections.buttons-block":
+      return {
+        __component: "sections.buttons-block",
+        align: (raw.align as "left" | "center" | "right") ?? "left",
+        buttons: (raw.buttons ?? []).map((b) => ({
+          label: b.label,
+          href: b.href,
+          style: (b.style as "primary" | "secondary") ?? "primary",
+        })),
+      };
+    case "sections.spacer":
+      return {
+        __component: "sections.spacer",
+        size: (raw.size as "sm" | "md" | "lg" | "xl") ?? "md",
+      };
+    case "sections.embed":
+      return {
+        __component: "sections.embed",
+        url: raw.url as string,
+        caption: raw.caption as string | undefined,
       };
     default:
       return null;

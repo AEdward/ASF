@@ -76,6 +76,67 @@ export interface TeamGridSection {
   members: { name: string; role?: string; qualification?: string; experience?: string }[];
 }
 
+export interface RichTextSection {
+  __component: "sections.rich-text";
+  eyebrow?: string;
+  heading?: string;
+  content: unknown[];
+  width: "narrow" | "wide";
+}
+
+export interface PullquoteSection {
+  __component: "sections.pullquote";
+  quote: string;
+  author?: string;
+  role?: string;
+}
+
+export interface ImageBlockSection {
+  __component: "sections.image-block";
+  imageUrl?: string;
+  caption?: string;
+  href?: string;
+  fullBleed: boolean;
+}
+
+export interface GalleryBlockSection {
+  __component: "sections.gallery-block";
+  eyebrow?: string;
+  heading?: string;
+  imageUrls: string[];
+}
+
+export interface SliderSection {
+  __component: "sections.slider-block";
+  eyebrow?: string;
+  heading?: string;
+  slides: { imageUrl?: string; caption?: string }[];
+}
+
+export interface ColumnsSection {
+  __component: "sections.columns-block";
+  eyebrow?: string;
+  heading?: string;
+  columns: { imageUrl?: string; heading?: string; text?: string }[];
+}
+
+export interface ButtonsSection {
+  __component: "sections.buttons-block";
+  align: "left" | "center" | "right";
+  buttons: { label: string; href: string; style: "primary" | "secondary" }[];
+}
+
+export interface SpacerSection {
+  __component: "sections.spacer";
+  size: "sm" | "md" | "lg" | "xl";
+}
+
+export interface EmbedSection {
+  __component: "sections.embed";
+  url: string;
+  caption?: string;
+}
+
 export type PageSection =
   | HeroSection
   | GlanceSection
@@ -85,7 +146,16 @@ export type PageSection =
   | IntroSection
   | StoryPanelSection
   | VideoSection
-  | TeamGridSection;
+  | TeamGridSection
+  | RichTextSection
+  | PullquoteSection
+  | ImageBlockSection
+  | GalleryBlockSection
+  | SliderSection
+  | ColumnsSection
+  | ButtonsSection
+  | SpacerSection
+  | EmbedSection;
 
 export const DEFAULT_HOME_SECTIONS: PageSection[] = [
   {

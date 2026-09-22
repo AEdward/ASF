@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_spacers",
+  "info": {
+    "displayName": "Spacer",
+    "icon": "arrows-expand"
+  },
+  "attributes": {
+    "size": {
+      "type": "enumeration",
+      "enum": ["sm", "md", "lg", "xl"],
+      "default": "md"
+    }
+  }
+}

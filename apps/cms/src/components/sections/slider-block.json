@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_slider_blocks",
+  "info": {
+    "displayName": "Slider",
+    "icon": "layer"
+  },
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "slides": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.slide-item"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_sections_slide_items",
+  "info": {
+    "displayName": "Slide Item",
+    "icon": "picture"
+  },
+  "attributes": {
+    "image": { "type": "media", "multiple": false, "allowedTypes": ["images"], "required": true },
+    "caption": { "type": "string" }
+  }
+}

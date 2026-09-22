@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_buttons_blocks",
+  "info": {
+    "displayName": "Buttons",
+    "icon": "cursor"
+  },
+  "attributes": {
+    "align": {
+      "type": "enumeration",
+      "enum": ["left", "center", "right"],
+      "default": "left"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.button-item"
+    }
+  }
+}
