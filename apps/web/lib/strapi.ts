@@ -154,7 +154,7 @@ interface StrapiRawSection {
   id: number;
   image?: { url?: string } | null;
   cards?: { label: string; text?: string }[];
-  items?: { icon?: string; title: string; text?: string }[];
+  items?: { icon?: string; title: string; text?: string; image?: { url?: string } | null }[];
   stats?: { value: string; label: string }[];
   video?: { url?: string } | null;
   poster?: { url?: string } | null;
@@ -173,7 +173,7 @@ const PAGE_POPULATE =
   "populate[sections][on][sections.hero][populate]=image" +
   "&populate[sections][on][sections.glance][populate]=cards" +
   "&populate[sections][on][sections.mission][populate]=*" +
-  "&populate[sections][on][sections.feature-grid][populate]=items" +
+  "&populate[sections][on][sections.feature-grid][populate][items][populate]=image" +
   "&populate[sections][on][sections.stats-band][populate]=stats" +
   "&populate[sections][on][sections.intro][populate]=*" +
   "&populate[sections][on][sections.story-panel][populate]=*" +
@@ -216,7 +216,12 @@ function mapSection(raw: StrapiRawSection): PageSection | null {
         __component: "sections.feature-grid",
         eyebrow: raw.eyebrow as string | undefined,
         heading: raw.heading as string | undefined,
-        items: (raw.items ?? []).map((i) => ({ icon: i.icon, title: i.title, text: i.text })),
+        items: (raw.items ?? []).map((i) => ({
+          icon: i.icon,
+          title: i.title,
+          text: i.text,
+          imageUrl: mediaUrl(i.image),
+        })),
       };
     case "sections.stats-band":
       return {

@@ -31,7 +31,7 @@ export interface FeatureGridSection {
   __component: "sections.feature-grid";
   eyebrow?: string;
   heading?: string;
-  items: { icon?: string; title: string; text?: string }[];
+  items: { icon?: string; title: string; text?: string; imageUrl?: string }[];
 }
 
 export interface StatsBandSection {

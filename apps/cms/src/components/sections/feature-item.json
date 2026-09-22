@@ -7,6 +7,12 @@
   "attributes": {
     "icon": { "type": "string" },
     "title": { "type": "string", "required": true },
-    "text": { "type": "text" }
+    "text": { "type": "text" },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": { "i18n": { "localized": false } }
+    }
   }
 }
