@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "health_checks",
+  "info": {
+    "singularName": "health-check",
+    "pluralName": "health-checks",
+    "displayName": "Health Check",
+    "description": "Periodic snapshots of server/database health, written by an internal cron job"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "status": { "type": "enumeration", "enum": ["ok", "error"], "required": true },
+    "dbOk": { "type": "boolean", "required": true },
+    "freeDiskMb": { "type": "integer" },
+    "totalDiskMb": { "type": "integer" },
+    "freeMemMb": { "type": "integer" },
+    "totalMemMb": { "type": "integer" },
+    "note": { "type": "text" }
+  }
+}

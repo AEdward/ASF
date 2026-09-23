@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "site_errors",
+  "info": {
+    "singularName": "site-error",
+    "pluralName": "site-errors",
+    "displayName": "Site Error",
+    "description": "Client and server errors reported from the live website, for error tracking"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "source": { "type": "enumeration", "enum": ["client", "server"], "required": true },
+    "message": { "type": "text", "required": true },
+    "path": { "type": "string" },
+    "stack": { "type": "text" }
+  }
+}

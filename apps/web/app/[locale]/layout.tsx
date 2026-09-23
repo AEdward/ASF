@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
+import { Analytics } from "@/components/analytics";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getSiteSettings } from "@/lib/strapi";
@@ -63,6 +64,7 @@ export default async function RootLayout({
     <html lang={locale} className={notoSansEthiopic.variable}>
       <body>
         <NextIntlClientProvider>
+          <Analytics strapiUrl={process.env.STRAPI_URL || "http://localhost:1337"} />
           <Header
             companyName={settings.companyName}
             tagline={settings.tagline}

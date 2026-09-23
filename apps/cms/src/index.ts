@@ -1,6 +1,7 @@
 import type { Core } from "@strapi/strapi";
 import path from "path";
 import fs from "fs";
+import { registerAnalyticsDashboardRoutes } from "./analytics-dashboard";
 
 const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   "site-setting": ["find"],
@@ -2163,6 +2164,9 @@ export {
 };
 
 export default {
+  register({ strapi }: { strapi: Core.Strapi }) {
+    registerAnalyticsDashboardRoutes(strapi);
+  },
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await seedLocales(strapi);
     await setPublicPermissions(strapi);

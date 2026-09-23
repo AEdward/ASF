@@ -4,4 +4,5 @@ export default ({ env }: any) => ({
   url: env("PUBLIC_URL"),
   app: { keys: env.array("APP_KEYS") },
   webhooks: { populateRelations: false },
+  cron: { enabled: true },
 });
