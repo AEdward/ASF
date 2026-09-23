@@ -3,25 +3,31 @@
 // The bootstrap seed functions in src/index.ts only create the Site Setting and
 // Page records on first run (`if (existing) return;`), so once an environment has
 // been seeded once, editing the seed data in code no longer reaches production —
-// this script re-applies the current seed content directly via the Document
-// Service API, for exactly the fields covered below, and creates any new pages
-// that seedPages() would have skipped because a page already existed.
+// this script re-applies seed content directly via the Document Service API.
 //
 // Run from the CMS app root (apps/cms), after building, with the SAME env vars
 // used to start the app (DATABASE_*, etc):
 //   node scripts/apply-content-updates.js
 //
-// Safe to re-run: it only overwrites the "footerLinks"/"navLinks" fields on Site
-// Setting, the "sections" field on pages listed below, the "excerpt" field on
-// articles listed below, and the name/slug/description/details/image fields on
-// the products listed below, and only creates a page/product when none with
-// that slug exists yet — it never touches anything you've edited by hand
-// elsewhere (phone numbers, emails, other page content, article titles/content,
-// etc). Renamed products are matched by their OLD slug, so this is a one-time
-// migration per product — after it runs once, the old slug no longer exists and
-// the rename step becomes a no-op on future runs.
-// The Gallery Album photos are NOT handled here — they're seeded automatically
-// by the normal bootstrap on first boot, since that collection starts empty.
+// EVERY step below runs AT MOST ONCE, ever, per environment — each one is
+// tagged with a migration key, and once a key has run it is recorded
+// permanently (in Strapi's core store) and never runs again, even if this
+// script is re-run on every future deploy (which it should be — it's how new
+// migrations reach an already-seeded environment). This is what makes it
+// actually safe to re-run: re-running it is a genuine no-op for anything
+// already applied, so it can never overwrite content you've since edited by
+// hand in the CMS admin.
+//
+// To push a NEW content change through this script in a future build, add a
+// new block with a NEW, never-used-before migration key (e.g. bump "-v1" to
+// "-v2") — never reuse an existing key, or it'll re-run and clobber any admin
+// edits made to that content since the key was first marked done.
+//
+// This version also migrates any environment that ran an OLDER, unguarded
+// copy of this script: every migration key below is pre-marked "already
+// applied" the first time this guarded version runs (see ALREADY_APPLIED_ON_UPGRADE),
+// without touching content, so upgrading to this script cannot itself
+// overwrite whatever is currently live.
 
 const path = require("path");
 const { createStrapi } = require("@strapi/core");
@@ -46,26 +52,69 @@ const {
   LOCALES,
 } = require("../dist/src/index.js");
 
+const STORE = { type: "plugin", name: "asf-cms-migrations" };
+
+async function hasRun(strapi, key) {
+  return Boolean(await strapi.store.get({ ...STORE, key }));
+}
+
+async function markRun(strapi, key) {
+  await strapi.store.set({ ...STORE, key, value: true });
+}
+
+// Migration keys that used to run unconditionally on EVERY script run,
+// before this ledger existed, with no way to tell "seed value" apart from
+// "value an admin has since edited by hand" just by looking at the current
+// content. These are grandfathered as already-applied the first time this
+// guarded script runs, WITHOUT touching content, so whatever is currently
+// live (including any admin edits) is preserved rather than re-overwritten
+// one more time on upgrade.
+//
+// The product rename/create/delete migrations are NOT listed here — those
+// already had real existence checks (does the old slug still exist? does
+// the new one already exist?), so they keep determining their own status
+// from actual data below instead of being blindly assumed done, in case
+// this script is being run for the first time on an environment that never
+// got the products migration at all.
+const ALREADY_APPLIED_ON_UPGRADE = [
+  "site-setting-nav-footer-v1",
+  "page-sections-about-v1",
+  "page-sections-quality-v1",
+  "page-sections-crop-residue-feed-v1",
+  "article-excerpt-why-quality-feed-matters-v1",
+  "article-excerpt-next-chapter-at-bulbula-v1",
+  "article-excerpt-connecting-farmers-markets-agro-processing-v1",
+];
+
 // Existing products being renamed + given a real photo (index into PRODUCTS_SEED).
 const PRODUCTS_TO_RENAME = [
-  { oldSlug: "dairy-feed", seedIndex: 0 },
-  { oldSlug: "fattening-feed", seedIndex: 1 },
-  { oldSlug: "poultry-feed", seedIndex: 2 },
+  { oldSlug: "dairy-feed", seedIndex: 0, key: "product-rename-dairy-feed-v1" },
+  { oldSlug: "fattening-feed", seedIndex: 1, key: "product-rename-fattening-feed-v1" },
+  { oldSlug: "poultry-feed", seedIndex: 2, key: "product-rename-poultry-feed-v1" },
 ];
 
 // New products (index into PRODUCTS_SEED) created if they don't exist yet.
-const PRODUCTS_TO_CREATE_INDEXES = [3, 4, 5];
+const PRODUCTS_TO_CREATE = [
+  { seedIndex: 3, key: "product-create-pullet-feed-v1" },
+  { seedIndex: 4, key: "product-create-sheep-goat-feed-v1" },
+  { seedIndex: 5, key: "product-create-camel-feed-v1" },
+];
 
 // Products removed because they're now covered by specific named products above.
-const PRODUCTS_TO_DELETE_SLUGS = ["other-livestock-feed"];
+const PRODUCTS_TO_DELETE = [{ slug: "other-livestock-feed", key: "product-delete-other-livestock-feed-v1" }];
 
 // Pages whose sections should be force-updated to match the current seed
 // (i.e. pages that existed before this script was introduced, or whose
 // content has since changed here).
 const PAGES_TO_UPDATE = [
-  { slug: "about", seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED },
-  { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
-  { slug: "crop-residue-feed", seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
+  { slug: "about", seed: ABOUT_PAGE_SEED, localized: ABOUT_PAGE_LOCALIZED, key: "page-sections-about-v1" },
+  { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED, key: "page-sections-quality-v1" },
+  {
+    slug: "crop-residue-feed",
+    seed: CROP_RESIDUE_PAGE_SEED,
+    localized: CROP_RESIDUE_PAGE_LOCALIZED,
+    key: "page-sections-crop-residue-feed-v1",
+  },
 ];
 
 // Pages that should be created if they don't exist yet.
@@ -76,33 +125,52 @@ const PAGES_TO_CREATE = [
   { slug: "crop-residue-feed", seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
 ];
 
+const ARTICLE_EXCERPT_KEYS = {
+  "why-quality-feed-matters": "article-excerpt-why-quality-feed-matters-v1",
+  "next-chapter-at-bulbula": "article-excerpt-next-chapter-at-bulbula-v1",
+  "connecting-farmers-markets-agro-processing":
+    "article-excerpt-connecting-farmers-markets-agro-processing-v1",
+};
+
 async function main() {
   const appDir = path.join(__dirname, "..");
   const distDir = path.join(appDir, "dist");
   const strapi = await createStrapi({ appDir, distDir }).load();
 
-  const siteSetting = await strapi.documents("api::site-setting.site-setting").findFirst();
-  if (siteSetting) {
-    await strapi.documents("api::site-setting.site-setting").update({
-      documentId: siteSetting.documentId,
-      data: { footerLinks: SITE_SETTINGS_SEED.footerLinks, navLinks: SITE_SETTINGS_SEED.navLinks },
-    });
-    for (const locale of LOCALES) {
-      await strapi.documents("api::site-setting.site-setting").update({
-        documentId: siteSetting.documentId,
-        locale: locale.code,
-        data: {
-          footerLinks: SITE_SETTINGS_LOCALIZED[locale.code].footerLinks,
-          navLinks: SITE_SETTINGS_LOCALIZED[locale.code].navLinks,
-        },
-      });
+  for (const key of ALREADY_APPLIED_ON_UPGRADE) {
+    if (!(await hasRun(strapi, key))) {
+      await markRun(strapi, key);
+      console.log(`Upgrading to guarded migrations: marked "${key}" as already applied (no content changed).`);
     }
-    console.log("Updated Site Setting footerLinks + navLinks (en/am/om).");
-  } else {
-    console.log("No Site Setting document found — skipped.");
   }
 
-  for (const { slug, seed, localized } of PAGES_TO_UPDATE) {
+  const siteSettingKey = "site-setting-nav-footer-v1";
+  if (!(await hasRun(strapi, siteSettingKey))) {
+    const siteSetting = await strapi.documents("api::site-setting.site-setting").findFirst();
+    if (siteSetting) {
+      await strapi.documents("api::site-setting.site-setting").update({
+        documentId: siteSetting.documentId,
+        data: { footerLinks: SITE_SETTINGS_SEED.footerLinks, navLinks: SITE_SETTINGS_SEED.navLinks },
+      });
+      for (const locale of LOCALES) {
+        await strapi.documents("api::site-setting.site-setting").update({
+          documentId: siteSetting.documentId,
+          locale: locale.code,
+          data: {
+            footerLinks: SITE_SETTINGS_LOCALIZED[locale.code].footerLinks,
+            navLinks: SITE_SETTINGS_LOCALIZED[locale.code].navLinks,
+          },
+        });
+      }
+      await markRun(strapi, siteSettingKey);
+      console.log("Updated Site Setting footerLinks + navLinks (en/am/om).");
+    } else {
+      console.log("No Site Setting document found — skipped.");
+    }
+  }
+
+  for (const { slug, seed, localized, key } of PAGES_TO_UPDATE) {
+    if (await hasRun(strapi, key)) continue;
     const page = await strapi.documents("api::page.page").findFirst({ filters: { slug } });
     if (!page) {
       console.log(`No "${slug}" page found — skipped.`);
@@ -121,6 +189,7 @@ async function main() {
         status: "published",
       });
     }
+    await markRun(strapi, key);
     console.log(`Updated "${slug}" page sections (en/am/om).`);
   }
 
@@ -144,6 +213,8 @@ async function main() {
 
   for (let i = 0; i < ARTICLES_SEED.length; i++) {
     const { slug, excerpt } = ARTICLES_SEED[i];
+    const key = ARTICLE_EXCERPT_KEYS[slug];
+    if (key && (await hasRun(strapi, key))) continue;
     const article = await strapi.documents("api::article.article").findFirst({ filters: { slug } });
     if (!article) {
       console.log(`No "${slug}" article found — skipped.`);
@@ -162,13 +233,28 @@ async function main() {
         status: "published",
       });
     }
+    if (key) await markRun(strapi, key);
     console.log(`Updated "${slug}" article excerpt (en/am/om).`);
   }
 
-  for (const { oldSlug, seedIndex } of PRODUCTS_TO_RENAME) {
-    const product = await strapi.documents("api::product.product").findFirst({ filters: { slug: oldSlug } });
+  for (const { oldSlug, seedIndex, key } of PRODUCTS_TO_RENAME) {
+    if (await hasRun(strapi, key)) continue;
+    const product = await strapi
+      .documents("api::product.product")
+      .findFirst({ filters: { slug: oldSlug }, populate: ["image"] });
     if (!product) {
       console.log(`No product with slug "${oldSlug}" found — skipped.`);
+      continue;
+    }
+    // For products whose slug doesn't change (e.g. "dairy-feed" -> "dairy-feed"),
+    // the old-slug match above can't tell "never migrated" apart from
+    // "already migrated, since the slug is the same either way". A real
+    // photo attached is a signal that never exists pre-migration, so treat
+    // that as "already done" rather than re-overwriting the description
+    // fields (which may have been edited by hand since).
+    if (product.image) {
+      await markRun(strapi, key);
+      console.log(`Product "${oldSlug}" already has a photo attached — treating as already migrated, skipped.`);
       continue;
     }
     const { imageFile, slug, ...seedWithoutSlug } = PRODUCTS_SEED[seedIndex];
@@ -191,13 +277,16 @@ async function main() {
         status: "published",
       });
     }
+    await markRun(strapi, key);
     console.log(`Updated product "${oldSlug}" -> "${slug}" (en/am/om), image attached.`);
   }
 
-  for (const seedIndex of PRODUCTS_TO_CREATE_INDEXES) {
+  for (const { seedIndex, key } of PRODUCTS_TO_CREATE) {
+    if (await hasRun(strapi, key)) continue;
     const { imageFile, ...seed } = PRODUCTS_SEED[seedIndex];
     const existing = await strapi.documents("api::product.product").findFirst({ filters: { slug: seed.slug } });
     if (existing) {
+      await markRun(strapi, key);
       console.log(`Product "${seed.slug}" already exists — skipped.`);
       continue;
     }
@@ -214,12 +303,15 @@ async function main() {
         status: "published",
       });
     }
+    await markRun(strapi, key);
     console.log(`Created product "${seed.slug}" (en/am/om), image attached.`);
   }
 
-  for (const slug of PRODUCTS_TO_DELETE_SLUGS) {
+  for (const { slug, key } of PRODUCTS_TO_DELETE) {
+    if (await hasRun(strapi, key)) continue;
     const existing = await strapi.documents("api::product.product").findFirst({ filters: { slug } });
     if (!existing) {
+      await markRun(strapi, key);
       console.log(`Product "${slug}" not found — nothing to delete.`);
       continue;
     }
@@ -230,6 +322,7 @@ async function main() {
     for (const locale of LOCALES) {
       await strapi.documents("api::product.product").delete({ documentId: existing.documentId, locale: locale.code });
     }
+    await markRun(strapi, key);
     console.log(`Deleted product "${slug}" (en/am/om), superseded by specific products.`);
   }
 
