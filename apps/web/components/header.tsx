@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 interface NavLink {
@@ -27,6 +27,10 @@ export function Header({
 }) {
   const [open, setOpen] = useState(false);
   const t = useTranslations("header");
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
@@ -51,12 +55,18 @@ export function Header({
             open ? "absolute left-4 right-4 top-[76px] flex" : "hidden"
           } flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl md:static md:flex md:flex-row md:items-center md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
         >
-          {navLinks.map(({ label, href, children }) => (
+          {navLinks.map(({ label, href, children }) => {
+            const active =
+              isActive(href) || (children?.some((child) => isActive(child.href)) ?? false);
+            return (
             <div key={href} className="group md:relative">
               <Link
                 href={href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+                aria-current={active ? "page" : undefined}
+                className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
+                  active ? "bg-green-50 text-green-800" : "text-slate-900"
+                }`}
               >
                 {label}
                 {children && children.length > 0 && (
@@ -76,7 +86,10 @@ export function Header({
                       key={child.href}
                       href={child.href}
                       onClick={() => setOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+                      aria-current={isActive(child.href) ? "page" : undefined}
+                      className={`rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
+                        isActive(child.href) ? "bg-green-50 text-green-800" : "text-slate-600"
+                      }`}
                     >
                       {child.label}
                     </Link>
@@ -84,7 +97,8 @@ export function Header({
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
           <LanguageSwitcher />
           <Link
             href={ctaHref}
