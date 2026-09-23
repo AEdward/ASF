@@ -1671,6 +1671,7 @@ const PRODUCTS_SEED: {
   stage: "Current" | "Growth" | "Planned" | "Future";
   description: string;
   details: string[];
+  imageFile?: string;
 }[] = [
   {
     name: "Dairy Feed",
@@ -1682,10 +1683,11 @@ const PRODUCTS_SEED: {
       "Year 1 plan: 100,000 quintals",
       "Year 3 plan: 180,000 quintals",
     ],
+    imageFile: "dairy-feed.webp",
   },
   {
-    name: "Fattening Feed",
-    slug: "fattening-feed",
+    name: "Cattle Fattening Feed",
+    slug: "cattle-fattening-feed",
     stage: "Current",
     description: "Feed designed within ASF's livestock production focus.",
     details: [
@@ -1693,28 +1695,43 @@ const PRODUCTS_SEED: {
       "Year 1 plan: 60,000 quintals",
       "Year 3 plan: 120,000 quintals",
     ],
+    imageFile: "cattle-fattening-feed.webp",
   },
   {
-    name: "Poultry Feed",
-    slug: "poultry-feed",
-    stage: "Growth",
-    description: "A major planned growth category in the production plan.",
+    name: "Layer Feed",
+    slug: "layer-feed",
+    stage: "Current",
+    description: "Formulated feed for egg-laying hens, part of ASF's poultry feed range.",
     details: [
       "3-month plan: 25,000 quintals",
       "Year 1 plan: 210,000 quintals",
       "Year 3 plan: 370,000 quintals",
     ],
+    imageFile: "layer-feed.webp",
   },
   {
-    name: "Other Livestock Feed",
-    slug: "other-livestock-feed",
-    stage: "Future",
-    description: "An additional livestock feed category in the multi-year plan.",
-    details: [
-      "Year 1 plan: 40,000 quintals",
-      "Year 2 plan: 60,000 quintals",
-      "Year 3 plan: 80,000 quintals",
-    ],
+    name: "Pullet Feed",
+    slug: "pullet-feed",
+    stage: "Current",
+    description: "Formulated feed for pullets, part of ASF's poultry feed range.",
+    details: [],
+    imageFile: "pullet-feed.webp",
+  },
+  {
+    name: "Sheep & Goat Feed",
+    slug: "sheep-goat-feed",
+    stage: "Current",
+    description: "Formulated feed for sheep and goat farmers, part of ASF's livestock feed range.",
+    details: [],
+    imageFile: "sheep-goat-feed.webp",
+  },
+  {
+    name: "Camel Feed",
+    slug: "camel-feed",
+    stage: "Current",
+    description: "Formulated feed for camel farmers, part of ASF's livestock feed range.",
+    details: [],
+    imageFile: "camel-feed.webp",
   },
   {
     name: "Cereal Processing",
@@ -1749,7 +1766,7 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "የማድለብ መኖ",
+      name: "የከብት ማድለብ መኖ",
       description: "በASF የእንስሳት ምርት ትኩረት ውስጥ የተነደፈ መኖ።",
       details: [
         "የአሁኑ የተገለጸ አቅም፦ 200 ኩንታል/ቀን",
@@ -1758,8 +1775,8 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "የዶሮ መኖ",
-      description: "በምርት ዕቅዱ ውስጥ ትልቅ የታቀደ የእድገት ክፍል።",
+      name: "የሌየር ዶሮ መኖ",
+      description: "ለእንቁላል ጣይ ዶሮዎች የተዘጋጀ መኖ፣ የASF የዶሮ መኖ ዘርፍ አካል።",
       details: [
         "የ3 ወር ዕቅድ፦ 25,000 ኩንታል",
         "የ1ኛ ዓመት ዕቅድ፦ 210,000 ኩንታል",
@@ -1767,13 +1784,19 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "ሌሎች የእንስሳት መኖዎች",
-      description: "በብዙ-ዓመት ዕቅድ ውስጥ ተጨማሪ የእንስሳት መኖ ክፍል።",
-      details: [
-        "የ1ኛ ዓመት ዕቅድ፦ 40,000 ኩንታል",
-        "የ2ኛ ዓመት ዕቅድ፦ 60,000 ኩንታል",
-        "የ3ኛ ዓመት ዕቅድ፦ 80,000 ኩንታል",
-      ],
+      name: "የፑሌት መኖ",
+      description: "ለፑሌት ዶሮዎች የተዘጋጀ መኖ፣ የASF የዶሮ መኖ ዘርፍ አካል።",
+      details: [],
+    },
+    {
+      name: "የበግና ፍየል መኖ",
+      description: "ለበግና ፍየል አርሶ አደሮች የተዘጋጀ መኖ፣ የASF የእንስሳት መኖ ዘርፍ አካል።",
+      details: [],
+    },
+    {
+      name: "የግመል መኖ",
+      description: "ለግመል አርሶ አደሮች የተዘጋጀ መኖ፣ የASF የእንስሳት መኖ ዘርፍ አካል።",
+      details: [],
     },
     {
       name: "የእህል ማቀነባበር",
@@ -1797,7 +1820,7 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "Nyaata Coosaa",
+      name: "Nyaata Coosaa Sangaa",
       description: "Nyaata xiyyeeffannaa oomisha beeladaa ASF keessatti qophaa'e.",
       details: [
         "Dandeettii ammaa ibsame: Kuntaal 200/guyyaa",
@@ -1806,8 +1829,8 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "Nyaata Lukkuu",
-      description: "Kutaa guddina guddaa karoora oomisha keessatti karoorfame.",
+      name: "Nyaata Lukkuu Hanqaaquu",
+      description: "Lukkuu hanqaaquu baaftuuf qophaa'e, kutaa nyaata lukkuu ASF keessaa.",
       details: [
         "Karoora Ji'a 3: Kuntaal 25,000",
         "Karoora Waggaa 1ffaa: Kuntaal 210,000",
@@ -1815,13 +1838,19 @@ const PRODUCTS_LOCALIZED: Record<
       ],
     },
     {
-      name: "Nyaata Beeladaa Biroo",
-      description: "Kutaa nyaata beeladaa dabalataa karoora waggoota hedduu keessatti.",
-      details: [
-        "Karoora Waggaa 1ffaa: Kuntaal 40,000",
-        "Karoora Waggaa 2ffaa: Kuntaal 60,000",
-        "Karoora Waggaa 3ffaa: Kuntaal 80,000",
-      ],
+      name: "Nyaata Pulleetii",
+      description: "Nyaata pulleetiif qophaa'e, kutaa nyaata lukkuu ASF keessaa.",
+      details: [],
+    },
+    {
+      name: "Nyaata Hoolaa fi Reʼee",
+      description: "Qonnaan bultoota hoolaa fi reʼee qabaniif nyaata qophaa'e, kutaa sarara nyaata beelladaa ASF.",
+      details: [],
+    },
+    {
+      name: "Nyaata Gaalaa",
+      description: "Qonnaan bultoota gaalaa qabaniif nyaata qophaa'e, kutaa sarara nyaata beelladaa ASF.",
+      details: [],
     },
     {
       name: "Adeemsa Midhaanii",
@@ -1919,19 +1948,38 @@ async function seedSiteSettings(strapi: Core.Strapi) {
   }
 }
 
+async function uploadProductImage(strapi: Core.Strapi, imageFile: string | undefined) {
+  if (!imageFile) return undefined;
+  const filepath = path.join(strapi.dirs.app.root, "seed-assets", "products", imageFile);
+  if (!fs.existsSync(filepath)) return undefined;
+  const [uploaded] = await strapi.plugin("upload").service("upload").upload({
+    data: {},
+    files: {
+      filepath,
+      originalFilename: imageFile,
+      mimetype: "image/webp",
+      size: fs.statSync(filepath).size,
+    },
+  });
+  return uploaded.id;
+}
+
 async function seedProducts(strapi: Core.Strapi) {
   const existing = await strapi.documents("api::product.product").findFirst();
   if (existing) return;
   for (let i = 0; i < PRODUCTS_SEED.length; i++) {
+    const { imageFile, ...seed } = PRODUCTS_SEED[i];
+    const imageId = await uploadProductImage(strapi, imageFile);
+
     const created = await strapi
       .documents("api::product.product")
-      .create({ data: PRODUCTS_SEED[i], status: "published" });
+      .create({ data: { ...seed, image: imageId } as any, status: "published" });
 
     for (const locale of LOCALES) {
       await strapi.documents("api::product.product").update({
         documentId: created.documentId,
         locale: locale.code,
-        data: { ...PRODUCTS_SEED[i], ...PRODUCTS_LOCALIZED[locale.code][i] },
+        data: { ...seed, ...PRODUCTS_LOCALIZED[locale.code][i], image: imageId } as any,
         status: "published",
       });
     }
@@ -2108,6 +2156,9 @@ export {
   CROP_RESIDUE_PAGE_LOCALIZED,
   ARTICLES_SEED,
   ARTICLES_LOCALIZED,
+  PRODUCTS_SEED,
+  PRODUCTS_LOCALIZED,
+  uploadProductImage,
   LOCALES,
 };
 

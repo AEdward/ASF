@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
+import { ProductImageCard } from "@/components/products/product-image-card";
 import { getProducts } from "@/lib/strapi";
 import type { Locale } from "@/i18n/routing";
 
@@ -24,6 +25,8 @@ export default async function Products({
 
   const t = await getTranslations("products");
   const products = await getProducts(locale as Locale);
+  const mainProducts = products.filter((product) => product.imageUrl);
+  const upcomingProjects = products.filter((product) => !product.imageUrl);
 
   return (
     <main>
@@ -38,25 +41,50 @@ export default async function Products({
       </section>
 
       <section className="py-24">
-        <div className="mx-auto grid max-w-7xl gap-5 px-5 sm:grid-cols-2 lg:px-8">
-          {products.map((product, index) => (
-            <article key={product.slug} className="rounded-3xl border p-7">
-              <span className="text-xs font-black tracking-widest text-green-700">
-                {String(index + 1).padStart(2, "0")} · {t(`stage.${product.stage}`)}
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
+          {mainProducts.map((product) => (
+            <div key={product.slug} className="flex flex-col items-center text-center">
+              <div className="w-full max-w-[280px]">
+                <ProductImageCard imageUrl={product.imageUrl as string} name={product.name} />
+              </div>
+              <span className="mt-6 text-xs font-black tracking-widest text-green-700">
+                {t(`stage.${product.stage}`)}
               </span>
-              <h2 className="mt-3 text-3xl font-black">{product.name}</h2>
-              <p className="mt-3 text-slate-500">{product.description}</p>
+              <h2 className="mt-2 text-2xl font-black">{product.name}</h2>
+              <p className="mt-2 text-sm text-slate-500">{product.description}</p>
               {product.details.length > 0 && (
-                <ul className="mt-5 space-y-2 pl-5 text-sm text-slate-600">
+                <ul className="mt-4 space-y-1 text-sm text-slate-600">
                   {product.details.map((detail) => (
                     <li key={detail}>{detail}</li>
                   ))}
                 </ul>
               )}
-            </article>
+            </div>
           ))}
         </div>
       </section>
+
+      {upcomingProjects.length > 0 && (
+        <section className="bg-slate-50 py-24">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <Eyebrow>{t("upcomingProjectsEyebrow")}</Eyebrow>
+            <h2 className="max-w-2xl text-3xl font-black tracking-tight sm:text-4xl">
+              {t("upcomingProjectsHeading")}
+            </h2>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+              {upcomingProjects.map((project) => (
+                <article key={project.slug} className="rounded-3xl border bg-white p-7">
+                  <span className="text-xs font-black tracking-widest text-green-700">
+                    {t(`stage.${project.stage}`)}
+                  </span>
+                  <h3 className="mt-3 text-2xl font-black">{project.name}</h3>
+                  <p className="mt-3 text-slate-500">{project.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

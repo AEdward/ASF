@@ -32,7 +32,9 @@
       "Growth": "GROWTH",
       "Planned": "PLANNED",
       "Future": "FUTURE"
-    }
+    },
+    "upcomingProjectsEyebrow": "Upcoming Projects",
+    "upcomingProjectsHeading": "What we're building next."
   },
   "blog": {
     "metaTitle": "News & Blog",

@@ -32,7 +32,9 @@
       "Growth": "እድገት",
       "Planned": "የታቀደ",
       "Future": "የወደፊት"
-    }
+    },
+    "upcomingProjectsEyebrow": "የሚመጡ ፕሮጀክቶች",
+    "upcomingProjectsHeading": "ቀጥሎ የምንገነባው።"
   },
   "blog": {
     "metaTitle": "ዜና እና ብሎግ",
