@@ -99,6 +99,20 @@ export function Header({
             </div>
             );
           })}
+          <Link
+            href="/search"
+            onClick={() => setOpen(false)}
+            aria-label={t("searchLabel")}
+            className="flex items-center justify-center rounded-lg p-2.5 text-slate-700 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+          >
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-5 w-5">
+              <path
+                fillRule="evenodd"
+                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.6 4.2l3.6 3.6a.75.75 0 11-1.06 1.06l-3.6-3.6A7 7 012 9z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </Link>
           <LanguageSwitcher />
           <Link
             href={ctaHref}

@@ -3,7 +3,8 @@
     "siteDescription": "ASF Agro Industry — furmaata adeemsa qonnaa kan hojiirra oolu, saayinsawaa fi amanamaa ta'e."
   },
   "header": {
-    "toggleMenu": "Menu Jijjiiri"
+    "toggleMenu": "Menu Jijjiiri",
+    "searchLabel": "Barbaadi"
   },
   "home": {
     "latestNews": {
@@ -85,6 +86,7 @@
     "subtitle": "Michoomaa, dhiyeessii nyaataa, guddina daldalaa fi gaaffiiwwan biroof, garee ASF quunnamaa.",
     "detailsEyebrow": "Odeeffannoo Dhaabbataa",
     "detailsHeading": "Garee keenya qunnamaa.",
+    "mapTitle": "Bakka kaartaa",
     "labels": {
       "headOffice": "Waajjira Muummee",
       "factory": "Warshaa Hojiirra Jiru",
@@ -132,5 +134,38 @@
     "subtitle": "Suuraalee warshaa, garee fi piroojeektii babal'ina keenya irraa.",
     "emptyTitle": "Amma suuraan hin jiru",
     "emptyBody": "Albamiin suuraa CMS irratti dabalamuun booda asitti mul'ata."
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "heading": "Fuulli kun karaa dogoggoraa deeme.",
+    "subtitle": "Fuulli ati barbaadde hin jiru, sochoosuu danda'a, ykn liinkiin cabaa ta'uu danda'a.",
+    "homeCta": "Gara fuula duraatti deebi'i",
+    "contactCta": "Nu quunnamaa"
+  },
+  "privacyPolicy": {
+    "metaTitle": "Imaammata Dhuunfaa",
+    "metaDescription": "ASF Agro Industry akkaataa odeeffannoo asfagro.com irratti walitti qabu, itti fayyadamuu fi eeguu."
+  },
+  "termsOfService": {
+    "metaTitle": "Haala Tajaajilaa",
+    "metaDescription": "Haalawwan asfagro.com fayyadamuu to'atan."
+  },
+  "search": {
+    "metaTitle": "Barbaadi",
+    "metaDescription": "Fuulota, oomishaalee, oduu fi carraa hojii ASF Agro Industry barbaadi.",
+    "navLabel": "Barbaadi",
+    "eyebrow": "Barbaadi",
+    "heading": "Marsariitii ASF barbaadi.",
+    "placeholder": "Fuulota, oomishaalee, oduu, carraa hojii barbaadi...",
+    "submit": "Barbaadi",
+    "resultsFor": "Bu'aa \"{query}\" argame",
+    "noQueryTitle": "Barbaacha barreessi.",
+    "noQueryBody": "Fuulota, oomishaalee, oduu fi barreeffama, carraa hojii keenya barbaadi.",
+    "noResultsTitle": "Bu'aan hin argamne.",
+    "noResultsBody": "Jecha biraa yaali, ykn menu gubbaa irraa marsariitii ilaali.",
+    "categoryPages": "Fuulota",
+    "categoryProducts": "Oomishaalee",
+    "categoryNews": "Oduu fi Barreeffama",
+    "categoryCareers": "Carraa Hojii"
   }
 }

@@ -12,6 +12,13 @@ export interface SiteSettings {
   headerCtaLabel: string;
   headerCtaHref: string;
   footerLinks: { label: string; href: string }[];
+  youtubeUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  telegramUrl?: string;
+  tiktokUrl?: string;
+  linkedinUrl?: string;
+  mapEmbedUrl?: string;
 }
 
 export interface Product {
@@ -102,6 +109,8 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: "/careers" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
   ],
 };
 

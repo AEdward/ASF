@@ -28,6 +28,13 @@
     "navLinks": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } },
     "headerCtaLabel": { "type": "string", "pluginOptions": { "i18n": { "localized": true } } },
     "headerCtaHref": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
-    "footerLinks": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } }
+    "footerLinks": { "type": "json", "pluginOptions": { "i18n": { "localized": true } } },
+    "youtubeUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "facebookUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "instagramUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "telegramUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "tiktokUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "linkedinUrl": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "mapEmbedUrl": { "type": "text", "pluginOptions": { "i18n": { "localized": false } } }
   }
 }

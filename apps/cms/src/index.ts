@@ -86,6 +86,8 @@ const SITE_SETTINGS_SEED = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Careers", href: "/careers" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
   ],
 };
 
@@ -122,6 +124,8 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
       { label: "ስለ እኛ", href: "/about" },
       { label: "አግኙን", href: "/contact" },
       { label: "የስራ ቅጥር", href: "/careers" },
+      { label: "የግላዊነት ፖሊሲ", href: "/privacy-policy" },
+      { label: "የአገልግሎት ውሎች", href: "/terms-of-service" },
     ],
   },
   om: {
@@ -154,6 +158,8 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
       { label: "Waa'ee Keenya", href: "/about" },
       { label: "Nu Qunnami", href: "/contact" },
       { label: "Carraa Hojii", href: "/careers" },
+      { label: "Imaammata Dhuunfaa", href: "/privacy-policy" },
+      { label: "Haala Tajaajilaa", href: "/terms-of-service" },
     ],
   },
 };
@@ -1933,6 +1939,278 @@ const ARTICLES_LOCALIZED: Record<string, { title: string; excerpt: string }[]> =
   ],
 };
 
+const PRIVACY_PAGE_SEED = {
+  title: "Privacy Policy",
+  slug: "privacy-policy",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "Privacy Policy",
+      heading: "How ASF handles your information.",
+      body: "This policy explains what information asfagro.com collects, why, and how it's used. Last updated: September 2026.",
+    },
+    {
+      __component: "sections.rich-text",
+      width: "narrow",
+      content: [
+        { type: "heading", level: 3, children: [{ type: "text", text: "Introduction" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "ASF Agro Industry (\"ASF\", \"we\", \"us\") respects your privacy. This policy explains what information we collect through asfagro.com, how we use it, and the choices you have.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Information We Collect" }] },
+        {
+          type: "list",
+          format: "unordered",
+          children: [
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Contact form submissions: the name, email, phone number and message you provide. These are sent to our team by email so we can respond to your enquiry.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Basic usage data: the page you visited, its language, and the page you came from, so we can understand how the site is used. This does not identify you personally.",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We do not use cookies, and we do not use third-party advertising or analytics trackers on this site.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "How We Use Your Information" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We use the information above to respond to your enquiries, operate and improve asfagro.com, and understand which pages are useful to visitors.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Sharing of Information" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We do not sell or rent your personal information. We only share it with staff who need it to respond to you, service providers who help us run this website (such as our hosting and email providers), or when required by law.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Third-Party Links" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "Our site links to third-party platforms such as YouTube, Facebook, Instagram, Telegram, TikTok and LinkedIn, and may embed a map. Those services have their own privacy practices, which this policy does not cover.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Data Retention & Security" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We keep contact enquiries only as long as needed to respond to you and maintain reasonable business records, and we take reasonable technical measures to protect the information we hold. No method of storage or transmission is completely secure.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Your Rights" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "You can contact us at any time to ask what information we hold about you from a form submission, and to request that it be corrected or deleted, subject to any legitimate business or legal need to keep it.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Children's Privacy" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "This website is not directed at children, and we do not knowingly collect information from children.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Changes to This Policy" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We may update this policy from time to time. The latest version will always be published on this page, and continued use of the site after a change means you accept the update.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Contact Us" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "For questions about this policy or your information, contact us at merihun@asfagro.com or argaw@asfagro.com, or write to us at Akaki Kality Woreda 05, near Kality Maseltegna, Addis Ababa, Ethiopia.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const PRIVACY_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: { title: "የግላዊነት ፖሊሲ" },
+  om: { title: "Imaammata Dhuunfaa" },
+};
+
+const TERMS_PAGE_SEED = {
+  title: "Terms of Service",
+  slug: "terms-of-service",
+  sections: [
+    {
+      __component: "sections.intro",
+      eyebrow: "Terms of Service",
+      heading: "The terms behind using asfagro.com.",
+      body: "These terms govern your use of asfagro.com. Last updated: September 2026.",
+    },
+    {
+      __component: "sections.rich-text",
+      width: "narrow",
+      content: [
+        { type: "heading", level: 3, children: [{ type: "text", text: "Acceptance of Terms" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "By accessing or using asfagro.com, you agree to these Terms of Service. If you do not agree, please do not use this site.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "About This Website" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "asfagro.com is an informational website about ASF Agro Industry's animal feed production, facilities and business. It is not an online store, and no purchases or payments are processed on this site.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Use of Content" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "The text, images, logo and other content on this site belong to ASF Agro Industry or are used with permission. You may view and share this content for personal, non-commercial purposes with attribution. Reproducing or reusing it commercially without our written permission is not allowed.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Accuracy of Information" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We try to keep company, product and production information accurate and up to date, but it is provided \"as is\" without warranty of any kind. Production capacities and plans are subject to change. Nothing on this site is a binding offer or contract.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Contact Form & Communications" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "By submitting our contact form, you confirm the information you provide is accurate and agree not to submit spam, unlawful or misleading content. We aim to respond within a reasonable time, but cannot guarantee a specific response time.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Third-Party Links & Embedded Content" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "Links to our social media pages and any embedded map are provided for your convenience. We are not responsible for the content or privacy practices of third-party sites.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Limitation of Liability" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "This site is provided \"as is.\" To the fullest extent permitted by law, ASF Agro Industry is not liable for any damages arising from your use of, or inability to use, this website.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Governing Law" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "These terms are governed by the laws of Ethiopia, and any dispute is subject to the competent courts of Addis Ababa.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Changes to These Terms" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "We may update these terms from time to time. Changes take effect once posted here, and continued use of the site after an update means you accept it.",
+            },
+          ],
+        },
+        { type: "heading", level: 3, children: [{ type: "text", text: "Contact Us" }] },
+        {
+          type: "paragraph",
+          children: [
+            {
+              type: "text",
+              text: "Questions about these terms can be sent to merihun@asfagro.com or argaw@asfagro.com, or to Akaki Kality Woreda 05, near Kality Maseltegna, Addis Ababa, Ethiopia.",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const TERMS_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
+  am: { title: "የአገልግሎት ውሎች" },
+  om: { title: "Haala Tajaajilaa" },
+};
+
 async function seedSiteSettings(strapi: Core.Strapi) {
   const existing = await strapi.documents("api::site-setting.site-setting").findFirst();
   if (existing) return;
@@ -2017,6 +2295,8 @@ async function seedPages(strapi: Core.Strapi) {
     { seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
     { seed: SUSTAINABILITY_PAGE_SEED, localized: SUSTAINABILITY_PAGE_LOCALIZED },
     { seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
+    { seed: PRIVACY_PAGE_SEED, localized: PRIVACY_PAGE_LOCALIZED },
+    { seed: TERMS_PAGE_SEED, localized: TERMS_PAGE_LOCALIZED },
   ];
 
   for (const { seed, localized } of pages) {
@@ -2155,6 +2435,10 @@ export {
   SUSTAINABILITY_PAGE_LOCALIZED,
   CROP_RESIDUE_PAGE_SEED,
   CROP_RESIDUE_PAGE_LOCALIZED,
+  PRIVACY_PAGE_SEED,
+  PRIVACY_PAGE_LOCALIZED,
+  TERMS_PAGE_SEED,
+  TERMS_PAGE_LOCALIZED,
   ARTICLES_SEED,
   ARTICLES_LOCALIZED,
   PRODUCTS_SEED,

@@ -3,7 +3,8 @@
     "siteDescription": "ASF Agro Industry — practical, scientific and reliable agro-processing solutions."
   },
   "header": {
-    "toggleMenu": "Toggle menu"
+    "toggleMenu": "Toggle menu",
+    "searchLabel": "Search"
   },
   "home": {
     "latestNews": {
@@ -85,6 +86,7 @@
     "subtitle": "For partnerships, feed supply, business development and other enquiries, contact the ASF team.",
     "detailsEyebrow": "Company details",
     "detailsHeading": "Reach our team.",
+    "mapTitle": "Location map",
     "labels": {
       "headOffice": "Head Office",
       "factory": "Operational Factory",
@@ -132,5 +134,38 @@
     "subtitle": "Photos from our factory, team and expansion project.",
     "emptyTitle": "No photos yet",
     "emptyBody": "Photo albums will appear here once added through the CMS."
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "heading": "This page took a wrong turn.",
+    "subtitle": "The page you're looking for doesn't exist, may have moved, or the link may be broken.",
+    "homeCta": "Back to home",
+    "contactCta": "Contact us"
+  },
+  "privacyPolicy": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "How ASF Agro Industry collects, uses and protects information on asfagro.com."
+  },
+  "termsOfService": {
+    "metaTitle": "Terms of Service",
+    "metaDescription": "The terms governing your use of asfagro.com."
+  },
+  "search": {
+    "metaTitle": "Search",
+    "metaDescription": "Search across ASF Agro Industry's pages, products, news and careers.",
+    "navLabel": "Search",
+    "eyebrow": "Search",
+    "heading": "Search the ASF site.",
+    "placeholder": "Search pages, products, news, careers...",
+    "submit": "Search",
+    "resultsFor": "Results for \"{query}\"",
+    "noQueryTitle": "Type something to search.",
+    "noQueryBody": "Search across our pages, products, news & blog and career postings.",
+    "noResultsTitle": "No results found.",
+    "noResultsBody": "Try a different word, or browse the site from the menu above.",
+    "categoryPages": "Pages",
+    "categoryProducts": "Products",
+    "categoryNews": "News & Blog",
+    "categoryCareers": "Careers"
   }
 }

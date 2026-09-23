@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { SocialIcon } from "@/components/social-icons";
 
 function phoneLinks(value?: string) {
   if (!value) return [];
@@ -19,6 +20,12 @@ export function Footer({
   phoneSecondary,
   emailPrimary,
   emailSecondary,
+  youtubeUrl,
+  facebookUrl,
+  instagramUrl,
+  telegramUrl,
+  tiktokUrl,
+  linkedinUrl,
 }: {
   companyName: string;
   tagline: string;
@@ -28,10 +35,24 @@ export function Footer({
   phoneSecondary?: string;
   emailPrimary?: string;
   emailSecondary?: string;
+  youtubeUrl?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  telegramUrl?: string;
+  tiktokUrl?: string;
+  linkedinUrl?: string;
 }) {
   const t = useTranslations("footer");
   const phones = [...phoneLinks(phonePrimary), ...phoneLinks(phoneSecondary)];
   const emails = [emailPrimary, emailSecondary].filter(Boolean) as string[];
+  const socialLinks = [
+    { name: "youtube" as const, url: youtubeUrl },
+    { name: "facebook" as const, url: facebookUrl },
+    { name: "instagram" as const, url: instagramUrl },
+    { name: "telegram" as const, url: telegramUrl },
+    { name: "tiktok" as const, url: tiktokUrl },
+    { name: "linkedin" as const, url: linkedinUrl },
+  ].filter((s) => s.url) as { name: "youtube" | "facebook" | "instagram" | "telegram" | "tiktok" | "linkedin"; url: string }[];
 
   return (
     <footer className="bg-[#081c0d] text-sm text-green-100/70">
@@ -50,6 +71,22 @@ export function Footer({
               <span className="block text-xs">{tagline}</span>
             </div>
           </div>
+          {socialLinks.length > 0 && (
+            <div className="mt-5 flex gap-3">
+              {socialLinks.map(({ name, url }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+                >
+                  <SocialIcon name={name} className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>

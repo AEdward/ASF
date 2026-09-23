@@ -82,6 +82,12 @@ export default async function RootLayout({
             phoneSecondary={settings.phoneSecondary}
             emailPrimary={settings.emailPrimary}
             emailSecondary={settings.emailSecondary}
+            youtubeUrl={settings.youtubeUrl}
+            facebookUrl={settings.facebookUrl}
+            instagramUrl={settings.instagramUrl}
+            telegramUrl={settings.telegramUrl}
+            tiktokUrl={settings.tiktokUrl}
+            linkedinUrl={settings.linkedinUrl}
           />
         </NextIntlClientProvider>
       </body>

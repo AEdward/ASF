@@ -44,6 +44,10 @@ const {
   SUSTAINABILITY_PAGE_LOCALIZED,
   CROP_RESIDUE_PAGE_SEED,
   CROP_RESIDUE_PAGE_LOCALIZED,
+  PRIVACY_PAGE_SEED,
+  PRIVACY_PAGE_LOCALIZED,
+  TERMS_PAGE_SEED,
+  TERMS_PAGE_LOCALIZED,
   ARTICLES_SEED,
   ARTICLES_LOCALIZED,
   PRODUCTS_SEED,
@@ -123,6 +127,8 @@ const PAGES_TO_CREATE = [
   { slug: "quality", seed: QUALITY_PAGE_SEED, localized: QUALITY_PAGE_LOCALIZED },
   { slug: "sustainability", seed: SUSTAINABILITY_PAGE_SEED, localized: SUSTAINABILITY_PAGE_LOCALIZED },
   { slug: "crop-residue-feed", seed: CROP_RESIDUE_PAGE_SEED, localized: CROP_RESIDUE_PAGE_LOCALIZED },
+  { slug: "privacy-policy", seed: PRIVACY_PAGE_SEED, localized: PRIVACY_PAGE_LOCALIZED },
+  { slug: "terms-of-service", seed: TERMS_PAGE_SEED, localized: TERMS_PAGE_LOCALIZED },
 ];
 
 const ARTICLE_EXCERPT_KEYS = {
@@ -166,6 +172,58 @@ async function main() {
       console.log("Updated Site Setting footerLinks + navLinks (en/am/om).");
     } else {
       console.log("No Site Setting document found — skipped.");
+    }
+  }
+
+  // Additive-only: appends the new Privacy Policy / Terms of Service footer
+  // links WITHOUT replacing the footerLinks array, so any links an admin has
+  // since added, removed or reordered by hand are preserved untouched.
+  const footerLegalLinksKey = "site-setting-footer-legal-links-v1";
+  if (!(await hasRun(strapi, footerLegalLinksKey))) {
+    const siteSetting = await strapi.documents("api::site-setting.site-setting").findFirst();
+    if (siteSetting) {
+      const FOOTER_LEGAL_LINKS = {
+        en: [
+          { label: "Privacy Policy", href: "/privacy-policy" },
+          { label: "Terms of Service", href: "/terms-of-service" },
+        ],
+        am: [
+          { label: "የግላዊነት ፖሊሲ", href: "/privacy-policy" },
+          { label: "የአገልግሎት ውሎች", href: "/terms-of-service" },
+        ],
+        om: [
+          { label: "Imaammata Dhuunfaa", href: "/privacy-policy" },
+          { label: "Haala Tajaajilaa", href: "/terms-of-service" },
+        ],
+      };
+
+      const appendFooterLegalLinks = async (locale) => {
+        const current = await strapi.documents("api::site-setting.site-setting").findOne({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+        });
+        const existingLinks = current?.footerLinks ?? [];
+        const alreadyHasLegalLinks = existingLinks.some(
+          (l) => l.href === "/privacy-policy" || l.href === "/terms-of-service",
+        );
+        if (alreadyHasLegalLinks) return;
+        await strapi.documents("api::site-setting.site-setting").update({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+          data: { footerLinks: [...existingLinks, ...FOOTER_LEGAL_LINKS[locale || "en"]] },
+        });
+      };
+
+      await appendFooterLegalLinks(undefined);
+      for (const locale of LOCALES) {
+        await appendFooterLegalLinks(locale.code);
+      }
+      await markRun(strapi, footerLegalLinksKey);
+      console.log(
+        "Appended Privacy Policy / Terms of Service links to Site Setting footerLinks (en/am/om), keeping existing entries as-is.",
+      );
+    } else {
+      console.log("No Site Setting document found — skipped footer legal links.");
     }
   }
 

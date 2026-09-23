@@ -64,6 +64,21 @@ export default async function Contact({
           </div>
           <ContactForm />
         </div>
+        {settings.mapEmbedUrl && (
+          <div className="mx-auto mt-6 max-w-7xl px-5 lg:px-8">
+            <div className="overflow-hidden rounded-3xl border">
+              <iframe
+                src={settings.mapEmbedUrl}
+                title={t("mapTitle")}
+                width="100%"
+                height="420"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        )}
       </section>
     </main>
   );

@@ -3,7 +3,8 @@
     "siteDescription": "ASF አግሮ ኢንዱስትሪ — ተግባራዊ፣ ሳይንሳዊ እና አስተማማኝ የግብርና ማቀነባበሪያ መፍትሄዎች።"
   },
   "header": {
-    "toggleMenu": "ማውጫ ቀያይር"
+    "toggleMenu": "ማውጫ ቀያይር",
+    "searchLabel": "ፍለጋ"
   },
   "home": {
     "latestNews": {
@@ -85,6 +86,7 @@
     "subtitle": "ለትብብር፣ የመኖ አቅርቦት፣ የስራ እድገት እና ለሌሎች ጥያቄዎች የASF ቡድንን ያግኙ።",
     "detailsEyebrow": "የኩባንያ ዝርዝሮች",
     "detailsHeading": "ቡድናችንን ያግኙ።",
+    "mapTitle": "የካርታ አካባቢ",
     "labels": {
       "headOffice": "ዋና መስሪያ ቤት",
       "factory": "የማምረቻ ፋብሪካ",
@@ -132,5 +134,38 @@
     "subtitle": "ከፋብሪካችን፣ ቡድናችን እና የማስፋፊያ ፕሮጀክታችን የተወሰዱ ፎቶዎች።",
     "emptyTitle": "እስካሁን ምንም ፎቶ የለም",
     "emptyBody": "የፎቶ አልበሞች በCMS በኩል ከተጨመሩ በኋላ እዚህ ይታያሉ።"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "heading": "ይህ ገጽ ወደ ተሳሳተ አቅጣጫ ዞሯል።",
+    "subtitle": "የሚፈልጉት ገጽ የለም፣ ተንቀሳቅሶ ይሆናል፣ ወይም አገናኙ ተሰብሮ ይሆናል።",
+    "homeCta": "ወደ መነሻ ገጽ ተመለስ",
+    "contactCta": "አግኙን"
+  },
+  "privacyPolicy": {
+    "metaTitle": "የግላዊነት ፖሊሲ",
+    "metaDescription": "ASF አግሮ ኢንዱስትሪ በ asfagro.com ላይ መረጃን እንዴት እንደሚሰበስብ፣ እንደሚጠቀም እና እንደሚጠብቅ።"
+  },
+  "termsOfService": {
+    "metaTitle": "የአገልግሎት ውሎች",
+    "metaDescription": "asfagro.comን ለመጠቀም የሚያስፈልጉ ውሎች።"
+  },
+  "search": {
+    "metaTitle": "ፍለጋ",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ ገጾችን፣ ምርቶችን፣ ዜናዎችን እና የስራ ቅጥሮችን ይፈልጉ።",
+    "navLabel": "ፍለጋ",
+    "eyebrow": "ፍለጋ",
+    "heading": "የASF ድህረ ገጽን ይፈልጉ።",
+    "placeholder": "ገጾችን፣ ምርቶችን፣ ዜናዎችን፣ የስራ ቅጥሮችን ይፈልጉ...",
+    "submit": "ፍለግ",
+    "resultsFor": "ለ\"{query}\" የተገኙ ውጤቶች",
+    "noQueryTitle": "ለመፈለግ ነገር ይጻፉ።",
+    "noQueryBody": "ገጾቻችንን፣ ምርቶችን፣ ዜና እና ብሎግ እና የስራ ቅጥር ማስታወቂያዎችን ይፈልጉ።",
+    "noResultsTitle": "ምንም ውጤት አልተገኘም።",
+    "noResultsBody": "ሌላ ቃል ይሞክሩ፣ ወይም ከላይ ካለው ምናሌ ድህረ ገጹን ያስሱ።",
+    "categoryPages": "ገጾች",
+    "categoryProducts": "ምርቶች",
+    "categoryNews": "ዜና እና ብሎግ",
+    "categoryCareers": "የስራ ቅጥር"
   }
 }
