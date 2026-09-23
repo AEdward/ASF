@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Eyebrow, Button } from "@/components/ui";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
 
 export default async function NotFound() {
   const t = await getTranslations("notFound");

@@ -8,6 +8,7 @@ import { Analytics } from "@/components/analytics";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { getSiteSettings } from "@/lib/strapi";
+import { organizationJsonLd, JsonLd } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 
 const notoSansEthiopic = Noto_Sans_Ethiopic({
@@ -63,6 +64,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={notoSansEthiopic.variable}>
       <body>
+        <JsonLd data={organizationJsonLd(settings)} />
         <NextIntlClientProvider>
           <Analytics strapiUrl={process.env.STRAPI_URL || "http://localhost:1337"} />
           <Header

@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getJobVacancies } from "@/lib/strapi";
+import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -12,7 +13,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "careers" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return buildMetadata({
+    locale: locale as Locale,
+    path: "/careers",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
 }
 
 export default async function Careers({

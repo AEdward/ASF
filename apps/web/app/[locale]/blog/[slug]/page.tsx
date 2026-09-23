@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getArticle, getArticles } from "@/lib/strapi";
+import { buildMetadata, articleJsonLd, JsonLd, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
@@ -19,7 +20,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const article = await getArticle(slug, locale as Locale);
-  return { title: article?.title, description: article?.excerpt };
+  if (!article) return {};
+  return buildMetadata({
+    locale: locale as Locale,
+    path: `/blog/${slug}`,
+    title: article.title,
+    description: article.excerpt,
+    image: article.coverImageUrl,
+  });
 }
 
 export default async function ArticlePage({
@@ -37,6 +45,14 @@ export default async function ArticlePage({
 
   return (
     <main>
+      <JsonLd
+        data={articleJsonLd({
+          title: article.title,
+          description: article.excerpt,
+          url: `${SITE_URL}/${locale}/blog/${slug}`,
+          imageUrl: article.coverImageUrl,
+        })}
+      />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <Link href="/blog" className="text-sm font-bold text-green-700">

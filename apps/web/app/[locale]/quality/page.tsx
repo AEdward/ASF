@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionRenderer } from "@/components/section-renderer";
 import { DEFAULT_QUALITY_SECTIONS } from "@/lib/sections";
 import { getPage } from "@/lib/strapi";
+import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -12,7 +13,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "quality" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return buildMetadata({
+    locale: locale as Locale,
+    path: "/quality",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  });
 }
 
 export default async function Quality({

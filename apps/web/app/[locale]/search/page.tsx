@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { SearchBox } from "@/components/search-box";
 import { getArticles, getJobVacancies, getProducts } from "@/lib/strapi";
+import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 const STATIC_PAGES = [
@@ -33,7 +34,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "search" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return buildMetadata({
+    locale: locale as Locale,
+    path: "/search",
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    noIndex: true,
+  });
 }
 
 export default async function Search({
