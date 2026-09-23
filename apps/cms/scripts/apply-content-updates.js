@@ -54,6 +54,7 @@ const {
   PRODUCTS_LOCALIZED,
   uploadProductImage,
   LOCALES,
+  seedAdminRole,
 } = require("../dist/src/index.js");
 
 const STORE = { type: "plugin", name: "asf-cms-migrations" };
@@ -382,6 +383,14 @@ async function main() {
     }
     await markRun(strapi, key);
     console.log(`Deleted product "${slug}" (en/am/om), superseded by specific products.`);
+  }
+
+  const adminRoleBefore = await strapi.service("admin::role").findOne({ name: "Admin" });
+  if (!adminRoleBefore) {
+    await seedAdminRole(strapi);
+    console.log('Created "Admin" role with full access except tokens/webhooks.');
+  } else {
+    console.log('"Admin" role already exists — skipped.');
   }
 
   process.exit(0);

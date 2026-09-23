@@ -2211,6 +2211,69 @@ const TERMS_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
   om: { title: "Haala Tajaajilaa" },
 };
 
+// Categories excluded from the "Admin" role below: credentials/tokens that
+// grant broad programmatic or data-transfer access to the whole instance,
+// plus webhook endpoints (which can leak content to arbitrary URLs). Any
+// action within these categories, including ones added by future Strapi
+// versions, is excluded via prefix match.
+const ADMIN_ROLE_EXCLUDED_PREFIXES = [
+  "admin::webhooks.",
+  "admin::api-tokens.",
+  "admin::admin-tokens.",
+  "admin::transfer.tokens.",
+];
+
+async function buildAdminRolePermissions(strapi: Core.Strapi) {
+  const permissionService = strapi.service("admin::permission") as any;
+  const contentTypeService = strapi.service("admin::content-type") as any;
+  const allActions = permissionService.actionProvider.values();
+
+  const contentTypesActions = allActions.filter((a: any) => a.section === "contentTypes");
+  const otherActions = allActions.filter(
+    (a: any) =>
+      a.section !== "contentTypes" &&
+      !ADMIN_ROLE_EXCLUDED_PREFIXES.some((prefix) => a.actionId.startsWith(prefix)),
+  );
+
+  // Same content-type permission set Super Admin gets (no restrictedSubjects),
+  // so Admin has full access to every content type, matching Super Admin.
+  const permissions: Record<string, unknown>[] =
+    contentTypeService.getPermissionsWithNestedFields(contentTypesActions);
+
+  for (const action of otherActions) {
+    const { actionId, subjects } = action;
+    if (Array.isArray(subjects) && subjects.length > 0) {
+      for (const subject of subjects) {
+        permissions.push({ action: actionId, subject });
+      }
+    } else {
+      permissions.push({ action: actionId });
+    }
+  }
+
+  return permissions;
+}
+
+// Additive-only: creates the "Admin" role once if it doesn't already exist,
+// with every permission Super Admin has except API tokens, admin tokens,
+// transfer tokens and webhooks. Never touches the role again after it
+// exists, so any permission tweaks made by hand in the CMS admin UI are
+// preserved on every future run of this function.
+async function seedAdminRole(strapi: Core.Strapi) {
+  const roleService = strapi.service("admin::role") as any;
+  const existing = await roleService.findOne({ name: "Admin" });
+  if (existing) return;
+
+  const role = await roleService.create({
+    name: "Admin",
+    description:
+      "Admins can manage all content, media and users, but cannot manage API tokens, admin tokens, transfer tokens or webhooks.",
+  });
+
+  const permissions = await buildAdminRolePermissions(strapi);
+  await roleService.assignPermissions(role.id, permissions);
+}
+
 async function seedSiteSettings(strapi: Core.Strapi) {
   const existing = await strapi.documents("api::site-setting.site-setting").findFirst();
   if (existing) return;
@@ -2445,6 +2508,7 @@ export {
   PRODUCTS_LOCALIZED,
   uploadProductImage,
   LOCALES,
+  seedAdminRole,
 };
 
 export default {
@@ -2459,5 +2523,6 @@ export default {
     await seedArticles(strapi);
     await seedPages(strapi);
     await seedGalleryAlbums(strapi);
+    await seedAdminRole(strapi);
   },
 };
