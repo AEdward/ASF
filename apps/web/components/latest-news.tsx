@@ -28,24 +28,30 @@ export function LatestNews({ articles }: { articles: Article[] }) {
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {articles.map((article, index) => (
-            <article key={article.slug} className="overflow-hidden rounded-3xl border">
-              {article.coverImageUrl ? (
-                <div className="relative h-44">
-                  <Image
-                    src={article.coverImageUrl}
-                    alt={article.title}
-                    fill
-                    className="object-cover"
-                  />
+            <Link
+              key={article.slug}
+              href={`/blog/${article.slug}`}
+              className="overflow-hidden rounded-3xl border transition hover:border-green-700"
+            >
+              <article>
+                {article.coverImageUrl ? (
+                  <div className="relative h-44">
+                    <Image
+                      src={article.coverImageUrl}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className={`h-44 ${fallbackColors[index % fallbackColors.length]}`} />
+                )}
+                <div className="p-6">
+                  <h3 className="text-2xl font-black">{article.title}</h3>
+                  <p className="mt-3 text-sm text-slate-500">{article.excerpt}</p>
                 </div>
-              ) : (
-                <div className={`h-44 ${fallbackColors[index % fallbackColors.length]}`} />
-              )}
-              <div className="p-6">
-                <h3 className="text-2xl font-black">{article.title}</h3>
-                <p className="mt-3 text-sm text-slate-500">{article.excerpt}</p>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
       </div>

@@ -31,6 +31,7 @@ export interface Article {
   excerpt: string;
   category: string;
   coverImageUrl?: string;
+  content?: string;
 }
 
 export interface GalleryAlbum {

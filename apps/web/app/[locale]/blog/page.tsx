@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
+import { Link } from "@/i18n/navigation";
 import { getArticles } from "@/lib/strapi";
 import type { Locale } from "@/i18n/routing";
 
@@ -43,27 +44,36 @@ export default async function Blog({
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 md:grid-cols-3 lg:px-8">
           {articles.map((article, index) => (
-            <article key={article.slug} className="overflow-hidden rounded-3xl border">
-              {article.coverImageUrl ? (
-                <div className="relative h-44">
-                  <Image
-                    src={article.coverImageUrl}
-                    alt={article.title}
-                    fill
-                    className="object-cover"
-                  />
+            <Link
+              key={article.slug}
+              href={`/blog/${article.slug}`}
+              className="overflow-hidden rounded-3xl border transition hover:border-green-700"
+            >
+              <article>
+                {article.coverImageUrl ? (
+                  <div className="relative h-44">
+                    <Image
+                      src={article.coverImageUrl}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className={`h-44 ${fallbackColors[index % fallbackColors.length]}`} />
+                )}
+                <div className="p-6">
+                  <span className="text-xs font-black tracking-widest text-green-700">
+                    {t(`category.${article.category}`).toUpperCase()}
+                  </span>
+                  <h2 className="mt-2 text-2xl font-black">{article.title}</h2>
+                  <p className="mt-3 text-sm text-slate-500">{article.excerpt}</p>
+                  <span className="mt-4 inline-block text-sm font-bold text-green-700">
+                    {t("readMore")} →
+                  </span>
                 </div>
-              ) : (
-                <div className={`h-44 ${fallbackColors[index % fallbackColors.length]}`} />
-              )}
-              <div className="p-6">
-                <span className="text-xs font-black tracking-widest text-green-700">
-                  {t(`category.${article.category}`).toUpperCase()}
-                </span>
-                <h2 className="mt-2 text-2xl font-black">{article.title}</h2>
-                <p className="mt-3 text-sm text-slate-500">{article.excerpt}</p>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
       </section>

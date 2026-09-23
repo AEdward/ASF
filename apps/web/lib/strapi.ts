@@ -57,6 +57,7 @@ interface StrapiArticleEntry {
   excerpt: string;
   category: string;
   coverImage?: { url?: string } | null;
+  content?: string;
 }
 
 interface StrapiJobVacancyEntry {
@@ -408,6 +409,25 @@ export async function getLatestArticles(locale: Locale = "en", limit = 3): Promi
     category: entry.category,
     coverImageUrl: mediaUrl(entry.coverImage),
   }));
+}
+
+export async function getArticle(slug: string, locale: Locale = "en"): Promise<Article | null> {
+  const json = await strapiFetch<{ data: StrapiArticleEntry[] }>(
+    `/api/articles?filters[slug][$eq]=${slug}&populate=coverImage&locale=${locale}`
+  );
+  const entry = json?.data?.[0];
+  if (entry) {
+    return {
+      id: entry.id,
+      title: entry.title,
+      slug: entry.slug,
+      excerpt: entry.excerpt,
+      category: entry.category,
+      coverImageUrl: mediaUrl(entry.coverImage),
+      content: entry.content,
+    };
+  }
+  return DEFAULT_ARTICLES.find((article) => article.slug === slug) || null;
 }
 
 export async function getJobVacancies(locale: Locale = "en"): Promise<JobVacancy[]> {
