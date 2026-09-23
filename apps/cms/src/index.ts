@@ -1177,6 +1177,26 @@ const CROP_RESIDUE_PAGE_SEED = {
       imageStyle: "logo-3d",
     },
     {
+      __component: "sections.intro",
+      eyebrow: "The Challenge",
+      heading: "Crop residues are already a vital feed source — but their quality is limited.",
+      body:
+        "Livestock systems across Sub-Saharan Africa and South Asia rely heavily on low-quality cereal crop residues such as rice and wheat straw, which limits productivity and drives high methane emissions. Higher-quality forage crops are often impractical due to land constraints, and poor logistics and high collection costs mean much of the residue is burned instead of used — wasting resources and polluting the air.",
+    },
+    {
+      __component: "sections.story-panel",
+      eyebrow: "Project Overview",
+      heading: "Turning residues into a scalable feed business.",
+      bodyParagraph1:
+        "Effective biochemical treatments for improving crop residues already exist, but remain underused on farms due to socioeconomic and logistical barriers. This project promotes scalable business models where enterprises collect and treat residues off-farm, then sell the improved feed to farmers — aligning more closely with farmer preferences and capacities.",
+      bodyParagraph2:
+        "Through field trials and systems analysis, the project quantifies these benefits to support climate goals and strengthen farming systems in Ethiopia and Nepal.",
+      panelBadge: "June 2025 – May 2027",
+      panelTitle: "A two-country pilot backed by real field data.",
+      panelText:
+        "Funded by the Climate and Clean Air Coalition, a UNEP-convened initiative, and led by the World Resources Institute and the International Livestock Research Institute.",
+    },
+    {
       __component: "sections.feature-grid",
       eyebrow: "Our approach",
       heading: "Three outcomes driving this project.",
@@ -1187,12 +1207,126 @@ const CROP_RESIDUE_PAGE_SEED = {
       ],
     },
     {
+      __component: "sections.rich-text",
+      eyebrow: "Project Activities",
+      heading: "What the project is doing.",
+      width: "wide",
+      content: [
+        {
+          type: "list",
+          format: "unordered",
+          children: [
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Engage local stakeholders in Ethiopia and Nepal by involving government agencies, researchers, cooperatives, and private sector actors through workshops and training during project planning and implementation.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Pilot innovative feed technologies in collaboration with local feed manufacturers, and raise awareness among existing and potential entrepreneurs by providing training on crop residue-based feed production. Develop credible scenarios for local businesses to produce crop residue-based feed.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Develop self-sustaining business models by integrating real-time project data, desk research, collaboration with local partners, and insights from other aligned initiatives.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Advocate for the integration of feed quality traits into crop breeding programs by collaborating with breeding institutions to promote dual-purpose crops that support both food and livestock feed needs.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Quantify the environmental and economic benefits of improved crop residue use through emissions modeling, productivity assessments, and cost-benefit analyses to inform national climate strategies.",
+                },
+              ],
+            },
+            {
+              type: "list-item",
+              children: [
+                {
+                  type: "text",
+                  text: "Develop and disseminate project findings as actionable recommendations to inform policy and investment decisions, enabling the scaling and replication of efficient crop residue-based feed interventions across the regions.",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      __component: "sections.stats-band",
+      eyebrow: "Why it matters",
+      heading: "Ethiopia's enteric methane intensity is nearly 8x the USA's, per unit of feed calories (2022).",
+      dark: true,
+      stats: [
+        { value: "1", label: "USA — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+        { value: "3.5", label: "Global average — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+        { value: "6.2", label: "Nepal — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+        { value: "7.8", label: "Ethiopia — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+      ],
+    },
+    {
+      __component: "sections.feature-grid",
+      eyebrow: "Key messages",
+      heading: "Why better feed matters.",
+      items: [
+        {
+          title: "Farmer livelihoods first",
+          text: "Better feed leads to healthier animals, higher milk and meat yields, and more stable incomes for smallholder farmers.",
+        },
+        {
+          title: "Untapped nutritional value",
+          text: "Crop residues are already a vital feed source, but their digestibility and nutritional value are limited — biochemical treatment or genetic approaches can unlock significant productivity gains.",
+        },
+        {
+          title: "Locally driven business models",
+          text: "Interventions must focus on building self-sustaining, locally driven business models that make improved feed solutions accessible and scalable.",
+        },
+        {
+          title: "A better future",
+          text: "Producing more food on the same land while reducing methane emissions per unit of output supports both climate action and food security.",
+        },
+      ],
+    },
+    {
+      __component: "sections.intro",
+      eyebrow: "Expected Outcomes",
+      heading: "What success looks like by the end of the project.",
+      body:
+        "Smallholder and commercial farmers will realize the benefits of increased productivity and income, and new business opportunities will emerge around residue treatment. Policymakers will have access to robust evidence supporting the integration of feed quality into agricultural and climate strategies.",
+    },
+    {
       __component: "sections.columns-block",
       eyebrow: "In collaboration with",
       heading: "Delivered together with leading research institutions.",
       columns: [
         { heading: "ILRI", text: "International Livestock Research Institute" },
         { heading: "WRI", text: "World Resources Institute" },
+        {
+          heading: "CCAC",
+          text: "Climate and Clean Air Coalition — a UNEP-convened initiative funding this project.",
+        },
       ],
     },
   ],
@@ -1213,6 +1347,26 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         imageStyle: "logo-3d",
       },
       {
+        __component: "sections.intro",
+        eyebrow: "ተግዳሮት",
+        heading: "የሰብል ቀሪት አስቀድሞ ወሳኝ የመኖ ምንጭ ነው — ጥራቱ ግን ውስን ነው።",
+        body:
+          "በሰሃራ በታች አፍሪካ እና በደቡብ እስያ የሚገኙ የእንስሳት እርባታ ስርዓቶች እንደ ሩዝ እና ስንዴ ገለባ ባሉ ዝቅተኛ ጥራት ያላቸው የሰብል ቀሪቶች ላይ በእጅጉ ይመሰረታሉ፣ ይህም ምርታማነትን ይገድባል እና ከፍተኛ የሚቴን ልቀት ያስከትላል። የተሻለ ጥራት ያላቸው የግጦሽ ሰብሎች በመሬት ውስንነት ምክንያት ብዙ ጊዜ የማይተገበሩ ናቸው፣ እንዲሁም ደካማ ሎጅስቲክስ እና ከፍተኛ የመሰብሰብ ወጪ ብዙዎቹ ቀሪቶች ከመጠቀም ይልቅ እንዲቃጠሉ ያደርጋል — ሀብት እያባከነ እና አየር እየበከለ።",
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "የፕሮጀክት አጠቃላይ እይታ",
+        heading: "ቀሪትን ወደ ስፍር የሚስፋ የመኖ ስራ መቀየር።",
+        bodyParagraph1:
+          "የሰብል ቀሪቶችን ለማሻሻል ውጤታማ የባዮ-ኬሚካል ሕክምናዎች አስቀድሞ አሉ፣ ነገር ግን በማህበራዊ-ኢኮኖሚያዊ እና ሎጂስቲክ እንቅፋቶች ምክንያት በእርሻ ላይ አነስተኛ አጠቃቀም አላቸው። ይህ ፕሮጀክት ድርጅቶች ቀሪቶችን ከእርሻ ውጭ ሰብስበው አክመው ለአርሶ አደሮች የተሻሻለውን መኖ የሚሸጡበት ስፍር የሚስፋ የስራ ሞዴሎችን ያበረታታል — ይህም ከአርሶ አደር ምርጫ እና አቅም ጋር በቅርበት ይጣጣማል።",
+        bodyParagraph2:
+          "በሜዳ ሙከራዎች እና በስርዓት ትንተና በኩል፣ ፕሮጀክቱ በኢትዮጵያ እና ኔፓል የአየር ንብረት ግቦችን ለመደገፍ እና የግብርና ስርዓቶችን ለማጠናከር እነዚህን ጥቅሞች ይለካል።",
+        panelBadge: "ሰኔ 2025 – ግንቦት 2027",
+        panelTitle: "በእውነተኛ የሜዳ መረጃ የተደገፈ የሁለት ሀገር የሙከራ ፕሮጀክት።",
+        panelText:
+          "በተባበሩት መንግስታት ድርጅት አካባቢ ጥበቃ ፕሮግራም (UNEP) የተመቻቸ ተነሳሽነት በሆነው የአየር ንብረት እና ንፁህ አየር ጥምረት የተደገፈ፣ በዓለም ሀብቶች ተቋም እና በአለምአቀፍ የእንስሳት ምርምር ተቋም የሚመራ።",
+      },
+      {
         __component: "sections.feature-grid",
         eyebrow: "አካሄዳችን",
         heading: "ይህን ፕሮጀክት የሚያንቀሳቅሱ ሦስት ውጤቶች።",
@@ -1223,12 +1377,123 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       {
+        __component: "sections.rich-text",
+        eyebrow: "የፕሮጀክት ተግባራት",
+        heading: "ፕሮጀክቱ የሚሰራው ምንድን ነው።",
+        width: "wide",
+        content: [
+          {
+            type: "list",
+            format: "unordered",
+            children: [
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "በኢትዮጵያ እና ኔፓል የመንግስት ተቋማትን፣ ተመራማሪዎችን፣ ኅብረት ስራ ማህበራትን እና የግል ዘርፍ ተዋንያንን በስልጠናዎች እና በአውደ ጥናቶች በኩል በፕሮጀክት እቅድ እና ትግበራ ወቅት በማሳተፍ የአካባቢ ባለድርሻ አካላትን ማሳተፍ።",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "ከአካባቢያዊ የመኖ አምራቾች ጋር በመተባበር ፈጠራ የመኖ ቴክኖሎጂዎችን መሞከር፣ እና ስለ ሰብል ቀሪት-ተኮር የመኖ ምርት ስልጠና በመስጠት በአሁኑ እና በሚፈለጉ ስራ ፈጣሪዎች መካከል ግንዛቤን ማሳደግ። ለአካባቢያዊ ስራዎች ሰብል ቀሪት-ተኮር መኖ ለማምረት አስተማማኝ ሁኔታዎችን ማዘጋጀት።",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "የቅርብ ጊዜ የፕሮጀክት መረጃን፣ የጠረጴዛ ምርምርን፣ ከአካባቢያዊ አጋሮች ጋር መተባበርን እና ከሌሎች የተጣጣሙ ተነሳሽነቶች የተገኙ ግንዛቤዎችን በማካተት ራሳቸውን የሚደግፉ የስራ ሞዴሎችን ማዘጋጀት።",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "ሁለቱንም የምግብ እና የእንስሳት መኖ ፍላጎቶች የሚደግፉ ድርብ-አገልግሎት ሰብሎችን ለማስተዋወቅ ከዘር ማሻሻያ ተቋማት ጋር በመተባበር የመኖ ጥራት ባህሪያትን ወደ ሰብል ዘር ማሻሻያ ፕሮግራሞች ማካተትን መደገፍ።",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "ብሔራዊ የአየር ንብረት ስትራቴጂዎችን ለማሳወቅ በልቀት ሞዴሊንግ፣ በምርታማነት ግምገማዎች እና በወጪ-ጥቅም ትንተናዎች የተሻሻለ የሰብል ቀሪት አጠቃቀም የአካባቢ እና የኢኮኖሚ ጥቅሞችን መለካት።",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "በክልሎች ውስጥ ቀልጣፋ የሰብል ቀሪት-ተኮር የመኖ ጣልቃገብነቶችን ማስፋትና መድገምን የሚያስችል የፖሊሲ እና የኢንቨስትመንት ውሳኔዎችን ለማሳወቅ የፕሮጀክት ግኝቶችን እንደ ተግባራዊ ምክሮች ማዘጋጀትና ማሰራጨት።",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "ለምን አስፈላጊ እንደሆነ",
+        heading: "ኢትዮጵያ የዩኤስኤ ወደ ገደማ 8 ጊዜ የሚደርስ የሚቴን ልቀት ጥግግት አላት፣ በክፍል የመኖ ካሎሪ (2022)።",
+        dark: true,
+        stats: [
+          { value: "1", label: "ዩኤስኤ — የሚቴን ልቀት ጥግግት፣ gCO2e/1000 kCal (2022)" },
+          { value: "3.5", label: "አለምአቀፍ አማካይ — የሚቴን ልቀት ጥግግት፣ gCO2e/1000 kCal (2022)" },
+          { value: "6.2", label: "ኔፓል — የሚቴን ልቀት ጥግግት፣ gCO2e/1000 kCal (2022)" },
+          { value: "7.8", label: "ኢትዮጵያ — የሚቴን ልቀት ጥግግት፣ gCO2e/1000 kCal (2022)" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "ቁልፍ መልዕክቶች",
+        heading: "የተሻለ መኖ ለምን አስፈላጊ ነው።",
+        items: [
+          {
+            title: "አርሶ አደር ህይወት መጀመሪያ",
+            text: "የተሻለ መኖ ወደ ጤናማ እንስሳት፣ ከፍተኛ የወተትና ስጋ ምርት እና ለአነስተኛ አርሶ አደሮች የተሻለ የገቢ መረጋጋት ይመራል።",
+          },
+          {
+            title: "ያልተነካ የምግብ ንብረት",
+            text: "የሰብል ቀሪቶች አስቀድሞ ወሳኝ የመኖ ምንጭ ናቸው፣ ነገር ግን የመዋሃድ እና የምግብ ንብረት ደረጃቸው ውስን ነው — የባዮ-ኬሚካል ሕክምና ወይም የዘር ማሻሻያ ስልቶች ከፍተኛ የምርታማነት ጥቅም ይክፍታሉ።",
+          },
+          {
+            title: "በአካባቢ የሚመሩ የስራ ሞዴሎች",
+            text: "ጣልቃገብነቶች የተሻሻለ የመኖ መፍትሄዎችን ተደራሽ እና ስፍር የሚስፋ የሚያደርጉ ራሳቸውን የሚደግፉ፣ በአካባቢ የሚመሩ የስራ ሞዴሎችን በመገንባት ላይ ማተኮር አለባቸው።",
+          },
+          {
+            title: "የተሻለ ተስፋ",
+            text: "በተመሳሳይ መሬት ላይ ተጨማሪ ምግብ ማምረት እና በክፍል ምርት የሚቴን ልቀትን መቀነስ ሁለቱንም የአየር ንብረት ተግባርና የምግብ ዋስትና ይደግፋል።",
+          },
+        ],
+      },
+      {
+        __component: "sections.intro",
+        eyebrow: "የሚጠበቁ ውጤቶች",
+        heading: "በፕሮጀክቱ መጨረሻ ስኬት ምን ይመስላል።",
+        body:
+          "አነስተኛ እና የንግድ አርሶ አደሮች ከጨመረ ምርታማነትና ገቢ ጥቅም ያገኛሉ፣ እና በቀሪት ሕክምና ዙሪያ አዳዲስ የስራ አጋጣሚዎች ይፈጠራሉ። ፖሊሲ አውጪዎች የመኖ ጥራትን ወደ ግብርና እና የአየር ንብረት ስትራቴጂዎች ለማካተት የሚደግፍ ጠንካራ ማስረጃ ያገኛሉ።",
+      },
+      {
         __component: "sections.columns-block",
         eyebrow: "በጋራ ስራ",
         heading: "ከግንባር ቀደም የምርምር ተቋማት ጋር የሚከናወን።",
         columns: [
           { heading: "ILRI", text: "አለምአቀፍ የእንስሳት ምርምር ተቋም" },
           { heading: "WRI", text: "የዓለም ሀብቶች ተቋም" },
+          { heading: "CCAC", text: "የአየር ንብረት እና ንፁህ አየር ጥምረት — ይህን ፕሮጀክት የሚደግፍ በUNEP የተመቻቸ ተነሳሽነት።" },
         ],
       },
     ],
@@ -1247,6 +1512,26 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         imageStyle: "logo-3d",
       },
       {
+        __component: "sections.intro",
+        eyebrow: "Rakkoo",
+        heading: "Hambaan midhaanii duraan dursee madda nyaataa barbaachisaa dha — garuu qulqullinni isaa daangeffamaa dha.",
+        body:
+          "Sirni beelladaa Afrikaa Kibba-Saharaa fi Eeshiyaa Kibbaa keessatti argamu hambaa midhaanii qulqullina gadi aanaa akka cidii ruuzii fi qamadii irratti guddaa hirkata, kunis oomisha daangessee dhibbaa methane guddaa fida. Midhaan nyaataa qulqullina olaanaa qaban baay'inaan daangaa lafaa sababa isaan hin danda'amne. Kanaan alatti, loojistiksii hin gaarii fi gatii walitti qabuu olaanaan hambaan baay'een isaa gubamuu qofa mala — qabeenya balleessuu fi qilleensa xureessuu.",
+      },
+      {
+        __component: "sections.story-panel",
+        eyebrow: "Ilaalcha Waliigalaa Pirojeektii",
+        heading: "Hambaa gara daldala nyaataa babal'isuu danda'uu jijjiiruu.",
+        bodyParagraph1:
+          "Yaalii baayoo-keemikaalaa hambaa midhaanii fooyyessuuf gargaaran duraan jiru, garuu rakkoolee hawaasa-dinagdee fi loojistiksii sababaa qonnaan bultoota biratti fayyadamni isaan xiqqaa dha. Pirojeektiin kun daldaltoonni hambaa qabeenya qonnaa alaa walitti qabanii fooyyessanii, ergasii nyaata fooyya'e qonnaan bultootaaf gurguran maodeela daldalaa babal'isuu danda'u kaka'umsa taasisa — kunis fedhii fi dandeettii qonnaan bultoota waliin walsimuu caalaatti dhugoomsa.",
+        bodyParagraph2:
+          "Qorannoo dirree fi xiinxala sirna keessaan, pirojeektiin kun bu'aawwan kanneen Itoophiyaa fi Nepaal keessatti kaayyoowwan qilleensaaf deeggaruu fi sirna qonnaa jabeessuuf safara.",
+        panelBadge: "Waxabajjii 2025 – Caamsaa 2027",
+        panelTitle: "Yaalii biyyoota lama, ragaa dirree dhugaa irratti hundaa'e.",
+        panelText:
+          "Tumsa Qilleensaa fi Qilleensa Qulqulluu, kaka'umsa UNEP-n qindaa'e, waliin Dhaabbata Qabeenya Addunyaa fi Dhaabbata Qorannoo Beelladaa Addunyaa hoogganamu.",
+      },
+      {
         __component: "sections.feature-grid",
         eyebrow: "Mala Keenya",
         heading: "Bu'aa sadii pirojeektii kana kan geggeessu.",
@@ -1257,12 +1542,123 @@ const CROP_RESIDUE_PAGE_LOCALIZED: Record<string, Record<string, unknown>> = {
         ],
       },
       {
+        __component: "sections.rich-text",
+        eyebrow: "Hojiiwwan Pirojeektii",
+        heading: "Pirojeektiin kun maal hojjechaa jira.",
+        width: "wide",
+        content: [
+          {
+            type: "list",
+            format: "unordered",
+            children: [
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Dhaabbilee mootummaa, qorattoota, kooperatiivota fi hirmaattota sektera dhuunfaa leenjii fi kutaa hojii karaa yeroo karoorfamu fi hojiirra oolutti hirmaachisuun hirmaattota naannoo Itoophiyaa fi Nepaal keessatti hirmaachisuu.",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Teeknooloojii nyaataa haaraa warshaalee nyaataa naannoo waliin ta'uun yaaluu, akkasumas leenjii oomisha nyaata hambaa midhaanii irratti hundaa'e kennuun daldaltoota yeroo ammaa fi kanneen fuula duratti dandeessisuu keessa hubannoo guddisuu. Daldaltoota naannoo nyaata hambaa midhaanii irratti hundaa'e oomishuuf haala amanamaa qopheessuu.",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Ragaa pirojeektii yeroo dhugaa, qorannoo mana keessaa, michoomii hiriyoota naannoo waliin ta'uu fi hubannoo kaka'umsawwan biroo walitti fiduun maodeela daldalaa mataa isaanii of danda'an qopheessuu.",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Midhaan gosa lamaan (nyaataaf fi beelladaaf) deeggaru guddisuuf dhaabbilee wal-jijjiirraa waliin ta'uun amaloota qulqullina nyaataa sagantaalee wal-jijjiirraa midhaanii keessatti hammachiisuuf falmuu.",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Faayidaalee naannoo fi dinagdee fayyadamni hambaa midhaanii fooyya'e qabu, moodelii dhibbaa, madaallii oomishaa fi xiinxala baasii-faayidaa karaa safaruun tarsiimoo qilleensaa biyyaalessaa beeksisuu.",
+                  },
+                ],
+              },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "text",
+                    text: "Argannoowwan pirojeektii akka gorsa hojiirra oolchuu danda'amuutti qopheessuu fi tamsaasuun, murtee imaammataa fi invastimentii beeksisuu, kanaanis naannoo kanneen keessatti tarkaanfiiwwan nyaata hambaa midhaanii irratti hundaa'e bal'isuu fi deebi'anii hojiirra oolchuu danda'amsiisuu.",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        __component: "sections.stats-band",
+        eyebrow: "Maaliif barbaachisaa ta'e",
+        heading: "Itoophiyaan dhibbaa methane US irra dachaa 8 ol qabaachuu ishee, tokkoo tokkoo kaaloriitti (2022).",
+        dark: true,
+        stats: [
+          { value: "1", label: "USA — ulfaatina dhibbaa methane, gCO2e/1000 kCal (2022)" },
+          { value: "3.5", label: "Giddu-galeessa Addunyaa — ulfaatina dhibbaa methane (2022)" },
+          { value: "6.2", label: "Nepaal — ulfaatina dhibbaa methane (2022)" },
+          { value: "7.8", label: "Itoophiyaa — ulfaatina dhibbaa methane (2022)" },
+        ],
+      },
+      {
+        __component: "sections.feature-grid",
+        eyebrow: "Ergaawwan Ijoo",
+        heading: "Nyaanni fooyya'e maaliif barbaachisaa akka ta'e.",
+        items: [
+          {
+            title: "Jireenya qonnaan bultootaa jalqaba",
+            text: "Nyaata fooyya'e gara beelladoota fayyaa qabaniitti, oomisha aannanii fi foonii olaanaatti, akkasumas galii qonnaan bultoota xixiqqaaf jabaataatti geessa.",
+          },
+          {
+            title: "Faayidaa nyaataa hin fayyadamamne",
+            text: "Hambaan midhaanii duraan madda nyaataa murteessaa dha, garuu haqamuu fi faayidaan nyaataa isaa daangeffamaa dha — yaalii baayoo-keemikaalaa ykn mala wal-jijjiirraa faayidaa oomishaa guddaa banuu danda'a.",
+          },
+          {
+            title: "Moodela daldalaa naannoon durfamu",
+            text: "Tarkaanfiiwwan furmaata nyaataa fooyya'e ga'umsa qabu fi babal'isuu danda'amu taasisuuf moodela daldalaa ofii danda'e, naannoon durfamu ijaaruu irratti xiyyeeffachuu qabu.",
+          },
+          {
+            title: "Fuulduraa gaarii",
+            text: "Lafa wal fakkaataa irratti nyaata dabalataa oomishuun, dhibbaa methane gatii tokkoof oomishamuun hir'isuun, tarkaanfii qilleensaa fi nageenya nyaataa lamaan deeggara.",
+          },
+        ],
+      },
+      {
+        __component: "sections.intro",
+        eyebrow: "Bu'aawwan Eegaman",
+        heading: "Xumura pirojeektii irratti milkaa'inni maal fakkaata.",
+        body:
+          "Qonnaan bultoonni xixiqqoo fi daldalaa faayidaa oomisha fi galii dabalataa argatu, gama hambaa midhaanii tiyoo irratti carraawwan daldalaa haaraan uumamu. Murteessitoonni imaammataa ragaa cimaa qulqullina nyaataa gara tarsiimoo qonnaa fi qilleensaatti hammachiisuuf gargaaru argatu.",
+      },
+      {
         __component: "sections.columns-block",
         eyebrow: "Michoomaan",
         heading: "Dhaabbilee qorannoo addunyaa waliin raawwatamu.",
         columns: [
           { heading: "ILRI", text: "Dhaabbata Qorannoo Beelladaa Addunyaa" },
           { heading: "WRI", text: "Dhaabbata Qabeenya Addunyaa" },
+          { heading: "CCAC", text: "Tumsa Qilleensaa fi Qilleensa Qulqulluu — kaka'umsa UNEP-n qindaa'e kan pirojeektii kana deeggaru." },
         ],
       },
     ],

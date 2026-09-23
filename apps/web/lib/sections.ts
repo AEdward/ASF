@@ -361,6 +361,26 @@ export const DEFAULT_CROP_RESIDUE_SECTIONS: PageSection[] = [
     imageStyle: "logo-3d",
   },
   {
+    __component: "sections.intro",
+    eyebrow: "The Challenge",
+    heading: "Crop residues are already a vital feed source — but their quality is limited.",
+    body:
+      "Livestock systems across Sub-Saharan Africa and South Asia rely heavily on low-quality cereal crop residues such as rice and wheat straw, which limits productivity and drives high methane emissions. Higher-quality forage crops are often impractical due to land constraints, and poor logistics and high collection costs mean much of the residue is burned instead of used — wasting resources and polluting the air.",
+  },
+  {
+    __component: "sections.story-panel",
+    eyebrow: "Project Overview",
+    heading: "Turning residues into a scalable feed business.",
+    bodyParagraph1:
+      "Effective biochemical treatments for improving crop residues already exist, but remain underused on farms due to socioeconomic and logistical barriers. This project promotes scalable business models where enterprises collect and treat residues off-farm, then sell the improved feed to farmers — aligning more closely with farmer preferences and capacities.",
+    bodyParagraph2:
+      "Through field trials and systems analysis, the project quantifies these benefits to support climate goals and strengthen farming systems in Ethiopia and Nepal.",
+    panelBadge: "June 2025 – May 2027",
+    panelTitle: "A two-country pilot backed by real field data.",
+    panelText:
+      "Funded by the Climate and Clean Air Coalition, a UNEP-convened initiative, and led by the World Resources Institute and the International Livestock Research Institute.",
+  },
+  {
     __component: "sections.feature-grid",
     eyebrow: "Our approach",
     heading: "Three outcomes driving this project.",
@@ -371,12 +391,123 @@ export const DEFAULT_CROP_RESIDUE_SECTIONS: PageSection[] = [
     ],
   },
   {
+    __component: "sections.rich-text",
+    eyebrow: "Project Activities",
+    heading: "What the project is doing.",
+    width: "wide",
+    content: [
+      {
+        type: "list",
+        format: "unordered",
+        children: [
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Engage local stakeholders in Ethiopia and Nepal by involving government agencies, researchers, cooperatives, and private sector actors through workshops and training during project planning and implementation.",
+              },
+            ],
+          },
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Pilot innovative feed technologies in collaboration with local feed manufacturers, and raise awareness among existing and potential entrepreneurs by providing training on crop residue-based feed production. Develop credible scenarios for local businesses to produce crop residue-based feed.",
+              },
+            ],
+          },
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Develop self-sustaining business models by integrating real-time project data, desk research, collaboration with local partners, and insights from other aligned initiatives.",
+              },
+            ],
+          },
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Advocate for the integration of feed quality traits into crop breeding programs by collaborating with breeding institutions to promote dual-purpose crops that support both food and livestock feed needs.",
+              },
+            ],
+          },
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Quantify the environmental and economic benefits of improved crop residue use through emissions modeling, productivity assessments, and cost-benefit analyses to inform national climate strategies.",
+              },
+            ],
+          },
+          {
+            type: "list-item",
+            children: [
+              {
+                type: "text",
+                text: "Develop and disseminate project findings as actionable recommendations to inform policy and investment decisions, enabling the scaling and replication of efficient crop residue-based feed interventions across the regions.",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    __component: "sections.stats-band",
+    eyebrow: "Why it matters",
+    heading: "Ethiopia's enteric methane intensity is nearly 8x the USA's, per unit of feed calories (2022).",
+    dark: true,
+    stats: [
+      { value: "1", label: "USA — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+      { value: "3.5", label: "Global average — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+      { value: "6.2", label: "Nepal — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+      { value: "7.8", label: "Ethiopia — enteric methane intensity, gCO2e/1000 kCal (2022)" },
+    ],
+  },
+  {
+    __component: "sections.feature-grid",
+    eyebrow: "Key messages",
+    heading: "Why better feed matters.",
+    items: [
+      {
+        title: "Farmer livelihoods first",
+        text: "Better feed leads to healthier animals, higher milk and meat yields, and more stable incomes for smallholder farmers.",
+      },
+      {
+        title: "Untapped nutritional value",
+        text: "Crop residues are already a vital feed source, but their digestibility and nutritional value are limited — biochemical treatment or genetic approaches can unlock significant productivity gains.",
+      },
+      {
+        title: "Locally driven business models",
+        text: "Interventions must focus on building self-sustaining, locally driven business models that make improved feed solutions accessible and scalable.",
+      },
+      {
+        title: "A better future",
+        text: "Producing more food on the same land while reducing methane emissions per unit of output supports both climate action and food security.",
+      },
+    ],
+  },
+  {
+    __component: "sections.intro",
+    eyebrow: "Expected Outcomes",
+    heading: "What success looks like by the end of the project.",
+    body:
+      "Smallholder and commercial farmers will realize the benefits of increased productivity and income, and new business opportunities will emerge around residue treatment. Policymakers will have access to robust evidence supporting the integration of feed quality into agricultural and climate strategies.",
+  },
+  {
     __component: "sections.columns-block",
     eyebrow: "In collaboration with",
     heading: "Delivered together with leading research institutions.",
     columns: [
       { heading: "ILRI", text: "International Livestock Research Institute" },
       { heading: "WRI", text: "World Resources Institute" },
+      { heading: "CCAC", text: "Climate and Clean Air Coalition — a UNEP-convened initiative funding this project." },
     ],
   },
 ];
