@@ -45,6 +45,12 @@ export default {
       light: { colors: asfGreenLight },
       dark: { colors: asfGreenDark },
     },
+    translations: {
+      en: {
+        "Auth.form.welcome.title": "Welcome to ASF Portal",
+        "Auth.form.welcome.subtitle": "Log in to your ASF Portal account",
+      },
+    },
   },
   register(app: StrapiApp) {
     app.widgets.register([
