@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
+import { ContactForm } from "@/components/contact/contact-form";
 import { getSiteSettings } from "@/lib/strapi";
 import type { Locale } from "@/i18n/routing";
 
@@ -61,43 +62,7 @@ export default async function Contact({
               ))}
             </div>
           </div>
-          <form
-            className="rounded-3xl border p-8"
-            action={`mailto:${settings.emailPrimary}`}
-            method="post"
-            encType="text/plain"
-          >
-            <Eyebrow>{t("form.eyebrow")}</Eyebrow>
-            <div className="grid gap-3">
-              <input
-                required
-                name="name"
-                placeholder={t("form.namePlaceholder")}
-                className="rounded-xl border p-3"
-              />
-              <input
-                required
-                type="email"
-                name="email"
-                placeholder={t("form.emailPlaceholder")}
-                className="rounded-xl border p-3"
-              />
-              <input
-                name="company"
-                placeholder={t("form.companyPlaceholder")}
-                className="rounded-xl border p-3"
-              />
-              <textarea
-                required
-                name="message"
-                placeholder={t("form.messagePlaceholder")}
-                className="min-h-40 rounded-xl border p-3"
-              />
-              <button className="rounded-xl bg-[#58c900] px-5 py-3 font-extrabold text-[#092713]">
-                {t("form.submit")}
-              </button>
-            </div>
-          </form>
+          <ContactForm />
         </div>
       </section>
     </main>

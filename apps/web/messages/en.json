@@ -96,7 +96,10 @@
       "emailPlaceholder": "Email address",
       "companyPlaceholder": "Company / organization",
       "messagePlaceholder": "How can we work together?",
-      "submit": "Send enquiry →"
+      "submit": "Send enquiry →",
+      "sending": "Sending…",
+      "success": "Thanks — your message has been sent. We'll get back to you soon.",
+      "error": "Something went wrong sending your message. Please try again or email us directly."
     }
   },
   "about": {

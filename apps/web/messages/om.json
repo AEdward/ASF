@@ -96,7 +96,10 @@
       "emailPlaceholder": "Teessoo Imeelii",
       "companyPlaceholder": "Dhaabbata / Kubbaaniyaa",
       "messagePlaceholder": "Akkamitti waliin hojjenna?",
-      "submit": "Gaaffii Ergi →"
+      "submit": "Gaaffii Ergi →",
+      "sending": "Ergaa jira…",
+      "success": "Galatoomaa — ergaan keessan ergameera. Dafnee isin quunnamna.",
+      "error": "Ergaa keessan erguu keessatti rakkoo uumameera. Irra deebi'aa yaalaa yookiin kallattiin imeelii nuu ergaa."
     }
   },
   "about": {
