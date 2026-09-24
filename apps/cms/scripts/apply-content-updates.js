@@ -297,6 +297,47 @@ async function main() {
     }
   }
 
+  // Shortens the Crop Residue and Blog nav labels (they were causing the
+  // header to wrap/compact at common laptop widths). Guarded so it only
+  // ever runs once — if an admin has since retyped these labels by hand,
+  // this will not touch them again after this first run.
+  const navShortenLabelsKey = "site-setting-nav-shorten-labels-v1";
+  if (!(await hasRun(strapi, navShortenLabelsKey))) {
+    const siteSetting = await strapi.documents("api::site-setting.site-setting").findFirst();
+    if (siteSetting) {
+      const SHORTENED_LABELS = {
+        en: { "/crop-residue-feed": "Crop Residue", "/blog": "Blogs" },
+        am: { "/crop-residue-feed": "የሰብል ቀሪት", "/blog": "ብሎጎች" },
+        om: { "/crop-residue-feed": "Hambaa Midhaanii", "/blog": "Barreeffamoota" },
+      };
+
+      const relabelNav = async (locale) => {
+        const current = await strapi.documents("api::site-setting.site-setting").findOne({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+        });
+        const labels = SHORTENED_LABELS[locale || "en"];
+        const navLinks = (current?.navLinks ?? []).map((link) =>
+          labels[link.href] ? { ...link, label: labels[link.href] } : link,
+        );
+        await strapi.documents("api::site-setting.site-setting").update({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+          data: { navLinks },
+        });
+      };
+
+      await relabelNav(undefined);
+      for (const locale of LOCALES) {
+        await relabelNav(locale.code);
+      }
+      await markRun(strapi, navShortenLabelsKey);
+      console.log('Shortened "Crop Residue Feed" -> "Crop Residue" and "News & Blog" -> "Blogs" nav labels (en/am/om).');
+    } else {
+      console.log("No Site Setting document found — skipped nav label shortening.");
+    }
+  }
+
   // Seeds the Feed Calculator's default rates only if the collection is
   // completely empty — never overwrites rates an admin has since edited.
   const feedRatesKey = "feed-rates-seed-v1";

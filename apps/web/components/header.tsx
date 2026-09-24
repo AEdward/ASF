@@ -53,24 +53,24 @@ export function Header({
         <nav
           className={`${
             open ? "absolute left-4 right-4 top-[76px] flex" : "hidden"
-          } flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl md:static md:flex md:flex-row md:items-center md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
+          } flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl lg:static lg:flex lg:flex-row lg:items-center lg:gap-1 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none`}
         >
           {navLinks.map(({ label, href, children }) => {
             const active =
               isActive(href) || (children?.some((child) => isActive(child.href)) ?? false);
             return (
-            <div key={href} className="group md:relative">
+            <div key={href} className="group lg:relative lg:shrink-0">
               <Link
                 href={href}
                 onClick={() => setOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
+                className={`flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 lg:px-2 ${
                   active ? "bg-green-50 text-green-800" : "text-slate-900"
                 }`}
               >
                 {label}
                 {children && children.length > 0 && (
-                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-3 w-3">
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-3 w-3 shrink-0">
                     <path
                       fillRule="evenodd"
                       d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
@@ -80,14 +80,14 @@ export function Header({
                 )}
               </Link>
               {children && children.length > 0 && (
-                <div className="ml-4 flex flex-col gap-1 md:invisible md:absolute md:left-0 md:top-full md:ml-0 md:w-56 md:flex-col md:rounded-xl md:border md:border-slate-200 md:bg-white md:p-2 md:opacity-0 md:shadow-xl md:transition md:group-hover:visible md:group-hover:opacity-100 md:group-focus-within:visible md:group-focus-within:opacity-100">
+                <div className="ml-4 flex flex-col gap-1 lg:invisible lg:absolute lg:left-0 lg:top-full lg:ml-0 lg:w-56 lg:flex-col lg:rounded-xl lg:border lg:border-slate-200 lg:bg-white lg:p-2 lg:opacity-0 lg:shadow-xl lg:transition lg:group-hover:visible lg:group-hover:opacity-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100">
                   {children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
                       onClick={() => setOpen(false)}
                       aria-current={isActive(child.href) ? "page" : undefined}
-                      className={`rounded-lg px-3 py-2 text-sm font-semibold hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
+                      className={`rounded-lg px-3 py-2 text-sm font-semibold whitespace-nowrap hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
                         isActive(child.href) ? "bg-green-50 text-green-800" : "text-slate-600"
                       }`}
                     >
@@ -103,7 +103,7 @@ export function Header({
             href="/search"
             onClick={() => setOpen(false)}
             aria-label={t("searchLabel")}
-            className="flex items-center justify-center rounded-lg p-2.5 text-slate-700 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+            className="flex shrink-0 items-center justify-center rounded-lg p-2.5 text-slate-700 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
           >
             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-5 w-5">
               <path
@@ -116,7 +116,7 @@ export function Header({
           <LanguageSwitcher />
           <Link
             href={ctaHref}
-            className="rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+            className="shrink-0 whitespace-nowrap rounded-xl bg-[#58c900] px-4 py-2.5 text-sm font-extrabold text-[#092713] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
           >
             {ctaLabel}
           </Link>
@@ -124,7 +124,7 @@ export function Header({
         <button
           aria-label={t("toggleMenu")}
           onClick={() => setOpen(!open)}
-          className="rounded-lg border px-3 py-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+          className="rounded-lg border px-3 py-2 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
         >
           ☰
         </button>

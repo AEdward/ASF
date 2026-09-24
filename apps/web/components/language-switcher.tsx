@@ -29,13 +29,13 @@ export function LanguageSwitcher() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative text-xs font-semibold">
+    <div ref={containerRef} className="relative shrink-0 text-xs font-semibold">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+        className="flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-slate-200 px-3 py-1.5 text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
       >
         {LOCALE_LABELS[locale]}
         <svg
