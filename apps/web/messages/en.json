@@ -224,6 +224,17 @@
     "recommendedProduct": "Recommended product",
     "viewProduct": "View product →",
     "disclaimer": "These figures are general estimates only. Contact our team for a formulation tailored to your herd.",
-    "contactCta": "Talk to our team →"
+    "contactCta": "Talk to our team →",
+    "perAnimalHeading": "Per animal",
+    "dailyAmountLabel": "Daily amount",
+    "perFeedingLabel": "Amount per feeding",
+    "feedingsPerDayValue": "{n}× per day",
+    "costDayLabel": "Cost per day",
+    "costWeekLabel": "Cost per week",
+    "costMonthLabel": "Cost per month",
+    "herdHeading": "Total for your herd",
+    "herdAnimalsLabel": "{count} animals",
+    "herdDailyAmountLabel": "Total daily amount",
+    "noPriceNote": "Set a price per kg in the CMS to see cost estimates."
   }
 }

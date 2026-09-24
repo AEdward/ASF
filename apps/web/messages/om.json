@@ -224,6 +224,17 @@
     "recommendedProduct": "Oomisha Yaadamu",
     "viewProduct": "Oomisha ilaali →",
     "disclaimer": "Lakkoofsonni kun tilmaama waliigalaa qofa. Foormulaa horii keessaniif ta'u argachuuf garee keenya qunnamaa.",
-    "contactCta": "Garee keenya waliin haasa'aa →"
+    "contactCta": "Garee keenya waliin haasa'aa →",
+    "perAnimalHeading": "Beelladaa Tokkoof",
+    "dailyAmountLabel": "Hamma Guyyaa",
+    "perFeedingLabel": "Hamma Yeroo Tokkoo",
+    "feedingsPerDayValue": "Guyyaatti {n}",
+    "costDayLabel": "Baasii Guyyaa",
+    "costWeekLabel": "Baasii Torbanii",
+    "costMonthLabel": "Baasii Ji'aa",
+    "herdHeading": "Horii Keessan Hundaaf",
+    "herdAnimalsLabel": "Horii {count}",
+    "herdDailyAmountLabel": "Hamma Guyyaa Waliigalaa",
+    "noPriceNote": "Tilmaama baasii argachuuf CMS keessatti gatii kg tokkoo galchaa."
   }
 }

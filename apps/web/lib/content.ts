@@ -60,6 +60,8 @@ export interface FeedRate {
   animalKey: string;
   label: string;
   dailyKgPerAnimal: number;
+  feedingsPerDay: number;
+  pricePerKg?: number;
   bagSizeKg: number;
   recommendedProductSlug?: string;
 }
@@ -285,10 +287,10 @@ export const DEFAULT_DOCUMENTS: DocumentAsset[] = [];
 // its own rates in the CMS. These are rough industry estimates, not
 // ASF-specific formulations, and are clearly labeled as such on the page.
 export const DEFAULT_FEED_RATES: FeedRate[] = [
-  { id: 1, animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, bagSizeKg: 50, recommendedProductSlug: "dairy-feed" },
-  { id: 2, animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed" },
-  { id: 3, animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, bagSizeKg: 50, recommendedProductSlug: "layer-feed" },
-  { id: 4, animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, bagSizeKg: 50, recommendedProductSlug: "pullet-feed" },
-  { id: 5, animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed" },
-  { id: 6, animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, bagSizeKg: 50, recommendedProductSlug: "camel-feed" },
+  { id: 1, animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "dairy-feed" },
+  { id: 2, animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed" },
+  { id: 3, animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "layer-feed" },
+  { id: 4, animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "pullet-feed" },
+  { id: 5, animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed" },
+  { id: 6, animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "camel-feed" },
 ];

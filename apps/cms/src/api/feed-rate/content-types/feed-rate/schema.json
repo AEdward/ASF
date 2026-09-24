@@ -20,6 +20,8 @@
     },
     "label": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
     "dailyKgPerAnimal": { "type": "decimal", "required": true, "pluginOptions": { "i18n": { "localized": false } } },
+    "feedingsPerDay": { "type": "integer", "default": 2, "min": 1, "pluginOptions": { "i18n": { "localized": false } } },
+    "pricePerKg": { "type": "decimal", "pluginOptions": { "i18n": { "localized": false } } },
     "bagSizeKg": { "type": "decimal", "default": 50, "pluginOptions": { "i18n": { "localized": false } } },
     "recommendedProductSlug": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
     "order": { "type": "integer", "default": 0, "pluginOptions": { "i18n": { "localized": false } } }

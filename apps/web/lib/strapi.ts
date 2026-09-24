@@ -559,6 +559,8 @@ interface StrapiFeedRateEntry {
   animalKey: string;
   label: string;
   dailyKgPerAnimal: number;
+  feedingsPerDay?: number | null;
+  pricePerKg?: number | null;
   bagSizeKg?: number | null;
   recommendedProductSlug?: string | null;
 }
@@ -569,6 +571,8 @@ function mapFeedRate(entry: StrapiFeedRateEntry): FeedRate {
     animalKey: entry.animalKey,
     label: entry.label,
     dailyKgPerAnimal: entry.dailyKgPerAnimal,
+    feedingsPerDay: entry.feedingsPerDay ?? 2,
+    pricePerKg: entry.pricePerKg ?? undefined,
     bagSizeKg: entry.bagSizeKg ?? 50,
     recommendedProductSlug: entry.recommendedProductSlug ?? undefined,
   };

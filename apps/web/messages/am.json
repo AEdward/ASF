@@ -224,6 +224,17 @@
     "recommendedProduct": "የሚመከር ምርት",
     "viewProduct": "ምርቱን ይመልከቱ →",
     "disclaimer": "እነዚህ ቁጥሮች አጠቃላይ ግምቶች ብቻ ናቸው። ለእንስሶችዎ የተስማማ ቀመር ለማግኘት ቡድናችንን ያግኙ።",
-    "contactCta": "ከቡድናችን ጋር ይነጋገሩ →"
+    "contactCta": "ከቡድናችን ጋር ይነጋገሩ →",
+    "perAnimalHeading": "ለአንድ እንስሳ",
+    "dailyAmountLabel": "የቀን መጠን",
+    "perFeedingLabel": "በአንድ ወቅት የሚሰጥ መጠን",
+    "feedingsPerDayValue": "በቀን {n} ጊዜ",
+    "costDayLabel": "በቀን ወጪ",
+    "costWeekLabel": "በሳምንት ወጪ",
+    "costMonthLabel": "በወር ወጪ",
+    "herdHeading": "ለጠቅላላ እንስሶችዎ",
+    "herdAnimalsLabel": "{count} እንስሶች",
+    "herdDailyAmountLabel": "ጠቅላላ የቀን መጠን",
+    "noPriceNote": "የወጪ ግምት ለማየት በCMS ውስጥ የኪ.ግ ዋጋ ያስገቡ።"
   }
 }

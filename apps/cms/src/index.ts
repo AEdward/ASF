@@ -1899,16 +1899,18 @@ const FEED_RATES_SEED: {
   animalKey: string;
   label: string;
   dailyKgPerAnimal: number;
+  feedingsPerDay: number;
+  pricePerKg: number;
   bagSizeKg: number;
   recommendedProductSlug: string;
   order: number;
 }[] = [
-  { animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, bagSizeKg: 50, recommendedProductSlug: "dairy-feed", order: 1 },
-  { animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed", order: 2 },
-  { animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, bagSizeKg: 50, recommendedProductSlug: "layer-feed", order: 3 },
-  { animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, bagSizeKg: 50, recommendedProductSlug: "pullet-feed", order: 4 },
-  { animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed", order: 5 },
-  { animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, bagSizeKg: 50, recommendedProductSlug: "camel-feed", order: 6 },
+  { animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "dairy-feed", order: 1 },
+  { animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed", order: 2 },
+  { animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "layer-feed", order: 3 },
+  { animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "pullet-feed", order: 4 },
+  { animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed", order: 5 },
+  { animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, feedingsPerDay: 2, pricePerKg: 30, bagSizeKg: 50, recommendedProductSlug: "camel-feed", order: 6 },
 ];
 
 // Parallel to FEED_RATES_SEED (same order); only the label is localized.
