@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { SearchModal } from "@/components/search-modal";
 
 interface NavLink {
   label: string;
@@ -26,6 +27,7 @@ export function Header({
   ctaHref: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const t = useTranslations("header");
   const pathname = usePathname();
 
@@ -99,9 +101,12 @@ export function Header({
             </div>
             );
           })}
-          <Link
-            href="/search"
-            onClick={() => setOpen(false)}
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              setSearchOpen(true);
+            }}
             aria-label={t("searchLabel")}
             className="flex shrink-0 items-center justify-center rounded-lg p-2.5 text-slate-700 hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
           >
@@ -112,7 +117,7 @@ export function Header({
                 clipRule="evenodd"
               />
             </svg>
-          </Link>
+          </button>
           <LanguageSwitcher />
           <Link
             href={ctaHref}
@@ -129,6 +134,7 @@ export function Header({
           ☰
         </button>
       </div>
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
