@@ -482,6 +482,49 @@ async function main() {
     console.log(`Deleted product "${slug}" (en/am/om), superseded by specific products.`);
   }
 
+  // Deliberate photo replacement for specific products (client supplied new
+  // packaging photography). Unlike the migrations above, this intentionally
+  // OVERWRITES the current image — guarded by a key so it only ever runs
+  // once, and only touches the image field, leaving name/description/details
+  // and anything else an admin has since edited completely untouched.
+  const PRODUCT_PHOTO_REFRESH = [
+    { slug: "dairy-feed", key: "product-photo-refresh-dairy-feed-v2" },
+    { slug: "cattle-fattening-feed", key: "product-photo-refresh-cattle-fattening-feed-v2" },
+    { slug: "layer-feed", key: "product-photo-refresh-layer-feed-v2" },
+    { slug: "pullet-feed", key: "product-photo-refresh-pullet-feed-v2" },
+    { slug: "sheep-goat-feed", key: "product-photo-refresh-sheep-goat-feed-v2" },
+    // camel-feed: added once its replacement photo arrives.
+  ];
+  for (const { slug, key } of PRODUCT_PHOTO_REFRESH) {
+    if (await hasRun(strapi, key)) continue;
+    const seedEntry = PRODUCTS_SEED.find((p) => p.slug === slug);
+    if (!seedEntry?.imageFile) {
+      console.log(`No seed image file configured for "${slug}" — skipped photo refresh.`);
+      continue;
+    }
+    const product = await strapi.documents("api::product.product").findFirst({ filters: { slug } });
+    if (!product) {
+      console.log(`No product with slug "${slug}" found — skipped photo refresh.`);
+      continue;
+    }
+    const imageId = await uploadProductImage(strapi, seedEntry.imageFile);
+    await strapi.documents("api::product.product").update({
+      documentId: product.documentId,
+      data: { image: imageId },
+      status: "published",
+    });
+    for (const locale of LOCALES) {
+      await strapi.documents("api::product.product").update({
+        documentId: product.documentId,
+        locale: locale.code,
+        data: { image: imageId },
+        status: "published",
+      });
+    }
+    await markRun(strapi, key);
+    console.log(`Replaced product photo for "${slug}" (en/am/om).`);
+  }
+
   const adminRoleBefore = await strapi.service("admin::role").findOne({ name: "Admin" });
   if (!adminRoleBefore) {
     await seedAdminRole(strapi);
