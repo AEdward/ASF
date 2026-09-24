@@ -235,6 +235,10 @@
     "herdHeading": "Total for your herd",
     "herdAnimalsLabel": "{count} animals",
     "herdDailyAmountLabel": "Total daily amount",
-    "noPriceNote": "Set a price per kg in the CMS to see cost estimates."
+    "noPriceNote": "Set a price per kg in the CMS to see cost estimates.",
+    "downloadPdf": "Download PDF",
+    "reportTitle": "Feed Calculator Report",
+    "generatedOn": "Generated on {date}",
+    "planningHeading": "Planning Estimate"
   }
 }

@@ -235,6 +235,10 @@
     "herdHeading": "ለጠቅላላ እንስሶችዎ",
     "herdAnimalsLabel": "{count} እንስሶች",
     "herdDailyAmountLabel": "ጠቅላላ የቀን መጠን",
-    "noPriceNote": "የወጪ ግምት ለማየት በCMS ውስጥ የኪ.ግ ዋጋ ያስገቡ።"
+    "noPriceNote": "የወጪ ግምት ለማየት በCMS ውስጥ የኪ.ግ ዋጋ ያስገቡ።",
+    "downloadPdf": "ወደ PDF አውርድ",
+    "reportTitle": "የመኖ ማስያ ሪፖርት",
+    "generatedOn": "የተዘጋጀበት ቀን {date}",
+    "planningHeading": "የዕቅድ ግምት"
   }
 }

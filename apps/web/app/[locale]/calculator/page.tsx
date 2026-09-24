@@ -34,7 +34,7 @@ export default async function Calculator({
 
   return (
     <main>
-      <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
+      <section className="no-print bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h1 className="max-w-3xl text-5xl font-black tracking-tight sm:text-6xl">
@@ -44,8 +44,8 @@ export default async function Calculator({
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-5xl px-5 lg:px-8">
+      <section className="py-24 print:p-0">
+        <div className="mx-auto max-w-5xl px-5 lg:px-8 print:m-0 print:max-w-none print:p-0">
           <FeedCalculator rates={rates} />
         </div>
       </section>

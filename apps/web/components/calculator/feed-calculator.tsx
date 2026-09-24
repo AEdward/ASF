@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui";
+import { CalculatorReport } from "@/components/calculator/calculator-report";
 import type { FeedRate } from "@/lib/content";
 
 function formatKg(kg: number): string {
@@ -56,7 +57,8 @@ export function FeedCalculator({ rates }: { rates: FeedRate[] }) {
   if (!rate || !result) return null;
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[380px_1fr]">
+    <>
+    <div className="no-print grid gap-8 lg:grid-cols-[380px_1fr]">
       <div className="rounded-3xl border border-slate-200 bg-white p-8 lg:sticky lg:top-24 lg:self-start">
         <div className="grid gap-6">
           <label className="block">
@@ -99,6 +101,16 @@ export function FeedCalculator({ rates }: { rates: FeedRate[] }) {
       </div>
 
       <div className="grid gap-6">
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="rounded-xl border border-green-700 px-5 py-2.5 text-sm font-extrabold text-green-700 hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
+          >
+            {t("downloadPdf")} ↓
+          </button>
+        </div>
+
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="rounded-3xl border border-slate-200 bg-white p-7">
             <h2 className="text-xs font-black uppercase tracking-widest text-green-700">
@@ -198,5 +210,7 @@ export function FeedCalculator({ rates }: { rates: FeedRate[] }) {
         </div>
       </div>
     </div>
+    <CalculatorReport rate={rate} count={count} days={days} result={result} />
+    </>
   );
 }

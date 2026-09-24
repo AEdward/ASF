@@ -66,3 +66,27 @@ body {
 .animate-logo-bounce {
   animation: logo-bounce 3.5s ease-in-out infinite;
 }
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+  }
+}
