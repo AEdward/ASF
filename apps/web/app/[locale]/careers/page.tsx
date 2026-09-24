@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getJobVacancies } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -30,10 +30,20 @@ export default async function Careers({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("careers");
+  const tc = await getTranslations("common");
   const jobs = await getJobVacancies(locale as Locale);
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/careers" },
+          ],
+          locale as Locale
+        )}
+      />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Eyebrow>{t("eyebrow")}</Eyebrow>

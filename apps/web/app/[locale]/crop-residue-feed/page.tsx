@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionRenderer } from "@/components/section-renderer";
 import { DEFAULT_CROP_RESIDUE_SECTIONS } from "@/lib/sections";
 import { getPage } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -29,11 +29,23 @@ export default async function CropResidueFeed({
   const { locale } = await params;
   setRequestLocale(locale as Locale);
 
+  const tc = await getTranslations("common");
+  const tPage = await getTranslations("cropResidueFeed");
+
   const sections =
     (await getPage("crop-residue-feed", locale as Locale)) ?? DEFAULT_CROP_RESIDUE_SECTIONS;
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: tPage("metaTitle"), path: "/crop-residue-feed" },
+          ],
+          locale as Locale
+        )}
+      />
       <SectionRenderer sections={sections} />
     </main>
   );

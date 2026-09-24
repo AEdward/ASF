@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow, Button } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getProduct, getProducts } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, productJsonLd, JsonLd, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
@@ -39,12 +39,31 @@ export default async function ProductDetail({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("products");
+  const tc = await getTranslations("common");
   const product = await getProduct(slug, locale as Locale);
 
   if (!product) notFound();
 
   return (
     <main>
+      <JsonLd
+        data={productJsonLd({
+          name: product.name,
+          description: product.description,
+          imageUrl: product.imageUrl,
+          url: `${SITE_URL}/${locale}/products/${slug}`,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/products" },
+            { name: product.name, path: `/products/${slug}` },
+          ],
+          locale as Locale
+        )}
+      />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Link href="/products" className="text-sm font-bold text-green-700">
@@ -65,7 +84,7 @@ export default async function ProductDetail({
               <div className="relative aspect-square overflow-hidden rounded-3xl bg-white">
                 <Image
                   src={product.imageUrl}
-                  alt={product.name}
+                  alt={t("imageAlt", { name: product.name })}
                   fill
                   className="object-contain p-6"
                 />
@@ -107,9 +126,14 @@ export default async function ProductDetail({
           <div className="mx-auto max-w-5xl px-5 lg:px-8">
             <h2 className="mb-6 text-2xl font-black">{t("galleryHeading")}</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {product.galleryUrls.map((url) => (
+              {product.galleryUrls.map((url, i) => (
                 <div key={url} className="relative aspect-square overflow-hidden rounded-2xl">
-                  <Image src={url} alt={product.name} fill className="object-cover" />
+                  <Image
+                    src={url}
+                    alt={t("galleryImageAlt", { name: product.name, index: i + 1 })}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               ))}
             </div>

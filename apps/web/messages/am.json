@@ -1,6 +1,8 @@
 {
   "common": {
-    "siteDescription": "ASF አግሮ ኢንዱስትሪ — ተግባራዊ፣ ሳይንሳዊ እና አስተማማኝ የግብርና ማቀነባበሪያ መፍትሄዎች።"
+    "siteDescription": "ASF አግሮ ኢንዱስትሪ — ተግባራዊ፣ ሳይንሳዊ እና አስተማማኝ የግብርና ማቀነባበሪያ መፍትሄዎች፣ በኢትዮጵያ የእንስሳት መኖ አምራች።",
+    "breadcrumbHome": "መነሻ",
+    "homeTitle": "የእንስሳት መኖ እና የግብርና ማቀነባበሪያ መፍትሄዎች በኢትዮጵያ | ASF አግሮ ኢንዱስትሪ"
   },
   "header": {
     "toggleMenu": "ማውጫ ቀያይር",
@@ -43,7 +45,9 @@
     "upcomingProjectsHeading": "ቀጥሎ የምንገነባው።",
     "backToProducts": "← ወደ ምርቶች ተመለስ",
     "galleryHeading": "ምስሎች",
-    "requestQuote": "የዋጋ ጥቆማ ይጠይቁ →"
+    "requestQuote": "የዋጋ ጥቆማ ይጠይቁ →",
+    "imageAlt": "{name} — የASF አግሮ ኢንዱስትሪ የእንስሳት መኖ ምርት",
+    "galleryImageAlt": "{name} የማሸጊያ ፎቶ {index}"
   },
   "blog": {
     "metaTitle": "ዜና እና ብሎግ",

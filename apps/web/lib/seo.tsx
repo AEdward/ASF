@@ -153,6 +153,71 @@ export function jobPostingJsonLd({
   };
 }
 
+export function websiteJsonLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/${locale}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function breadcrumbJsonLd(
+  items: { name: string; path: string }[],
+  locale: Locale
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}/${locale}${item.path}`,
+    })),
+  };
+}
+
+export function itemListJsonLd(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: item.url,
+    })),
+  };
+}
+
+export function productJsonLd({
+  name,
+  description,
+  imageUrl,
+  url,
+}: {
+  name: string;
+  description: string;
+  imageUrl?: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description,
+    url,
+    ...(imageUrl ? { image: [imageUrl] } : {}),
+    brand: { "@type": "Brand", name: SITE_NAME },
+  };
+}
+
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
     <script

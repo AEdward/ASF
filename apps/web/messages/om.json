@@ -1,6 +1,8 @@
 {
   "common": {
-    "siteDescription": "ASF Agro Industry — furmaata adeemsa qonnaa kan hojiirra oolu, saayinsawaa fi amanamaa ta'e."
+    "siteDescription": "ASF Agro Industry — furmaata adeemsa qonnaa kan hojiirra oolu, saayinsawaa fi amanamaa ta'e, oomishaa nyaata beeladaa Itiyoophiyaa keessatti.",
+    "breadcrumbHome": "Fuula Jalqabaa",
+    "homeTitle": "Furmaata Nyaata Beeladaa fi Adeemsa Qonnaa Itiyoophiyaa keessa | ASF Agro Industry"
   },
   "header": {
     "toggleMenu": "Menu Jijjiiri",
@@ -43,7 +45,9 @@
     "upcomingProjectsHeading": "Wanti itti aannee ijaarru.",
     "backToProducts": "← Gara Oomishaalee deebi'i",
     "galleryHeading": "Suuraalee",
-    "requestQuote": "Gaaffii gatii gaafadhaa →"
+    "requestQuote": "Gaaffii gatii gaafadhaa →",
+    "imageAlt": "{name} — Oomisha Nyaata Beeladaa ASF Agro Industry",
+    "galleryImageAlt": "Suura paakeejingii {name} {index}"
   },
   "blog": {
     "metaTitle": "Oduu fi Barreeffama",

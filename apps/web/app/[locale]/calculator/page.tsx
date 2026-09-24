@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { FeedCalculator } from "@/components/calculator/feed-calculator";
 import { getFeedRates } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -30,10 +30,20 @@ export default async function Calculator({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("calculator");
+  const tc = await getTranslations("common");
   const rates = await getFeedRates(locale as Locale);
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/calculator" },
+          ],
+          locale as Locale
+        )}
+      />
       <section className="no-print bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
           <Eyebrow>{t("eyebrow")}</Eyebrow>

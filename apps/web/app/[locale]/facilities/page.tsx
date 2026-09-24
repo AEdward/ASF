@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionRenderer } from "@/components/section-renderer";
 import { DEFAULT_FACILITIES_SECTIONS } from "@/lib/sections";
 import { getPage } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -29,10 +29,22 @@ export default async function Facilities({
   const { locale } = await params;
   setRequestLocale(locale as Locale);
 
+  const tc = await getTranslations("common");
+  const tPage = await getTranslations("facilities");
+
   const sections = (await getPage("facilities", locale as Locale)) ?? DEFAULT_FACILITIES_SECTIONS;
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: tPage("metaTitle"), path: "/facilities" },
+          ],
+          locale as Locale
+        )}
+      />
       <SectionRenderer sections={sections} />
     </main>
   );

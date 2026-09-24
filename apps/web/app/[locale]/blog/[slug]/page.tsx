@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getArticle, getArticles } from "@/lib/strapi";
-import { buildMetadata, articleJsonLd, JsonLd, SITE_URL } from "@/lib/seo";
+import { buildMetadata, articleJsonLd, breadcrumbJsonLd, JsonLd, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
@@ -39,6 +39,7 @@ export default async function ArticlePage({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("blog");
+  const tc = await getTranslations("common");
   const article = await getArticle(slug, locale as Locale);
 
   if (!article) notFound();
@@ -52,6 +53,16 @@ export default async function ArticlePage({
           url: `${SITE_URL}/${locale}/blog/${slug}`,
           imageUrl: article.coverImageUrl,
         })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/blog" },
+            { name: article.title, path: `/blog/${slug}` },
+          ],
+          locale as Locale
+        )}
       />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">

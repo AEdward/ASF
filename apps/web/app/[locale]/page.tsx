@@ -6,7 +6,7 @@ import { PartnersMarquee } from "@/components/partners-marquee";
 import { TestimonialsHighlight } from "@/components/testimonials-highlight";
 import { DEFAULT_HOME_SECTIONS } from "@/lib/sections";
 import { getFeaturedTestimonials, getLatestArticles, getPage, getPartners } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, websiteJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -16,12 +16,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "common" });
-  return buildMetadata({
+  const meta = buildMetadata({
     locale: locale as Locale,
     path: "",
-    title: "ASF Agro Industry",
+    title: t("homeTitle"),
     description: t("siteDescription"),
   });
+  // The home title already includes the brand name, so pin it as absolute
+  // to bypass the layout's title.template — otherwise the root route
+  // inconsistently drops the templated suffix that every other page gets.
+  return { ...meta, title: { absolute: t("homeTitle") } };
 }
 
 export default async function Home({
@@ -41,6 +45,7 @@ export default async function Home({
 
   return (
     <main>
+      <JsonLd data={websiteJsonLd(locale as Locale)} />
       <SectionRenderer sections={sections} />
       <PartnersMarquee partners={partners} />
       <TestimonialsHighlight testimonials={featuredTestimonials} />

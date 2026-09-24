@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { getJobVacancies, getJobVacancy, getSiteSettings } from "@/lib/strapi";
-import { buildMetadata, jobPostingJsonLd, JsonLd } from "@/lib/seo";
+import { buildMetadata, jobPostingJsonLd, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateStaticParams({
@@ -41,6 +41,7 @@ export default async function JobVacancyPage({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("careers");
+  const tc = await getTranslations("common");
   const [job, settings] = await Promise.all([
     getJobVacancy(slug, locale as Locale),
     getSiteSettings(locale as Locale),
@@ -58,6 +59,16 @@ export default async function JobVacancyPage({
           employmentType: job.employmentType,
           location: job.location,
         })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/careers" },
+            { name: job.title, path: `/careers/${slug}` },
+          ],
+          locale as Locale
+        )}
       />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-4xl px-5 lg:px-8">

@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionRenderer } from "@/components/section-renderer";
 import { DEFAULT_SUSTAINABILITY_SECTIONS } from "@/lib/sections";
 import { getPage } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, JsonLd } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -29,10 +29,22 @@ export default async function Sustainability({
   const { locale } = await params;
   setRequestLocale(locale as Locale);
 
+  const tc = await getTranslations("common");
+  const tPage = await getTranslations("sustainability");
+
   const sections = (await getPage("sustainability", locale as Locale)) ?? DEFAULT_SUSTAINABILITY_SECTIONS;
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: tPage("metaTitle"), path: "/sustainability" },
+          ],
+          locale as Locale
+        )}
+      />
       <SectionRenderer sections={sections} />
     </main>
   );

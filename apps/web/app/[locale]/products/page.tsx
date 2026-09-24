@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui";
 import { ProductImageCard } from "@/components/products/product-image-card";
 import { Link } from "@/i18n/navigation";
 import { getProducts } from "@/lib/strapi";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, itemListJsonLd, JsonLd, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
@@ -31,12 +31,30 @@ export default async function Products({
   setRequestLocale(locale as Locale);
 
   const t = await getTranslations("products");
+  const tc = await getTranslations("common");
   const products = await getProducts(locale as Locale);
   const mainProducts = products.filter((product) => product.imageUrl);
   const upcomingProjects = products.filter((product) => !product.imageUrl);
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: tc("breadcrumbHome"), path: "" },
+            { name: t("metaTitle"), path: "/products" },
+          ],
+          locale as Locale
+        )}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          mainProducts.map((product) => ({
+            name: product.name,
+            url: `${SITE_URL}/${locale}/products/${product.slug}`,
+          }))
+        )}
+      />
       <section className="bg-[linear-gradient(135deg,#f5fff0,#fffaf0)] py-20">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Eyebrow>{t("eyebrow")}</Eyebrow>

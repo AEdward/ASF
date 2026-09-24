@@ -1,6 +1,8 @@
 {
   "common": {
-    "siteDescription": "ASF Agro Industry — practical, scientific and reliable agro-processing solutions."
+    "siteDescription": "ASF Agro Industry is an Ethiopian agro-processing company producing quality animal feed for dairy, poultry, cattle, sheep, goat and camel farming.",
+    "breadcrumbHome": "Home",
+    "homeTitle": "Animal Feed & Agro-Processing Solutions in Ethiopia | ASF Agro Industry"
   },
   "header": {
     "toggleMenu": "Toggle menu",
@@ -43,7 +45,9 @@
     "upcomingProjectsHeading": "What we're building next.",
     "backToProducts": "← Back to products",
     "galleryHeading": "Gallery",
-    "requestQuote": "Request a quote →"
+    "requestQuote": "Request a quote →",
+    "imageAlt": "{name} — ASF Agro Industry animal feed product",
+    "galleryImageAlt": "{name} packaging photo {index}"
   },
   "blog": {
     "metaTitle": "News & Blog",
