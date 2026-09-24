@@ -534,7 +534,7 @@ async function main() {
     { slug: "layer-feed", key: "product-photo-refresh-layer-feed-v2" },
     { slug: "pullet-feed", key: "product-photo-refresh-pullet-feed-v2" },
     { slug: "sheep-goat-feed", key: "product-photo-refresh-sheep-goat-feed-v2" },
-    { slug: "camel-feed", key: "product-photo-refresh-camel-feed-v1" },
+    { slug: "camel-feed", key: "product-photo-refresh-camel-feed-v2" },
   ];
   for (const { slug, key } of PRODUCT_PHOTO_REFRESH) {
     if (await hasRun(strapi, key)) continue;
