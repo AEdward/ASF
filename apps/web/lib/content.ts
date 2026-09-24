@@ -29,6 +29,39 @@ export interface Product {
   description: string;
   details: string[];
   imageUrl?: string;
+  body?: string;
+  galleryUrls?: string[];
+}
+
+export interface Testimonial {
+  id: number;
+  authorName: string;
+  role?: string;
+  quote: string;
+  photoUrl?: string;
+  rating: number;
+  featured: boolean;
+}
+
+export interface DocumentAsset {
+  id: number;
+  title: string;
+  description?: string;
+  fileUrl: string;
+  fileName?: string;
+  fileSizeKb?: number;
+  fileExt?: string;
+  thumbnailUrl?: string;
+  category: string;
+}
+
+export interface FeedRate {
+  id: number;
+  animalKey: string;
+  label: string;
+  dailyKgPerAnimal: number;
+  bagSizeKg: number;
+  recommendedProductSlug?: string;
 }
 
 export interface Article {
@@ -95,9 +128,15 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
         { label: "Facilities", href: "/facilities" },
         { label: "Quality & Safety", href: "/quality" },
         { label: "Sustainability", href: "/sustainability" },
+        { label: "Testimonials", href: "/about/testimonials" },
+        { label: "Documents", href: "/documents" },
       ],
     },
-    { label: "Products", href: "/products" },
+    {
+      label: "Products",
+      href: "/products",
+      children: [{ label: "Feed Calculator", href: "/calculator" }],
+    },
     { label: "Crop Residue Feed", href: "/crop-residue-feed" },
     { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
@@ -235,3 +274,21 @@ export const DEFAULT_GALLERY_ALBUMS: GalleryAlbum[] = [];
 
 // No partners are seeded — real ones are added by ASF staff through the CMS.
 export const DEFAULT_PARTNERS: Partner[] = [];
+
+// No testimonials are seeded — real ones are added by ASF staff through the CMS.
+export const DEFAULT_TESTIMONIALS: Testimonial[] = [];
+
+// No documents are seeded — real files are uploaded by ASF staff through the CMS.
+export const DEFAULT_DOCUMENTS: DocumentAsset[] = [];
+
+// Placeholder daily-intake estimates so the calculator works before ASF sets
+// its own rates in the CMS. These are rough industry estimates, not
+// ASF-specific formulations, and are clearly labeled as such on the page.
+export const DEFAULT_FEED_RATES: FeedRate[] = [
+  { id: 1, animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, bagSizeKg: 50, recommendedProductSlug: "dairy-feed" },
+  { id: 2, animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed" },
+  { id: 3, animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, bagSizeKg: 50, recommendedProductSlug: "layer-feed" },
+  { id: 4, animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, bagSizeKg: 50, recommendedProductSlug: "pullet-feed" },
+  { id: 5, animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed" },
+  { id: 6, animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, bagSizeKg: 50, recommendedProductSlug: "camel-feed" },
+];

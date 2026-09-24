@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "feed_rates",
+  "info": {
+    "singularName": "feed-rate",
+    "pluralName": "feed-rates",
+    "displayName": "Feed Calculator Rate",
+    "description": "Per-animal daily feed rates used by the Feed Calculator page"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": {
+    "i18n": { "localized": true }
+  },
+  "attributes": {
+    "animalKey": {
+      "type": "uid",
+      "targetField": "label",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "label": { "type": "string", "required": true, "pluginOptions": { "i18n": { "localized": true } } },
+    "dailyKgPerAnimal": { "type": "decimal", "required": true, "pluginOptions": { "i18n": { "localized": false } } },
+    "bagSizeKg": { "type": "decimal", "default": 50, "pluginOptions": { "i18n": { "localized": false } } },
+    "recommendedProductSlug": { "type": "string", "pluginOptions": { "i18n": { "localized": false } } },
+    "order": { "type": "integer", "default": 0, "pluginOptions": { "i18n": { "localized": false } } }
+  }
+}

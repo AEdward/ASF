@@ -15,6 +15,11 @@
     "partnersMarquee": {
       "eyebrow": "Michoota Keenya",
       "heading": "Dhaabbilee sarara gatii keessa jiraniin amanamu."
+    },
+    "testimonials": {
+      "eyebrow": "Dubbii Isaanii",
+      "heading": "Qonnaan bultootaa fi michootaan amanamaa.",
+      "viewAll": "Ragaalee hunda dubbisi →"
     }
   },
   "footer": {
@@ -35,7 +40,10 @@
       "Future": "FUULDURA"
     },
     "upcomingProjectsEyebrow": "Pirojeektiiwwan Dhufaa Jiran",
-    "upcomingProjectsHeading": "Wanti itti aannee ijaarru."
+    "upcomingProjectsHeading": "Wanti itti aannee ijaarru.",
+    "backToProducts": "← Gara Oomishaalee deebi'i",
+    "galleryHeading": "Suuraalee",
+    "requestQuote": "Gaaffii gatii gaafadhaa →"
   },
   "blog": {
     "metaTitle": "Oduu fi Barreeffama",
@@ -167,5 +175,55 @@
     "categoryProducts": "Oomishaalee",
     "categoryNews": "Oduu fi Barreeffama",
     "categoryCareers": "Carraa Hojii"
+  },
+  "testimonials": {
+    "metaTitle": "Ragaa Maamiltootaa",
+    "metaDescription": "Michoottaa fi maamiltoonni ASF Agro Industry waa'ee waliin hojjechuu kan jedhan.",
+    "eyebrow": "Ragaa Maamiltootaa",
+    "heading": "Namoonni waa'ee ASF waliin hojjechuu maal jedhu.",
+    "subtitle": "Yaada qonnaan bultoota, michoota fi dhaabbilee waliin hojjennu irraa.",
+    "emptyTitle": "Ragaan maamiltootaa dhihootti dabalama",
+    "emptyBody": "Fuulli kun ragaalee michoota fi maamiltoota keenya irraa akkuma dabalamaniin ni argisiisa.",
+    "ratingLabel": "{rating} 5 keessaa"
+  },
+  "documents": {
+    "metaTitle": "Sanadoota",
+    "metaDescription": "Sanadoota dhaabbataa, ragaalee fi imaammata ASF Agro Industry buufadhaa.",
+    "eyebrow": "Kuusaa Sanadootaa",
+    "heading": "Sanadootaa fi buufamawwan.",
+    "subtitle": "Profaayilii dhaabbataa, ragaalee, ibsa oomishaa fi imaammatawwan bakka tokkotti.",
+    "searchPlaceholder": "Sanadoota barbaadi...",
+    "emptyTitle": "Sanadoonni dhihootti dabalamu",
+    "emptyBody": "Fuulli kun sanadoota buufamuu danda'an akkuma dabalamaniin ni argisiisa.",
+    "noResultsTitle": "Barbaacha keessaniin sanadni hin argamne.",
+    "noResultsBody": "Jecha adda ta'e yaali.",
+    "download": "Buufadhu",
+    "category": {
+      "Company Profile": "Profaayilii Dhaabbataa",
+      "Certification": "Ragaa",
+      "Product Spec": "Ibsa Oomishaa",
+      "Policy": "Imaammata",
+      "Report": "Gabaasa",
+      "Other": "Kan Biroo"
+    }
+  },
+  "calculator": {
+    "metaTitle": "Herregaa Nyaataa",
+    "metaDescription": "Gosaa fi lakkoofsa horii keessaniin hundeeffamee nyaata horii ASF hammam isin barbaachisu tilmaamaa.",
+    "eyebrow": "Herregaa Nyaataa",
+    "heading": "Nyaata hammam barbaadduu?",
+    "subtitle": "Gosaa fi lakkoofsa horii keessaniin hundeeffamee tilmaama ariifachiisaa argadhaa. Foormulaa sirrii ta'eef nu qunnamaa.",
+    "animalLabel": "Gosa Horii",
+    "countLabel": "Lakkoofsa Horii",
+    "daysLabel": "Lakkoofsa Guyyootaa",
+    "calculate": "Herregi",
+    "resultHeading": "Tilmaama Keessan",
+    "totalKg": "Nyaata Waliigalaa Barbaachisu",
+    "totalBags": "≈ Korojoo {count} (tokkoon tokkoon kg {size})",
+    "perDay": "Guyyaatti nyaata horii tokkoof barbaachisu: kg {kg}",
+    "recommendedProduct": "Oomisha Yaadamu",
+    "viewProduct": "Oomisha ilaali →",
+    "disclaimer": "Lakkoofsonni kun tilmaama waliigalaa qofa. Foormulaa horii keessaniif ta'u argachuuf garee keenya qunnamaa.",
+    "contactCta": "Garee keenya waliin haasa'aa →"
   }
 }

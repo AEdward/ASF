@@ -52,6 +52,8 @@ const {
   ARTICLES_LOCALIZED,
   PRODUCTS_SEED,
   PRODUCTS_LOCALIZED,
+  FEED_RATES_SEED,
+  FEED_RATES_LOCALIZED,
   uploadProductImage,
   LOCALES,
   seedAdminRole,
@@ -226,6 +228,101 @@ async function main() {
     } else {
       console.log("No Site Setting document found — skipped footer legal links.");
     }
+  }
+
+  // Additive-only: appends Testimonials + Documents under the existing About
+  // submenu, and Feed Calculator under the existing Products submenu, WITHOUT
+  // replacing navLinks — so any items an admin has since added, removed or
+  // reordered by hand are preserved. Nested under existing menus (rather than
+  // added as new top-level items) to avoid overcrowding the header.
+  const navNewPagesKey = "site-setting-nav-new-pages-v2";
+  if (!(await hasRun(strapi, navNewPagesKey))) {
+    const siteSetting = await strapi.documents("api::site-setting.site-setting").findFirst();
+    if (siteSetting) {
+      const NEW_NAV_ITEMS = {
+        en: {
+          testimonials: { label: "Testimonials", href: "/about/testimonials" },
+          documents: { label: "Documents", href: "/documents" },
+          calculator: { label: "Feed Calculator", href: "/calculator" },
+        },
+        am: {
+          testimonials: { label: "ምስክርነቶች", href: "/about/testimonials" },
+          documents: { label: "ሰነዶች", href: "/documents" },
+          calculator: { label: "የመኖ ማስያ", href: "/calculator" },
+        },
+        om: {
+          testimonials: { label: "Ragaa Maamiltootaa", href: "/about/testimonials" },
+          documents: { label: "Sanadoota", href: "/documents" },
+          calculator: { label: "Herregaa Nyaataa", href: "/calculator" },
+        },
+      };
+
+      const appendChild = (navLinks, parentHref, child) =>
+        navLinks.map((link) => {
+          if (link.href !== parentHref) return link;
+          const children = link.children ?? [];
+          if (children.some((c) => c.href === child.href)) return link;
+          return { ...link, children: [...children, child] };
+        });
+
+      const appendNavItems = async (locale) => {
+        const current = await strapi.documents("api::site-setting.site-setting").findOne({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+        });
+        const items = NEW_NAV_ITEMS[locale || "en"];
+
+        let nextNavLinks = current?.navLinks ?? [];
+        nextNavLinks = appendChild(nextNavLinks, "/about", items.testimonials);
+        nextNavLinks = appendChild(nextNavLinks, "/about", items.documents);
+        nextNavLinks = appendChild(nextNavLinks, "/products", items.calculator);
+
+        await strapi.documents("api::site-setting.site-setting").update({
+          documentId: siteSetting.documentId,
+          ...(locale ? { locale } : {}),
+          data: { navLinks: nextNavLinks },
+        });
+      };
+
+      await appendNavItems(undefined);
+      for (const locale of LOCALES) {
+        await appendNavItems(locale.code);
+      }
+      await markRun(strapi, navNewPagesKey);
+      console.log(
+        "Appended Testimonials + Documents (under About) and Feed Calculator (under Products) to Site Setting navLinks (en/am/om), keeping existing entries as-is.",
+      );
+    } else {
+      console.log("No Site Setting document found — skipped nav additions.");
+    }
+  }
+
+  // Seeds the Feed Calculator's default rates only if the collection is
+  // completely empty — never overwrites rates an admin has since edited.
+  const feedRatesKey = "feed-rates-seed-v1";
+  if (!(await hasRun(strapi, feedRatesKey))) {
+    const existingCount = await strapi.documents("api::feed-rate.feed-rate").count();
+    if (existingCount > 0) {
+      console.log(`Feed rates collection already has ${existingCount} entr(y/ies) — skipped seeding.`);
+    } else {
+      for (let i = 0; i < FEED_RATES_SEED.length; i++) {
+        const seed = FEED_RATES_SEED[i];
+        const created = await strapi.documents("api::feed-rate.feed-rate").create({
+          data: seed,
+          status: "published",
+        });
+        for (const locale of LOCALES) {
+          await strapi.documents("api::feed-rate.feed-rate").update({
+            documentId: created.documentId,
+            locale: locale.code,
+            data: { ...seed, ...FEED_RATES_LOCALIZED[locale.code][i] },
+            status: "published",
+          });
+        }
+      }
+      console.log(`Created ${FEED_RATES_SEED.length} default feed rates (en/am/om).`);
+    }
+    await markRun(strapi, feedRatesKey);
   }
 
   for (const { slug, seed, localized, key } of PAGES_TO_UPDATE) {

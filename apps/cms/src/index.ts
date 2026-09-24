@@ -11,6 +11,9 @@ const PUBLIC_READ_PERMISSIONS: Record<string, string[]> = {
   "job-vacancy": ["find", "findOne"],
   "gallery-album": ["find", "findOne"],
   partner: ["find", "findOne"],
+  testimonial: ["find", "findOne"],
+  document: ["find", "findOne"],
+  "feed-rate": ["find", "findOne"],
 };
 
 const LOCALES = [
@@ -72,9 +75,15 @@ const SITE_SETTINGS_SEED = {
         { label: "Facilities", href: "/facilities" },
         { label: "Quality & Safety", href: "/quality" },
         { label: "Sustainability", href: "/sustainability" },
+        { label: "Testimonials", href: "/about/testimonials" },
+        { label: "Documents", href: "/documents" },
       ],
     },
-    { label: "Products", href: "/products" },
+    {
+      label: "Products",
+      href: "/products",
+      children: [{ label: "Feed Calculator", href: "/calculator" }],
+    },
     { label: "Crop Residue Feed", href: "/crop-residue-feed" },
     { label: "Partners", href: "/partners" },
     { label: "Gallery", href: "/gallery" },
@@ -111,9 +120,15 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
           { label: "ተቋማት", href: "/facilities" },
           { label: "ጥራት እና ደህንነት", href: "/quality" },
           { label: "ዘላቂነት", href: "/sustainability" },
+          { label: "ምስክርነቶች", href: "/about/testimonials" },
+          { label: "ሰነዶች", href: "/documents" },
         ],
       },
-      { label: "ምርቶች", href: "/products" },
+      {
+        label: "ምርቶች",
+        href: "/products",
+        children: [{ label: "የመኖ ማስያ", href: "/calculator" }],
+      },
       { label: "የሰብል ቀሪት መኖ", href: "/crop-residue-feed" },
       { label: "አጋሮች", href: "/partners" },
       { label: "ማዕከለ ስዕላት", href: "/gallery" },
@@ -145,9 +160,15 @@ const SITE_SETTINGS_LOCALIZED: Record<string, Record<string, unknown>> = {
           { label: "Dhaabbilee", href: "/facilities" },
           { label: "Qulqullina fi Nageenya", href: "/quality" },
           { label: "Itti Fufiinsa", href: "/sustainability" },
+          { label: "Ragaa Maamiltootaa", href: "/about/testimonials" },
+          { label: "Sanadoota", href: "/documents" },
         ],
       },
-      { label: "Oomishaalee", href: "/products" },
+      {
+        label: "Oomishaalee",
+        href: "/products",
+        children: [{ label: "Herregaa Nyaataa", href: "/calculator" }],
+      },
       { label: "Nyaata Hambaa Midhaanii", href: "/crop-residue-feed" },
       { label: "Michoota", href: "/partners" },
       { label: "Suuraalee", href: "/gallery" },
@@ -1872,6 +1893,44 @@ const PRODUCTS_LOCALIZED: Record<
   ],
 };
 
+// Placeholder daily-intake estimates for the Feed Calculator page — rough
+// industry figures ASF can tune once real formulations are confirmed.
+const FEED_RATES_SEED: {
+  animalKey: string;
+  label: string;
+  dailyKgPerAnimal: number;
+  bagSizeKg: number;
+  recommendedProductSlug: string;
+  order: number;
+}[] = [
+  { animalKey: "dairy-cow", label: "Dairy Cow", dailyKgPerAnimal: 8, bagSizeKg: 50, recommendedProductSlug: "dairy-feed", order: 1 },
+  { animalKey: "fattening-cattle", label: "Fattening Cattle", dailyKgPerAnimal: 7, bagSizeKg: 50, recommendedProductSlug: "cattle-fattening-feed", order: 2 },
+  { animalKey: "layer-hen", label: "Layer Hen", dailyKgPerAnimal: 0.12, bagSizeKg: 50, recommendedProductSlug: "layer-feed", order: 3 },
+  { animalKey: "pullet", label: "Pullet", dailyKgPerAnimal: 0.06, bagSizeKg: 50, recommendedProductSlug: "pullet-feed", order: 4 },
+  { animalKey: "sheep-goat", label: "Sheep / Goat", dailyKgPerAnimal: 1.2, bagSizeKg: 50, recommendedProductSlug: "sheep-goat-feed", order: 5 },
+  { animalKey: "camel", label: "Camel", dailyKgPerAnimal: 6, bagSizeKg: 50, recommendedProductSlug: "camel-feed", order: 6 },
+];
+
+// Parallel to FEED_RATES_SEED (same order); only the label is localized.
+const FEED_RATES_LOCALIZED: Record<string, { label: string }[]> = {
+  am: [
+    { label: "የወተት ላም" },
+    { label: "የማድለብ ከብት" },
+    { label: "የሌየር ዶሮ" },
+    { label: "ፑሌት" },
+    { label: "በግ / ፍየል" },
+    { label: "ግመል" },
+  ],
+  om: [
+    { label: "Saawwan Aannanii" },
+    { label: "Sangoota Coosaa" },
+    { label: "Lukkuu Hanqaaquu" },
+    { label: "Pulleetii" },
+    { label: "Hoolaa / Reʼee" },
+    { label: "Gaala" },
+  ],
+};
+
 const ARTICLES_SEED: {
   title: string;
   slug: string;
@@ -2506,6 +2565,8 @@ export {
   ARTICLES_LOCALIZED,
   PRODUCTS_SEED,
   PRODUCTS_LOCALIZED,
+  FEED_RATES_SEED,
+  FEED_RATES_LOCALIZED,
   uploadProductImage,
   LOCALES,
   seedAdminRole,

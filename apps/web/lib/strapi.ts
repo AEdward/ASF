@@ -1,16 +1,22 @@
 import {
   Article,
   DEFAULT_ARTICLES,
+  DEFAULT_DOCUMENTS,
+  DEFAULT_FEED_RATES,
   DEFAULT_GALLERY_ALBUMS,
   DEFAULT_JOB_VACANCIES,
   DEFAULT_PARTNERS,
   DEFAULT_PRODUCTS,
   DEFAULT_SITE_SETTINGS,
+  DEFAULT_TESTIMONIALS,
+  DocumentAsset,
+  FeedRate,
   GalleryAlbum,
   JobVacancy,
   Partner,
   Product,
   SiteSettings,
+  Testimonial,
 } from "@/lib/content";
 import { PageSection } from "@/lib/sections";
 import type { Locale } from "@/i18n/routing";
@@ -48,6 +54,22 @@ interface StrapiProductEntry {
   description: string;
   details: string[] | null;
   image?: { url?: string } | null;
+  body?: string | null;
+  gallery?: { url?: string }[] | null;
+}
+
+function mapProduct(entry: StrapiProductEntry): Product {
+  return {
+    id: entry.id,
+    name: entry.name,
+    slug: entry.slug,
+    stage: entry.stage,
+    description: entry.description,
+    details: entry.details ?? [],
+    imageUrl: mediaUrl(entry.image),
+    body: entry.body ?? undefined,
+    galleryUrls: (entry.gallery ?? []).map((image) => mediaUrl(image)).filter((url): url is string => !!url),
+  };
 }
 
 interface StrapiArticleEntry {
@@ -139,15 +161,16 @@ export async function getProducts(locale: Locale = "en"): Promise<Product[]> {
     `/api/products?sort=id:asc&populate=image&locale=${locale}`
   );
   if (!json?.data?.length) return DEFAULT_PRODUCTS;
-  return json.data.map((entry) => ({
-    id: entry.id,
-    name: entry.name,
-    slug: entry.slug,
-    stage: entry.stage,
-    description: entry.description,
-    details: entry.details ?? [],
-    imageUrl: mediaUrl(entry.image),
-  }));
+  return json.data.map(mapProduct);
+}
+
+export async function getProduct(slug: string, locale: Locale = "en"): Promise<Product | null> {
+  const json = await strapiFetch<{ data: StrapiProductEntry[] }>(
+    `/api/products?filters[slug][$eq]=${slug}&populate[image][populate]=*&populate[gallery][populate]=*&locale=${locale}`
+  );
+  const entry = json?.data?.[0];
+  if (entry) return mapProduct(entry);
+  return DEFAULT_PRODUCTS.find((product) => product.slug === slug) || null;
 }
 
 interface StrapiRawSection {
@@ -460,4 +483,101 @@ export async function getPartners(locale: Locale = "en"): Promise<Partner[]> {
   );
   if (!json?.data) return DEFAULT_PARTNERS;
   return json.data.map(mapPartner);
+}
+
+interface StrapiTestimonialEntry {
+  id: number;
+  authorName: string;
+  role?: string | null;
+  quote: string;
+  photo?: { url?: string } | null;
+  rating?: number | null;
+  featured?: boolean | null;
+}
+
+function mapTestimonial(entry: StrapiTestimonialEntry): Testimonial {
+  return {
+    id: entry.id,
+    authorName: entry.authorName,
+    role: entry.role ?? undefined,
+    quote: entry.quote,
+    photoUrl: mediaUrl(entry.photo),
+    rating: entry.rating ?? 5,
+    featured: entry.featured ?? false,
+  };
+}
+
+export async function getTestimonials(locale: Locale = "en"): Promise<Testimonial[]> {
+  const json = await strapiFetch<{ data: StrapiTestimonialEntry[] }>(
+    `/api/testimonials?sort=order:asc&populate=photo&locale=${locale}`
+  );
+  if (!json?.data) return DEFAULT_TESTIMONIALS;
+  return json.data.map(mapTestimonial);
+}
+
+export async function getFeaturedTestimonials(locale: Locale = "en", limit = 3): Promise<Testimonial[]> {
+  const json = await strapiFetch<{ data: StrapiTestimonialEntry[] }>(
+    `/api/testimonials?filters[featured][$eq]=true&sort=order:asc&pagination[limit]=${limit}&populate=photo&locale=${locale}`
+  );
+  if (!json?.data?.length) return DEFAULT_TESTIMONIALS.slice(0, limit);
+  return json.data.map(mapTestimonial);
+}
+
+interface StrapiDocumentEntry {
+  id: number;
+  title: string;
+  description?: string | null;
+  file?: { url?: string; name?: string; size?: number; ext?: string } | null;
+  thumbnail?: { url?: string } | null;
+  category: string;
+}
+
+function mapDocument(entry: StrapiDocumentEntry): DocumentAsset {
+  return {
+    id: entry.id,
+    title: entry.title,
+    description: entry.description ?? undefined,
+    fileUrl: mediaUrl(entry.file) ?? "",
+    fileName: entry.file?.name,
+    fileSizeKb: entry.file?.size,
+    fileExt: entry.file?.ext?.replace(".", "").toUpperCase(),
+    thumbnailUrl: mediaUrl(entry.thumbnail),
+    category: entry.category,
+  };
+}
+
+export async function getDocuments(locale: Locale = "en"): Promise<DocumentAsset[]> {
+  const json = await strapiFetch<{ data: StrapiDocumentEntry[] }>(
+    `/api/documents?sort=order:asc&populate=file&populate=thumbnail&locale=${locale}`
+  );
+  if (!json?.data) return DEFAULT_DOCUMENTS;
+  return json.data.map(mapDocument).filter((doc) => doc.fileUrl);
+}
+
+interface StrapiFeedRateEntry {
+  id: number;
+  animalKey: string;
+  label: string;
+  dailyKgPerAnimal: number;
+  bagSizeKg?: number | null;
+  recommendedProductSlug?: string | null;
+}
+
+function mapFeedRate(entry: StrapiFeedRateEntry): FeedRate {
+  return {
+    id: entry.id,
+    animalKey: entry.animalKey,
+    label: entry.label,
+    dailyKgPerAnimal: entry.dailyKgPerAnimal,
+    bagSizeKg: entry.bagSizeKg ?? 50,
+    recommendedProductSlug: entry.recommendedProductSlug ?? undefined,
+  };
+}
+
+export async function getFeedRates(locale: Locale = "en"): Promise<FeedRate[]> {
+  const json = await strapiFetch<{ data: StrapiFeedRateEntry[] }>(
+    `/api/feed-rates?sort=order:asc&locale=${locale}`
+  );
+  if (!json?.data?.length) return DEFAULT_FEED_RATES;
+  return json.data.map(mapFeedRate);
 }

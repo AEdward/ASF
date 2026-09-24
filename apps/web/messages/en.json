@@ -15,6 +15,11 @@
     "partnersMarquee": {
       "eyebrow": "Our Partners",
       "heading": "Trusted by organizations across the value chain."
+    },
+    "testimonials": {
+      "eyebrow": "In their words",
+      "heading": "Trusted by farmers and partners.",
+      "viewAll": "Read all testimonials →"
     }
   },
   "footer": {
@@ -35,7 +40,10 @@
       "Future": "FUTURE"
     },
     "upcomingProjectsEyebrow": "Upcoming Projects",
-    "upcomingProjectsHeading": "What we're building next."
+    "upcomingProjectsHeading": "What we're building next.",
+    "backToProducts": "← Back to products",
+    "galleryHeading": "Gallery",
+    "requestQuote": "Request a quote →"
   },
   "blog": {
     "metaTitle": "News & Blog",
@@ -167,5 +175,55 @@
     "categoryProducts": "Products",
     "categoryNews": "News & Blog",
     "categoryCareers": "Careers"
+  },
+  "testimonials": {
+    "metaTitle": "Testimonials",
+    "metaDescription": "What ASF Agro Industry's partners and customers say about working with us.",
+    "eyebrow": "Testimonials",
+    "heading": "What people say about working with ASF.",
+    "subtitle": "Feedback from the farmers, partners and businesses we work with.",
+    "emptyTitle": "Testimonials coming soon",
+    "emptyBody": "This page will show testimonials from our partners and customers as they're added.",
+    "ratingLabel": "{rating} out of 5"
+  },
+  "documents": {
+    "metaTitle": "Documents",
+    "metaDescription": "Download ASF Agro Industry company documents, certifications and policies.",
+    "eyebrow": "Document Library",
+    "heading": "Documents & downloads.",
+    "subtitle": "Company profile, certifications, product specs and policies in one place.",
+    "searchPlaceholder": "Search documents...",
+    "emptyTitle": "Documents coming soon",
+    "emptyBody": "This page will list downloadable documents as they're added.",
+    "noResultsTitle": "No documents match your search.",
+    "noResultsBody": "Try a different word.",
+    "download": "Download",
+    "category": {
+      "Company Profile": "Company Profile",
+      "Certification": "Certification",
+      "Product Spec": "Product Spec",
+      "Policy": "Policy",
+      "Report": "Report",
+      "Other": "Other"
+    }
+  },
+  "calculator": {
+    "metaTitle": "Feed Calculator",
+    "metaDescription": "Estimate how much ASF animal feed you need based on your animals and herd size.",
+    "eyebrow": "Feed Calculator",
+    "heading": "How much feed do you need?",
+    "subtitle": "Get a quick estimate based on your animals and herd size. Contact us for an exact formulation.",
+    "animalLabel": "Animal type",
+    "countLabel": "Number of animals",
+    "daysLabel": "Number of days",
+    "calculate": "Calculate",
+    "resultHeading": "Your estimate",
+    "totalKg": "Total feed needed",
+    "totalBags": "≈ {count} bags ({size} kg each)",
+    "perDay": "Daily feed per animal: {kg} kg",
+    "recommendedProduct": "Recommended product",
+    "viewProduct": "View product →",
+    "disclaimer": "These figures are general estimates only. Contact our team for a formulation tailored to your herd.",
+    "contactCta": "Talk to our team →"
   }
 }

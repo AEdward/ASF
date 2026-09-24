@@ -15,6 +15,11 @@
     "partnersMarquee": {
       "eyebrow": "አጋሮቻችን",
       "heading": "በእሴት ሰንሰለቱ ውስጥ ባሉ ድርጅቶች የታመነ።"
+    },
+    "testimonials": {
+      "eyebrow": "በራሳቸው አንደበት",
+      "heading": "በአርሶ አደሮችና አጋሮች የታመነ።",
+      "viewAll": "ሁሉንም ምስክርነቶች ያንብቡ →"
     }
   },
   "footer": {
@@ -35,7 +40,10 @@
       "Future": "የወደፊት"
     },
     "upcomingProjectsEyebrow": "የሚመጡ ፕሮጀክቶች",
-    "upcomingProjectsHeading": "ቀጥሎ የምንገነባው።"
+    "upcomingProjectsHeading": "ቀጥሎ የምንገነባው።",
+    "backToProducts": "← ወደ ምርቶች ተመለስ",
+    "galleryHeading": "ምስሎች",
+    "requestQuote": "የዋጋ ጥቆማ ይጠይቁ →"
   },
   "blog": {
     "metaTitle": "ዜና እና ብሎግ",
@@ -167,5 +175,55 @@
     "categoryProducts": "ምርቶች",
     "categoryNews": "ዜና እና ብሎግ",
     "categoryCareers": "የስራ ቅጥር"
+  },
+  "testimonials": {
+    "metaTitle": "ምስክርነቶች",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ ባልደረቦችና ደንበኞች ከእኛ ጋር ስለ መስራት የሚሉት።",
+    "eyebrow": "ምስክርነቶች",
+    "heading": "ከASF ጋር መስራት ስለ ምን እንደሚመስል ሰዎች የሚሉት።",
+    "subtitle": "ከምንሰራባቸው አርሶ አደሮች፣ አጋሮችና ድርጅቶች የተሰጡ አስተያየቶች።",
+    "emptyTitle": "ምስክርነቶች በቅርቡ ይጨመራሉ",
+    "emptyBody": "ይህ ገጽ ከአጋሮቻችንና ደንበኞቻችን የተሰጡ ምስክርነቶችን እንደተጨመሩ ያሳያል።",
+    "ratingLabel": "{rating} ከ5"
+  },
+  "documents": {
+    "metaTitle": "ሰነዶች",
+    "metaDescription": "የASF አግሮ ኢንዱስትሪ የድርጅት ሰነዶችን፣ ሰርተፍኬቶችንና መመሪያዎችን ያውርዱ።",
+    "eyebrow": "የሰነድ ማዕከል",
+    "heading": "ሰነዶችና ማውረጃዎች።",
+    "subtitle": "የድርጅት ፕሮፋይል፣ ሰርተፍኬቶች፣ የምርት መግለጫዎችና መመሪያዎች በአንድ ቦታ።",
+    "searchPlaceholder": "ሰነዶችን ይፈልጉ...",
+    "emptyTitle": "ሰነዶች በቅርቡ ይጨመራሉ",
+    "emptyBody": "ይህ ገጽ ማውረድ የሚቻሉ ሰነዶችን እንደተጨመሩ ያሳያል።",
+    "noResultsTitle": "ከፍለጋዎ ጋር የሚስማማ ሰነድ አልተገኘም።",
+    "noResultsBody": "የተለየ ቃል ይሞክሩ።",
+    "download": "አውርድ",
+    "category": {
+      "Company Profile": "የድርጅት ፕሮፋይል",
+      "Certification": "ሰርተፍኬት",
+      "Product Spec": "የምርት መግለጫ",
+      "Policy": "መመሪያ",
+      "Report": "ሪፖርት",
+      "Other": "ሌላ"
+    }
+  },
+  "calculator": {
+    "metaTitle": "የመኖ ማስያ",
+    "metaDescription": "በእንስሶችዎ ዓይነትና ብዛት ላይ በመመስረት የASF የእንስሳት መኖ ፍላጎትዎን ያስሉ።",
+    "eyebrow": "የመኖ ማስያ",
+    "heading": "ምን መጠን መኖ ይፈልጋሉ?",
+    "subtitle": "በእንስሶችዎና በብዛታቸው ላይ የተመሰረተ ፈጣን ግምት ያግኙ። ለትክክለኛ ቀመር ያግኙን።",
+    "animalLabel": "የእንስሳት ዓይነት",
+    "countLabel": "የእንስሶች ብዛት",
+    "daysLabel": "የቀናት ብዛት",
+    "calculate": "አስሉ",
+    "resultHeading": "የግምት ውጤትዎ",
+    "totalKg": "የሚያስፈልግ ጠቅላላ መኖ",
+    "totalBags": "≈ {count} ከረጢቶች (እያንዳንዱ {size} ኪ.ግ)",
+    "perDay": "በቀን ለአንድ እንስሳ የሚያስፈልግ መኖ: {kg} ኪ.ግ",
+    "recommendedProduct": "የሚመከር ምርት",
+    "viewProduct": "ምርቱን ይመልከቱ →",
+    "disclaimer": "እነዚህ ቁጥሮች አጠቃላይ ግምቶች ብቻ ናቸው። ለእንስሶችዎ የተስማማ ቀመር ለማግኘት ቡድናችንን ያግኙ።",
+    "contactCta": "ከቡድናችን ጋር ይነጋገሩ →"
   }
 }

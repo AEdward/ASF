@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Eyebrow } from "@/components/ui";
 import { ProductImageCard } from "@/components/products/product-image-card";
+import { Link } from "@/i18n/navigation";
 import { getProducts } from "@/lib/strapi";
 import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
@@ -49,7 +50,11 @@ export default async function Products({
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
           {mainProducts.map((product) => (
-            <div key={product.slug} className="flex flex-col items-center text-center">
+            <Link
+              key={product.slug}
+              href={`/products/${product.slug}`}
+              className="flex flex-col items-center text-center transition hover:-translate-y-1"
+            >
               <div className="w-full max-w-[280px]">
                 <ProductImageCard imageUrl={product.imageUrl as string} name={product.name} />
               </div>
@@ -65,7 +70,7 @@ export default async function Products({
                   ))}
                 </ul>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       </section>
