@@ -2520,6 +2520,7 @@ async function seedGalleryAlbums(strapi: Core.Strapi) {
         category: album.category,
         description: album.description,
         images: imageIds,
+        order: i + 1,
       } as any,
       status: "published",
     });
@@ -2569,6 +2570,7 @@ export {
   PRODUCTS_LOCALIZED,
   FEED_RATES_SEED,
   FEED_RATES_LOCALIZED,
+  GALLERY_ALBUMS_SEED,
   uploadProductImage,
   LOCALES,
   seedAdminRole,

@@ -54,6 +54,7 @@ const {
   PRODUCTS_LOCALIZED,
   FEED_RATES_SEED,
   FEED_RATES_LOCALIZED,
+  GALLERY_ALBUMS_SEED,
   uploadProductImage,
   LOCALES,
   seedAdminRole,
@@ -564,6 +565,32 @@ async function main() {
     }
     await markRun(strapi, key);
     console.log(`Replaced product photo for "${slug}" (en/am/om).`);
+  }
+
+  // Gallery albums didn't have an admin-settable "order" field before —
+  // backfill one on the albums from the initial seed so the Content
+  // Manager's order column starts with real, distinct values to edit from.
+  // Guarded per-slug so an admin who's already reordered an album (or one
+  // that was never part of the seed) is left untouched.
+  const GALLERY_ALBUM_ORDER_BACKFILL = GALLERY_ALBUMS_SEED.map((album, i) => ({
+    slug: album.slug,
+    order: i + 1,
+    key: `gallery-album-order-backfill-${album.slug}-v1`,
+  }));
+  for (const { slug, order, key } of GALLERY_ALBUM_ORDER_BACKFILL) {
+    if (await hasRun(strapi, key)) continue;
+    const album = await strapi.documents("api::gallery-album.gallery-album").findFirst({ filters: { slug } });
+    if (!album) {
+      console.log(`No gallery album with slug "${slug}" found — skipped order backfill.`);
+      continue;
+    }
+    await strapi.documents("api::gallery-album.gallery-album").update({
+      documentId: album.documentId,
+      data: { order },
+      status: "published",
+    });
+    await markRun(strapi, key);
+    console.log(`Set order=${order} for gallery album "${slug}".`);
   }
 
   const adminRoleBefore = await strapi.service("admin::role").findOne({ name: "Admin" });

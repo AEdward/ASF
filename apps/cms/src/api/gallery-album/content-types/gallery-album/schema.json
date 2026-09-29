@@ -30,6 +30,11 @@
       "multiple": true,
       "allowedTypes": ["images"],
       "pluginOptions": { "i18n": { "localized": false } }
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "pluginOptions": { "i18n": { "localized": false } }
     }
   }
 }

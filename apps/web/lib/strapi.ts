@@ -471,7 +471,7 @@ export async function getJobVacancy(slug: string, locale: Locale = "en"): Promis
 
 export async function getGalleryAlbums(locale: Locale = "en"): Promise<GalleryAlbum[]> {
   const json = await strapiFetch<{ data: StrapiGalleryAlbumEntry[] }>(
-    `/api/gallery-albums?sort=id:asc&populate=images&locale=${locale}`
+    `/api/gallery-albums?sort=order:asc,id:asc&populate=images&locale=${locale}`
   );
   if (!json?.data) return DEFAULT_GALLERY_ALBUMS;
   return json.data.map(mapGalleryAlbum);
